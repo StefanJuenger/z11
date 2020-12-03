@@ -8,14 +8,17 @@
 #' \item{...}{...}
 #' }
 #' @source © Statistisches Bundesamt: \url{https://www.zensus2011.de}
-"z11_attributes_1km"
+# "z11_attributes_1km"
 
 # z11_attributes_1km_continuous <-
-#   data.table::fread("./data-raw/Zensus_spitze_Werte_1km-Gitter.csv") %>%
+#   data.table::fread(
+#     "../z11_data-raw/Zensus_spitze_Werte_1km-Gitter.csv",
+#     dec = ","
+#     ) %>%
 #   dtplyr::lazy_dt()
 #
 # z11_attributes_1km_categorical <-
-#   data.table::fread("./data-raw/Zensus_klassierte_Werte_1km-Gitter.csv") %>%
+#   data.table::fread("../z11_data-raw/Zensus_klassierte_Werte_1km-Gitter.csv") %>%
 #   dtplyr::lazy_dt() %>%
 #   dplyr::rename_at(
 #     dplyr::vars(-Gitter_ID_1km, -x_mp_1km, -y_mp_1km),

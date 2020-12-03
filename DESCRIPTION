@@ -1,14 +1,28 @@
 Package: z11
 Type: Package
-Title: What the Package Does (Title Case)
+Title: R Interface to the German Census 2011 Raster Data
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: person("Stefan", "Jünger", email = "stefan.juenger@gesis.org",
+                  role = c("aut", "cre"))   
+Maintainer: Stefan Jünger <stefan.juenger@gesis.org>
+Description: The package provides an interface to the rich geospatial raster
+    data of the German Census 2011, implemented in R. Several functions can be
+    used to list all available attributes from the Census (1 1km^2 attributes
+    and 1 hectare attribute), and to import them either as \code{sf} spatial 
+    points object or as raster with the resolution of the corresponding 
+    attribute.
+License: CC-BY and dl-de/by-2-0
 Encoding: UTF-8
 LazyData: true
 Imports: 
     dplyr,
-    tidyr
+    tidyr,
+    dtplyr,
+    sf,
+    raster,
+    stars,
+    data.table,
+    magrittr
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 7.1.1

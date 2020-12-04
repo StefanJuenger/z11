@@ -7,7 +7,7 @@
 z11_list_1km_attributes()
 }
 \value{
-Character vector#'
+Character vector
 }
 \description{
 This function lists all attributes of the German Census 2011 with a raster

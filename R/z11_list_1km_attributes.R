@@ -7,7 +7,7 @@
 #' of attribute names includes the attribute names as they were defined by the
 #' Census folks.
 #'
-#' @return Character vector#'
+#' @return Character vector
 #'
 #' @importFrom magrittr %>%
 #'

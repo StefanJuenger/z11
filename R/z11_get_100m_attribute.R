@@ -2,7 +2,7 @@
 #'
 #' This function retrieves an attribute with a raster resolution of 1 hectare.
 #' You can either choose to have it converted directly into the raster format
-#' (default) or you can return it as a \code{sf} tibble object with point
+#' (default) or you can return it as a `sf` tibble object with point
 #' geometries.
 #'
 #' @param attribute attribute name as definded in

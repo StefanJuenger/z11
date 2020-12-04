@@ -2,7 +2,9 @@
 title: "Quick Start in Using the z11 package"
 author: "Stefan Jünger"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    toc: true
 vignette: >
   %\VignetteIndexEntry{Quick Start in Using the z11 package}
   %\VignetteEngine{knitr::rmarkdown}
@@ -17,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 # Introduction
-The `z11` package provides an `R`-interface to the geospatial raster data of the German Census 2011. `z11` can be used to list all available attributes from the Census (1 km$^2$ attributes and 1-hectare attribute) and import them either as [simple features](https://r-spatial.github.io/sf/) spatial points object or as [raster](https://cran.r-project.org/web/packages/raster/index.html) object with the resolution of the corresponding attribute. I felt that such a package may be of interest for other userRs since the Census data 'only' exists as [CSV data dump on the internet](https://www.zensus2011.de/DE/Home/Aktuelles/DemografischeGrunddaten.html). However, to use them in a Geographic Information System (GIS), the data must be prepared, which is time-consuming and computationally demanding. As such, the package aims to fill the gap of making the data easily accessible by providing a straightforward method.
+The `z11` package provides an `R`-interface to the geospatial raster data of the German Census 2011. `z11` can be used to list all available attributes from the Census (1 km² attributes and 1-hectare attribute) and import them either as [simple features](https://r-spatial.github.io/sf/) spatial points object or as [raster](https://cran.r-project.org/web/packages/raster/index.html) object with the resolution of the corresponding attribute. I felt that such a package may be of interest for other userRs since the Census data 'only' exists as [CSV data dump on the internet](https://www.zensus2011.de/DE/Home/Aktuelles/DemografischeGrunddaten.html). However, to use them in a Geographic Information System (GIS), the data must be prepared, which is time-consuming and computationally demanding. As such, the package aims to fill the gap of making the data easily accessible by providing a straightforward method.
 
 Generally, the German Census 2011 data are available under a [Data licence Germany – attribution – version 2.0](https://www.govdata.de/dl-de/by-2-0) and can be manipulated and openly shared. **Yet, as part of this package, use them at your own risk and do not take the results of the functions for granted.**
 
@@ -35,16 +37,16 @@ After installing, the package can be loaded using `R`'s standard method:
 library(z11)
 ```
 
-# Working with 1 km$^2$ German Census 2011 Data
-1 km$^2$ data were the first data published in 2015. While they comprise fewer attributes than the 1 hectare ones (see below), the data are in a way more easy to use format (see also the z11 package's vignette about the initial data preparation [still in the works]). You can browse all available attributes by using the following function.
+# Working with 1 km² German Census 2011 Data
+1 km² data were the first data published in 2015. While they comprise fewer attributes than the 1 hectare ones (see below), the data are in a way more easy to use format (see also the z11 package's vignette about the initial data preparation [still in the works]). You can browse all available attributes by using the following function.
 
 ```{r list-1km-attributes}
 z11::z11_list_1km_attributes()
 ```
 
-Thus, in sum we can use `r length(z11::z11_list_1km_attributes())` different census attributes of the size of 1 km$^2$. Please note that some of the attributes are also duplicated, denoted by the `_cat`-suffix in the attribute name. These attributes may be less precise, but they comprise fewer missing values than the continuous attributes. In any case, for more details about the actual attributes, refer to the official documentation of the German Census 2011 at https://www.zensus2011.de.
+Thus, in sum we can use `r length(z11::z11_list_1km_attributes())` different census attributes of the size of 1 km². Please note that some of the attributes are also duplicated, denoted by the `_cat`-suffix in the attribute name. These attributes may be less precise, but they comprise fewer missing values than the continuous attributes. In any case, for more details about the actual attributes, refer to the official documentation of the German Census 2011 at https://www.zensus2011.de.
 
-Now, if we want to load one of the attributes as a raster layer, we can use the `z11::z11_get_1km_attribute()` function. For example, for importing information on immigrant rates on a 1 km$^2$ grid level, we could use the following command:
+Now, if we want to load one of the attributes as a raster layer, we can use the `z11::z11_get_1km_attribute()` function. For example, for importing information on immigrant rates on a 1 km² grid level, we could use the following command:
 
 ```{r get-1km-immigrants-raster}
 immigrants_1km <-
@@ -77,13 +79,13 @@ immigrants_1km_sf
 ```
 
 # Working with 1 hectare German Census 2011 Data
-In 2018, destatis also published Census data on a 1-hectare grid level. This 100m $\times$ 100m data provides a more fine-grained level of information for Germany's population. Moreover, the data comprise way more attributes than the 1 km$^2$ one, including details on buildings and even heater types. Again, we can list all available attributes using a specialized function:
+In 2018, destatis also published Census data on a 1-hectare grid level. This 100m $\times$ 100m data provides a more fine-grained level of information for Germany's population. Moreover, the data comprise way more attributes than the 1 km² one, including details on buildings and even heater types. Again, we can list all available attributes using a specialized function:
 
 ```{r list-100m-attributes}
 z11::z11_list_100m_attributes()
 ```
 
-As we can see, the number of attributes is quite high, in sum `r length(z11::z11_list_100m_attributes())`. The naming convention is different as the names depict a concatenated string between each attribute name and its category. In contrast to the 1 km$^2$ data, the attribute values are the number of persons within each 1-hectare grid cell sharing the attribute's characteristic. Again, please refer to the official German Census 2011 documentation since it details how to handle the data and interpret its values. The data here are just vanilla Census data. However, they were converted from a long data format to a wide one for rasterizing.
+As we can see, the number of attributes is quite high, in sum `r length(z11::z11_list_100m_attributes())`. The naming convention is different as the names depict a concatenated string between each attribute name and its category. In contrast to the 1 km² data, the attribute values are the number of persons within each 1-hectare grid cell sharing the attribute's characteristic. Again, please refer to the official German Census 2011 documentation since it details how to handle the data and interpret its values. The data here are just vanilla Census data. However, they were converted from a long data format to a wide one for rasterizing.
 
 Speaking of rasterizing: the 1-hectare data can again be imported by using a specialized function. For example, to import the number of immigrants attribute, we can use this command:
 

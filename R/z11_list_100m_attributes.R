@@ -2,13 +2,13 @@
 #'
 #' This function lists all attributes of the German Census 2011 with a raster
 #' resolution of 1 hectare. These data were the last that have been published.
-#' While they comprise more attributes than the 1 km^2 ones, the data were
+#' While they comprise more attributes than the 1 km² ones, the data were
 #' prepared in a less easy to be used format. Note that the returned vector
 #' of attribute names includes the attribute names as they were defined by the
 #' Census folks plus a pattern denoting the code of the attribute in the
 #' original dumped CSV file.
 #'
-#' @return Character vector#'
+#' @return Character vector
 #'
 #' @importFrom magrittr %>%
 #'

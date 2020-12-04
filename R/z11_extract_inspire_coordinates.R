@@ -5,6 +5,8 @@
 #' @param inspire_ids Character vector containing INSPIRE IDs
 #' @return tibble
 #'
+#' @noRd
+#'
 #' @importFrom magrittr %>%
 z11_extract_inspire_coordinates <- function (inspire_ids) {
 

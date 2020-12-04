@@ -10,6 +10,8 @@
 #'
 #' @param x R object containing the census data
 #'
+#' @noRd
+#'
 #' @importFrom magrittr %>%
 z11_wide_100m <- function (x) {
   x %>%

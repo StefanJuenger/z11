@@ -17,7 +17,7 @@ object}
 Raster or sf
 }
 \description{
-This function retrieves an attribute with a raster resolution of 1km^2. You
+This function retrieves an attribute with a raster resolution of 1km². You
 can either choose to have it converted directly into the raster format
 (default) or you can return it as a \code{sf} tibble object with point
 geometries.

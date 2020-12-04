@@ -32,4 +32,19 @@
 #   tibble::as_tibble() %>%
 #   sf::st_as_sf(coords = c("x_mp_1km", "y_mp_1km"), crs = 3035)
 #
+# # create and write index
+# names_1km <-
+#   names(z11_attributes_1km) %>%
+#   setdiff(c("Gitter_ID_1km", "geometry"))
+#
+# index_1km <-
+#   names_1km %>%
+#   readr::write_lines(file = "./inst/extdata/index_1km")
+#
+# # save files
+# lapply(names_1km, function (i) {
+#   z11_attributes_1km[i] %>%
+#     saveRDS(paste0("../z11data/1km/", i, ".rds"))
+# })
+
 # saveRDS(z11_attributes_1km, "./inst/extdata/z11_attributes_1km.rds")

@@ -12,28 +12,17 @@
 #     )
 #
 #
-# # large inhabitants table as attribute and for later matching
+# # large inhabitants table as attribute
 # Zensus_Bevoelkerung_100m_Gitter <-
 #   data.table::fread(
 #     paste0(census_100m_files_directory, census_100m_files[1])
 #   ) %>%
-#   dtplyr::lazy_dt()
-#
-# # store gitter id and geocoordinates correspondence table
-# Zensus_Bevoelkerung_100m_Gitter %>%
-#   dplyr::select(Gitter_ID_100m, x_mp_100m, y_mp_100m) %>%
-#   tibble::as_tibble() %>%
-#   saveRDS(., "./inst/extdata/100m/Gitter_ID_100m_x_y.rds")
-#
-# # Store Einwohner attribute
-# Zensus_Bevoelkerung_100m_Gitter %>%
+#   dtplyr::lazy_dt() %>%
 #   dplyr::select(Gitter_ID_100m, Einwohner) %>%
 #   dplyr::mutate(Einwohner = dplyr::na_if(Einwohner, -1)) %>%
 #   tibble::as_tibble() %>%
 #   tidyr::drop_na() %>%
-#   saveRDS(., "./inst/extdata/100m/Einwohner.rds")
-#
-# # sf::st_as_sf(coords = c("x_mp_100m", "y_mp_100m"), crs = 3035)
+#   saveRDS(paste0("../z11data/100m/Einwohner.rds"))
 #
 # # store all other attributes as small as possible
 # purrr::map(2:length(census_100m_files), function (i) {
@@ -56,9 +45,17 @@
 #       dplyr::select(Gitter_ID_100m, !!j) %>%
 #       tibble::as_tibble() %>%
 #       tidyr::drop_na() %>%
-#       saveRDS(., paste0("./inst/extdata/100m/", j, ".rds"))
+#       saveRDS(., paste0("../z11data/100m/", j, ".rds"))
+#       # saveRDS(., paste0("./inst/extdata/100m/", j, ".rds"))
 #   })
 # })
+#
+# # create and save index
+# index_100m <-
+#   list.files("../z11data/100m/") %>%
+#   sub(".rds", "", .) %>%
+#   setdiff(c("Gitter_ID_100m_x_y", "INSGESAMT_0")) %>%
+#   readr::write_lines(file = "./inst/extdata/index_100m")
 
 #### OLD
 

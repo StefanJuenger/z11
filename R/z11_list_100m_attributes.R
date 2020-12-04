@@ -14,11 +14,13 @@
 #'
 #' @export
 z11_list_100m_attributes <- function() {
-  system.file("extdata", package = "z11") %>%
-    paste0("/100m/") %>%
-    list.files() %>%
-    sub(".rds", "", .) %>%
-    setdiff(c("Gitter_ID_100m_x_y", "INSGESAMT_0"))
+  system.file("extdata", "index_100m", package = "z11") %>%
+    readr::read_lines()
+  # system.file("extdata", package = "z11") %>%
+  #   paste0("/100m/") %>%
+  #   list.files() %>%
+  #   sub(".rds", "", .) %>%
+  #   setdiff(c("Gitter_ID_100m_x_y", "INSGESAMT_0"))
 }
 
 

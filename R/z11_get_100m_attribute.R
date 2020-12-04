@@ -21,7 +21,7 @@
 z11_get_100m_attribute <-
   function(attribute, as_raster = TRUE, data_location = NULL) {
 
-  attribute <- rlang::quo(STAATZHL_4) %>% rlang::as_label()
+  attribute <- rlang::quo(attribute) %>% rlang::as_label()
 
   # load data in session
   if (is.null(data_location)) {

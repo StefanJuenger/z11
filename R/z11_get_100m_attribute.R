@@ -9,20 +9,34 @@
 #' \code{z11::z11_list_100m_attributes}
 #' @param as_raster logical; shall the attribute be returned as raster or sf
 #' object
+#' @param data_location character string; location of the downloaded census data
+#' from https://github.com/StefanJuenger/z11data; default is NULL - data are
+#' downloaded from the internet
 #'
 #' @return Raster or sf
 #'
 #' @importFrom magrittr %>%
 #'
 #' @export
-z11_get_100m_attribute <- function(attribute, as_raster = TRUE) {
+z11_get_100m_attribute <-
+  function(attribute, as_raster = TRUE, data_location = NULL) {
 
-  attribute <- rlang::enquo(attribute)
+  attribute <- rlang::quo(STAATZHL_4) %>% rlang::as_label()
 
+  # load data in session
+  if (is.null(data_location)) {
   requested_attribute <-
-    paste0("./100m/", attribute, ".rds") %>%
-    system.file("extdata", ., package = "z11") %>%
+    paste0(
+      "https://github.com/StefanJuenger/z11data/raw/main/100m/",
+      attribute,
+      ".rds"
+    ) %>%
+    url("rb") %>%
     readRDS()
+  } else {
+    paste0(data_location, "/100m/", attribute, ".rds") %>%
+      readRDS()
+  }
 
   # extract coordinates from inspire id
   requested_attribute <-
@@ -31,23 +45,6 @@ z11_get_100m_attribute <- function(attribute, as_raster = TRUE) {
       z11_extract_inspire_coordinates(.$Gitter_ID_100m)
     ) %>%
     sf::st_as_sf(coords = c("X", "Y"), crs = 3035)
-
-  # correspondence_table <-
-  #   system.file("extdata", "./100m/Gitter_ID_100m_x_y.rds", package = "z11") %>%
-  #   readRDS()
-  #
-  # # link
-  # requested_attribute <-
-  #   dplyr::left_join(
-  #     correspondence_table,
-  #     requested_attribute,
-  #     by = "Gitter_ID_100m"
-  #   ) %>%
-  #   sf::st_as_sf(coords = c("x_mp_100m", "y_mp_100m"), crs = 3035)
-  #
-  # rm(correspondence_table)
-  #
-  # gc()
 
   if (isTRUE(as_raster)) {
     requested_attribute <-
@@ -60,6 +57,5 @@ z11_get_100m_attribute <- function(attribute, as_raster = TRUE) {
     requested_attribute
   }
 }
-
 
 

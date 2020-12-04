@@ -9,20 +9,34 @@
 #' \code{z11::z11_list_1km_attributes}
 #' @param as_raster logical; shall the attribute be returned as raster or sf
 #' object
+#' @param data_location character string; location of the downloaded census data
+#' from https://github.com/StefanJuenger/z11data; default is NULL - data are
+#' downloaded from the internet
 #'
 #' @return Raster or sf
 #'
 #' @importFrom magrittr %>%
 #'
 #' @export
-z11_get_1km_attribute <- function(attribute, as_raster = TRUE) {
+z11_get_1km_attribute <-
+  function(attribute, as_raster = TRUE, data_location = NULL) {
 
-    attribute <- rlang::enquo(attribute)
+    attribute <- rlang::enquo(attribute)  %>% rlang::as_label()
 
-    requested_attribute <-
-      system.file("extdata", "z11_attributes_1km.rds", package = "z11") %>%
-      readRDS() %>%
-      dplyr::select(!!attribute)
+    # load data in session
+    if (is.null(data_location)) {
+      requested_attribute <-
+        paste0(
+          "https://github.com/StefanJuenger/z11data/raw/main/1km/",
+          attribute,
+          ".rds"
+        ) %>%
+        url("rb") %>%
+        readRDS()
+    } else {
+      paste0(data_location, "/1km/", attribute, ".rds") %>%
+        readRDS()
+    }
 
     if (isTRUE(as_raster)) {
       requested_attribute %>%

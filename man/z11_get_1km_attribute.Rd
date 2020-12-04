@@ -4,7 +4,7 @@
 \alias{z11_get_1km_attribute}
 \title{Retrieve 1km^2 attribute of the German Census 2011}
 \usage{
-z11_get_1km_attribute(attribute, as_raster = TRUE)
+z11_get_1km_attribute(attribute, as_raster = TRUE, data_location = NULL)
 }
 \arguments{
 \item{attribute}{attribute name as definded in
@@ -12,6 +12,10 @@ z11_get_1km_attribute(attribute, as_raster = TRUE)
 
 \item{as_raster}{logical; shall the attribute be returned as raster or sf
 object}
+
+\item{data_location}{character string; location of the downloaded census data
+from https://github.com/StefanJuenger/z11data; default is NULL - data are
+downloaded from the internet}
 }
 \value{
 Raster or sf

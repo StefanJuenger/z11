@@ -124,7 +124,7 @@ can either choose to have it converted directly into the raster format
 geometries.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>z11_get_1km_attribute</span><span class='op'>(</span><span class='va'>attribute</span>, as_raster <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>z11_get_1km_attribute</span><span class='op'>(</span><span class='va'>attribute</span>, as_raster <span class='op'>=</span> <span class='cn'>TRUE</span>, data_location <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,6 +138,12 @@ geometries.</p>
       <th>as_raster</th>
       <td><p>logical; shall the attribute be returned as raster or sf
 object</p></td>
+    </tr>
+    <tr>
+      <th>data_location</th>
+      <td><p>character string; location of the downloaded census data
+from https://github.com/StefanJuenger/z11data; default is NULL - data are
+downloaded from the internet</p></td>
     </tr>
     </table>
 

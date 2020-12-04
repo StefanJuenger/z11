@@ -17,4 +17,4 @@ After installing, the package can be loaded using `R`'s standard method:
 library(z11)
 ~~~
 
-For more details, please refer to the package vignette(s).
+For more details, please refer to [this package vignette](https://stefanjuenger.github.io/z11/articles/using-z11.html).

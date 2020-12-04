@@ -7,8 +7,8 @@ Authors@R: person("Stefan", "Jünger", email = "stefan.juenger@gesis.org",
 Maintainer: Stefan Jünger <stefan.juenger@gesis.org>
 Description: The package provides an interface to the rich geospatial raster
     data of the German Census 2011, implemented in R. Several functions can be
-    used to list all available attributes from the Census (1 1km^2 attributes
-    and 1 hectare attribute), and to import them either as \code{sf} spatial 
+    used to list all available attributes from the Census (1 1km² attributes
+    and 1 hectare attribute), and to import them either as `sf` spatial 
     points object or as raster with the resolution of the corresponding 
     attribute.
 License: CC-BY and dl-de/by-2-0

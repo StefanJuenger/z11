@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Stefan Jünger" />
+
+<meta name="date" content="2020-12-04" />
+
+<title>Quick Start in Using the z11 package</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
+<style type="text/css">
+a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
+a.anchor-section::before {content: '#';}
+.hasAnchor:hover a.anchor-section {visibility: visible;}
+</style>
+<script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
+document.addEventListener('DOMContentLoaded', function() {
+  // Do nothing if AnchorJS is used
+  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
+    return;
+  }
+
+  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  // Do nothing if sections are already anchored
+  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
+    return null;
+  }
+
+  // Use section id when pandoc runs with --section-divs
+  const section_id = function(x) {
+    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
+            ? x.id : '');
+  };
+
+  // Add anchors
+  h.forEach(function(x) {
+    const id = x.id || section_id(x.parentElement);
+    if (id === '') {
+      return null;
+    }
+    let anchor = document.createElement('a');
+    anchor.href = '#' + id;
+    anchor.classList = ['anchor-section'];
+    x.classList.add('hasAnchor');
+    x.appendChild(anchor);
+  });
+});
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Quick Start in Using the z11 package</h1>
+<h4 class="author">Stefan Jünger</h4>
+<h4 class="date">2020-12-04</h4>
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>The <code>z11</code> package provides an <code>R</code>-interface to the geospatial raster data of the German Census 2011. <code>z11</code> can be used to list all available attributes from the Census (1 km<span class="math inline">\(^2\)</span> attributes and 1-hectare attribute) and import them either as <a href="https://r-spatial.github.io/sf/">simple features</a> spatial points object or as <a href="https://cran.r-project.org/web/packages/raster/index.html">raster</a> object with the resolution of the corresponding attribute. I felt that such a package may be of interest for other userRs since the Census data ‘only’ exists as <a href="https://www.zensus2011.de/DE/Home/Aktuelles/DemografischeGrunddaten.html">CSV data dump on the internet</a>. However, to use them in a Geographic Information System (GIS), the data must be prepared, which is time-consuming and computationally demanding. As such, the package aims to fill the gap of making the data easily accessible by providing a straightforward method.</p>
+<p>Generally, the German Census 2011 data are available under a <a href="https://www.govdata.de/dl-de/by-2-0">Data licence Germany – attribution – version 2.0</a> and can be manipulated and openly shared. <strong>Yet, as part of this package, use them at your own risk and do not take the results of the functions for granted.</strong></p>
+</div>
+<div id="installing-and-loading-the-package" class="section level1">
+<h1>Installing and Loading the Package</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;StefanJuenger/z11&quot;</span>)</span></code></pre></div>
+<p>Be aware that the package is quite large (~640 Megabytes). It includes all census data in its <code>./inst/extdata/</code> folder for offline-access. I was thinking of pointing the package’s functions to an online archive, but this would mean that users always have an existing online connection. See the “Future” section for more thoughts on that.</p>
+<p>After installing, the package can be loaded using <code>R</code>’s standard method:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">library</span>(z11)</span></code></pre></div>
+</div>
+<div id="working-with-1-km2-german-census-2011-data" class="section level1">
+<h1>Working with 1 km<span class="math inline">\(^2\)</span> German Census 2011 Data</h1>
+<p>1 km<span class="math inline">\(^2\)</span> data were the first data published in 2015. While they comprise fewer attributes than the 1 hectare ones (see below), the data are in a way more easy to use format (see also the z11 package’s vignette about the initial data preparation [still in the works]). You can browse all available attributes by using the following function.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>z11<span class="op">::</span><span class="kw">z11_list_1km_attributes</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="co">#&gt;  [1] &quot;Einwohner_cat&quot;       &quot;Frauen_A_cat&quot;        &quot;Alter_D_cat&quot;         &quot;unter18_A_cat&quot;       &quot;ab65_A_cat&quot;          &quot;Auslaender_A_cat&quot;    &quot;HHGroesse_D_cat&quot;     &quot;Leerstandsquote_cat&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="co">#&gt;  [9] &quot;Wohnfl_Bew_D_cat&quot;    &quot;Wohnfl_Whg_D_cat&quot;    &quot;Einwohner&quot;           &quot;Frauen_A&quot;            &quot;Alter_D&quot;             &quot;unter18_A&quot;           &quot;ab65_A&quot;              &quot;Auslaender_A&quot;       </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="co">#&gt; [17] &quot;HHGroesse_D&quot;         &quot;Leerstandsquote&quot;     &quot;Wohnfl_Bew_D&quot;        &quot;Wohnfl_Whg_D&quot;</span></span></code></pre></div>
+<p>Thus, in sum we can use 20 different census attributes of the size of 1 km<span class="math inline">\(^2\)</span>. Please note that some of the attributes are also duplicated, denoted by the <code>_cat</code>-suffix in the attribute name. These attributes may be less precise, but they comprise fewer missing values than the continuous attributes. In any case, for more details about the actual attributes, refer to the official documentation of the German Census 2011 at <a href="https://www.zensus2011.de" class="uri">https://www.zensus2011.de</a>.</p>
+<p>Now, if we want to load one of the attributes as a raster layer, we can use the <code>z11::z11_get_1km_attribute()</code> function. For example, for importing information on immigrant rates on a 1 km<span class="math inline">\(^2\)</span> grid level, we could use the following command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>immigrants_1km &lt;-</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="st">  </span>z11<span class="op">::</span><span class="kw">z11_get_1km_attribute</span>(Auslaender_A)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co">#&gt; Warning in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;, prefer_proj = prefer_proj): Discarded datum Unknown based on GRS80 ellipsoid in CRS definition</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">#&gt; Warning in showSRID(SRS_string, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;, prefer_proj = prefer_proj): Discarded datum European Terrestrial Reference System 1989 in CRS definition</span></span></code></pre></div>
+<p>Voilà, we got this information as a standard raster layer (<code>class(&quot;Raster&quot;)</code>) as specified in the <code>raster</code> package:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>immigrants_1km</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="co">#&gt; class      : RasterLayer </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="co">#&gt; dimensions : 867, 641, 555747  (nrow, ncol, ncell)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">#&gt; resolution : 1000, 1000  (x, y)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="co">#&gt; extent     : 4031500, 4672500, 2684500, 3551500  (xmin, xmax, ymin, ymax)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="co">#&gt; crs        : +proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +units=m +no_defs </span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co">#&gt; source     : memory</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="co">#&gt; names      : layer </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="co">#&gt; values     : -9, 100  (min, max)</span></span></code></pre></div>
+<p>Therefore, we can also use the <code>raster</code> package’s standard plotting procedures:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>raster<span class="op">::</span><span class="kw">plot</span>(immigrants_1km)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>Suppose we do not want to work with raster data. Instead, we aim to use the raster grid cell’s centroid coordinates. In that case, we can also load the data as a simple features data frame with point geometries as specified in the <code>sf</code> package by simply using the option <code>as_raster</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>immigrants_1km_sf &lt;-</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="st">  </span>z11<span class="op">::</span><span class="kw">z11_get_1km_attribute</span>(Auslaender_A, <span class="dt">as_raster =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p>Here we go:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>immigrants_1km_sf</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="co">#&gt; Simple feature collection with 361478 features and 1 field</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="co">#&gt; geometry type:  POINT</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="co">#&gt; dimension:      XY</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="co">#&gt; bbox:           xmin: 4031500 ymin: 2684500 xmax: 4672500 ymax: 3551500</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a><span class="co">#&gt; projected CRS:  ETRS89-extended / LAEA Europe</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 361,478 x 2</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a><span class="co">#&gt;    Auslaender_A          geometry</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a><span class="co">#&gt;           &lt;dbl&gt;       &lt;POINT [m]&gt;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a><span class="co">#&gt;  1           -1 (4334500 2684500)</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a><span class="co">#&gt;  2           -1 (4335500 2684500)</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a><span class="co">#&gt;  3           -1 (4336500 2684500)</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a><span class="co">#&gt;  4           -1 (4337500 2684500)</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true"></a><span class="co">#&gt;  5           -1 (4338500 2684500)</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true"></a><span class="co">#&gt;  6           -1 (4339500 2684500)</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true"></a><span class="co">#&gt;  7           -1 (4334500 2685500)</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true"></a><span class="co">#&gt;  8           -1 (4335500 2685500)</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true"></a><span class="co">#&gt;  9           -1 (4336500 2685500)</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true"></a><span class="co">#&gt; 10           -1 (4337500 2685500)</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true"></a><span class="co">#&gt; # … with 361,468 more rows</span></span></code></pre></div>
+</div>
+<div id="working-with-1-hectare-german-census-2011-data" class="section level1">
+<h1>Working with 1 hectare German Census 2011 Data</h1>
+<p>In 2018, destatis also published Census data on a 1-hectare grid level. This 100m <span class="math inline">\(\times\)</span> 100m data provides a more fine-grained level of information for Germany’s population. Moreover, the data comprise way more attributes than the 1 km<span class="math inline">\(^2\)</span> one, including details on buildings and even heater types. Again, we can list all available attributes using a specialized function:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>z11<span class="op">::</span><span class="kw">z11_list_100m_attributes</span>()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="co">#&gt;   [1] &quot;ALTER_10JG_1&quot;            &quot;ALTER_10JG_2&quot;            &quot;ALTER_10JG_3&quot;            &quot;ALTER_10JG_4&quot;            &quot;ALTER_10JG_5&quot;            &quot;ALTER_10JG_6&quot;           </span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="co">#&gt;   [7] &quot;ALTER_10JG_7&quot;            &quot;ALTER_10JG_8&quot;            &quot;ALTER_10JG_9&quot;            &quot;ALTER_KURZ_1&quot;            &quot;ALTER_KURZ_2&quot;            &quot;ALTER_KURZ_3&quot;           </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="co">#&gt;  [13] &quot;ALTER_KURZ_4&quot;            &quot;ALTER_KURZ_5&quot;            &quot;BAUJAHR_MZ_1&quot;            &quot;BAUJAHR_MZ_10&quot;           &quot;BAUJAHR_MZ_2&quot;            &quot;BAUJAHR_MZ_3&quot;           </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="co">#&gt;  [19] &quot;BAUJAHR_MZ_4&quot;            &quot;BAUJAHR_MZ_5&quot;            &quot;BAUJAHR_MZ_6&quot;            &quot;BAUJAHR_MZ_7&quot;            &quot;BAUJAHR_MZ_8&quot;            &quot;BAUJAHR_MZ_9&quot;           </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="co">#&gt;  [25] &quot;EIGENTUM_1&quot;              &quot;EIGENTUM_2&quot;              &quot;EIGENTUM_3&quot;              &quot;EIGENTUM_4&quot;              &quot;EIGENTUM_5&quot;              &quot;EIGENTUM_6&quot;             </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a><span class="co">#&gt;  [31] &quot;EIGENTUM_7&quot;              &quot;EIGENTUM_8&quot;              &quot;Einwohner&quot;               &quot;FAMGROESS_KLASS_1&quot;       &quot;FAMGROESS_KLASS_2&quot;       &quot;FAMGROESS_KLASS_3&quot;      </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a><span class="co">#&gt;  [37] &quot;FAMGROESS_KLASS_4&quot;       &quot;FAMGROESS_KLASS_5&quot;       &quot;FAMSTND_AUSF_1&quot;          &quot;FAMSTND_AUSF_2&quot;          &quot;FAMSTND_AUSF_3&quot;          &quot;FAMSTND_AUSF_4&quot;         </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true"></a><span class="co">#&gt;  [43] &quot;FAMSTND_AUSF_5&quot;          &quot;FAMSTND_AUSF_6&quot;          &quot;FAMSTND_AUSF_7&quot;          &quot;FAMSTND_AUSF_8&quot;          &quot;FAMTYP_KIND_1&quot;           &quot;FAMTYP_KIND_10&quot;         </span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true"></a><span class="co">#&gt;  [49] &quot;FAMTYP_KIND_11&quot;          &quot;FAMTYP_KIND_12&quot;          &quot;FAMTYP_KIND_13&quot;          &quot;FAMTYP_KIND_2&quot;           &quot;FAMTYP_KIND_3&quot;           &quot;FAMTYP_KIND_4&quot;          </span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true"></a><span class="co">#&gt;  [55] &quot;FAMTYP_KIND_5&quot;           &quot;FAMTYP_KIND_6&quot;           &quot;FAMTYP_KIND_7&quot;           &quot;FAMTYP_KIND_8&quot;           &quot;FAMTYP_KIND_9&quot;           &quot;GEBAEUDEART_SYS_111&quot;    </span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true"></a><span class="co">#&gt;  [61] &quot;GEBAEUDEART_SYS_112&quot;     &quot;GEBAEUDEART_SYS_12&quot;      &quot;GEBTYPBAUWEISE_1&quot;        &quot;GEBTYPBAUWEISE_2&quot;        &quot;GEBTYPBAUWEISE_3&quot;        &quot;GEBTYPBAUWEISE_4&quot;       </span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true"></a><span class="co">#&gt;  [67] &quot;GEBTYPGROESSE_1&quot;         &quot;GEBTYPGROESSE_10&quot;        &quot;GEBTYPGROESSE_2&quot;         &quot;GEBTYPGROESSE_3&quot;         &quot;GEBTYPGROESSE_4&quot;         &quot;GEBTYPGROESSE_5&quot;        </span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true"></a><span class="co">#&gt;  [73] &quot;GEBTYPGROESSE_6&quot;         &quot;GEBTYPGROESSE_7&quot;         &quot;GEBTYPGROESSE_8&quot;         &quot;GEBTYPGROESSE_9&quot;         &quot;GEBURTLAND_GRP_1&quot;        &quot;GEBURTLAND_GRP_21&quot;      </span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true"></a><span class="co">#&gt;  [79] &quot;GEBURTLAND_GRP_22&quot;       &quot;GEBURTLAND_GRP_23&quot;       &quot;GEBURTLAND_GRP_24&quot;       &quot;GESCHLECHT_1&quot;            &quot;GESCHLECHT_2&quot;            &quot;HEIZTYP_1&quot;              </span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true"></a><span class="co">#&gt;  [85] &quot;HEIZTYP_2&quot;               &quot;HEIZTYP_3&quot;               &quot;HEIZTYP_4&quot;               &quot;HEIZTYP_5&quot;               &quot;HEIZTYP_6&quot;               &quot;HHGROESS_KLASS_1&quot;       </span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true"></a><span class="co">#&gt;  [91] &quot;HHGROESS_KLASS_2&quot;        &quot;HHGROESS_KLASS_3&quot;        &quot;HHGROESS_KLASS_4&quot;        &quot;HHGROESS_KLASS_5&quot;        &quot;HHGROESS_KLASS_6&quot;        &quot;HHTYP_FAM_1&quot;            </span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true"></a><span class="co">#&gt;  [97] &quot;HHTYP_FAM_2&quot;             &quot;HHTYP_FAM_3&quot;             &quot;HHTYP_FAM_4&quot;             &quot;HHTYP_FAM_5&quot;             &quot;HHTYP_LEB_1&quot;             &quot;HHTYP_LEB_2&quot;            </span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true"></a><span class="co">#&gt; [103] &quot;HHTYP_LEB_3&quot;             &quot;HHTYP_LEB_4&quot;             &quot;HHTYP_LEB_5&quot;             &quot;HHTYP_LEB_6&quot;             &quot;HHTYP_LEB_7&quot;             &quot;HHTYP_SENIOR_HH_1&quot;      </span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true"></a><span class="co">#&gt; [109] &quot;HHTYP_SENIOR_HH_2&quot;       &quot;HHTYP_SENIOR_HH_3&quot;       &quot;NUTZUNG_DETAIL_HHGEN_11&quot; &quot;NUTZUNG_DETAIL_HHGEN_12&quot; &quot;NUTZUNG_DETAIL_HHGEN_21&quot; &quot;NUTZUNG_DETAIL_HHGEN_22&quot;</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true"></a><span class="co">#&gt; [115] &quot;NUTZUNG_DETAIL_HHGEN_3&quot;  &quot;NUTZUNG_DETAIL_HHGEN_4&quot;  &quot;RAUMANZAHL_1&quot;            &quot;RAUMANZAHL_2&quot;            &quot;RAUMANZAHL_3&quot;            &quot;RAUMANZAHL_4&quot;           </span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true"></a><span class="co">#&gt; [121] &quot;RAUMANZAHL_5&quot;            &quot;RAUMANZAHL_6&quot;            &quot;RAUMANZAHL_7&quot;            &quot;RELIGION_KURZ_1&quot;         &quot;RELIGION_KURZ_2&quot;         &quot;RELIGION_KURZ_3&quot;        </span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true"></a><span class="co">#&gt; [127] &quot;STAATSANGE_GRP_1&quot;        &quot;STAATSANGE_GRP_21&quot;       &quot;STAATSANGE_GRP_22&quot;       &quot;STAATSANGE_GRP_23&quot;       &quot;STAATSANGE_GRP_24&quot;       &quot;STAATSANGE_HLND_1&quot;      </span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true"></a><span class="co">#&gt; [133] &quot;STAATSANGE_HLND_10&quot;      &quot;STAATSANGE_HLND_11&quot;      &quot;STAATSANGE_HLND_12&quot;      &quot;STAATSANGE_HLND_13&quot;      &quot;STAATSANGE_HLND_14&quot;      &quot;STAATSANGE_HLND_2&quot;      </span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true"></a><span class="co">#&gt; [139] &quot;STAATSANGE_HLND_3&quot;       &quot;STAATSANGE_HLND_4&quot;       &quot;STAATSANGE_HLND_5&quot;       &quot;STAATSANGE_HLND_6&quot;       &quot;STAATSANGE_HLND_7&quot;       &quot;STAATSANGE_HLND_8&quot;      </span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true"></a><span class="co">#&gt; [145] &quot;STAATSANGE_HLND_9&quot;       &quot;STAATSANGE_KURZ_1&quot;       &quot;STAATSANGE_KURZ_2&quot;       &quot;STAATZHL_1&quot;              &quot;STAATZHL_2&quot;              &quot;STAATZHL_3&quot;             </span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true"></a><span class="co">#&gt; [151] &quot;STAATZHL_4&quot;              &quot;WOHNEIGENTUM_1&quot;          &quot;WOHNEIGENTUM_2&quot;          &quot;WOHNEIGENTUM_3&quot;          &quot;WOHNEIGENTUM_4&quot;          &quot;WOHNEIGENTUM_99&quot;        </span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true"></a><span class="co">#&gt; [157] &quot;WOHNFLAECHE_10S_1&quot;       &quot;WOHNFLAECHE_10S_10&quot;      &quot;WOHNFLAECHE_10S_11&quot;      &quot;WOHNFLAECHE_10S_12&quot;      &quot;WOHNFLAECHE_10S_13&quot;      &quot;WOHNFLAECHE_10S_14&quot;     </span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true"></a><span class="co">#&gt; [163] &quot;WOHNFLAECHE_10S_15&quot;      &quot;WOHNFLAECHE_10S_16&quot;      &quot;WOHNFLAECHE_10S_17&quot;      &quot;WOHNFLAECHE_10S_2&quot;       &quot;WOHNFLAECHE_10S_3&quot;       &quot;WOHNFLAECHE_10S_4&quot;      </span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true"></a><span class="co">#&gt; [169] &quot;WOHNFLAECHE_10S_5&quot;       &quot;WOHNFLAECHE_10S_6&quot;       &quot;WOHNFLAECHE_10S_7&quot;       &quot;WOHNFLAECHE_10S_8&quot;       &quot;WOHNFLAECHE_10S_9&quot;       &quot;ZAHLWOHNGN_HHG_1&quot;       </span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true"></a><span class="co">#&gt; [175] &quot;ZAHLWOHNGN_HHG_2&quot;        &quot;ZAHLWOHNGN_HHG_3&quot;        &quot;ZAHLWOHNGN_HHG_4&quot;        &quot;ZAHLWOHNGN_HHG_5&quot;</span></span></code></pre></div>
+<p>As we can see, the number of attributes is quite high, in sum 178. The naming convention is different as the names depict a concatenated string between each attribute name and its category. In contrast to the 1 km<span class="math inline">\(^2\)</span> data, the attribute values are the number of persons within each 1-hectare grid cell sharing the attribute’s characteristic. Again, please refer to the official German Census 2011 documentation since it details how to handle the data and interpret its values. The data here are just vanilla Census data. However, they were converted from a long data format to a wide one for rasterizing.</p>
+<p>Speaking of rasterizing: the 1-hectare data can again be imported by using a specialized function. For example, to import the number of immigrants attribute, we can use this command:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>immigrants_100m &lt;-</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="st">  </span>z11<span class="op">::</span><span class="kw">z11_get_100m_attribute</span>(STAATSANGE_KURZ_<span class="dv">2</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="co">#&gt; Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="co">#&gt; Please use `as_label()` or `as_name()` instead.</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="co">#&gt; This warning is displayed once per session.</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="co">#&gt; Warning in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;, prefer_proj = prefer_proj): Discarded datum Unknown based on GRS80 ellipsoid in CRS definition</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="co">#&gt; Warning in showSRID(SRS_string, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;, prefer_proj = prefer_proj): Discarded datum European Terrestrial Reference System 1989 in CRS definition</span></span></code></pre></div>
+<p>The operation may take a bit longer, as the 1-hectare data are bigger and therefore computationally also a bit more expensive. Fortunately, through their flat data structure, raster data files are usually a bit more comfortable to process. Plotting 1-hectare data is, therefore, also straightforward:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>raster<span class="op">::</span><span class="kw">plot</span>(immigrants_100m)</span></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAc1UlEQVR4nO3deXxMV/8H8HNnTSaZJZFNhZAQaoklsZZH7BGhD0VRSxFUVfurR2vrolpBlT4e2qCi2tINVUvbp2qptS1Vay0JWfAgSUkmk00yM/f3xxDTZJYkc0/mzMzn/Zo/yLlmzmU+7rnne8+9HM/zBADoEDm7AwDuDAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoAgBA6AIAQOgCAEDoEji7A5UZiwr0umKSo1ShUqllIud3R0AhzByBOMLU3cvnz64U0SAr0KpCQgOCfJXK3z8wzsOnr58d2oh7+z+AdQOx/NO//by+T/P6ZWw8mpw9yFDekU3DwvWKKScviQ/50ba6cPf7Tp4K2L2rv1JPdWcszsKUFMMBMyQtrx71KqG6w5/Nj5cXrX1zvczYkecnXz66CuRGDCCq2FgiKi/dO6yb/+JoyykixAiDumfOCws7fwVfV33C8BxDARMHBrWoOjUkTNFlpvL04/+cisotD4OX+CCGBgiEmPmxic7TTsSNHhK4vAH52AyzlCizbmeevrIrk3rt2V1+vDXXZPDGfjPAKBmWAgYIaTw0tdJC5Zs/OFsdqlZdzjOO7h9fOJrSfOHRno7r3MAtcZIwEyMxbkZqWnXc7RFZbzMRxPcqFlkeKA3Jg/BdTEVMEJQaAb3wsh5DQrN4J5YOIKh0Axui4GA1VWhOSYm5tKlSw69hbuTSCTHjh1r3bq1szviPhi42NdUaH7DZqE57vwVPXEwYFeuXBk9enRsbKxD7+LWJk2adPnyZQRMQAwETBwa1qBo95EzRQM7+VhoNhWauwpSaO7SpcvYsWMFeCM3NWXKFGd3wd0wEDBJu8RZfdZP69/5stVCc/cPUzow0FOAmmLhaytqPOmLQ75JC5ZsnDf2vaqF5mlfbpk/FJdxgEtiIWCEEN/HRyZ9M/IdFJrBzTASMBORIjAiSh2CQjO4DUZGXig0g3ti4QhmXmieOapyoTlp2OdfodAMLoqBgBmufjRvdW78xrMWC83L7nw/I3bE3PUTsaIZXBADQ0SsaAb3xUDAsKIZ3BcDQ0QUmsF9sfC1RaEZ3BYLASMoNIO7YiRgJig0g7thZOSFQrPwdDqds7sATBzBPL3QXJBxTdUkQvC3VSqVgr8n1BQDAfP4QjONdAEjGAiYcCuaL1y4sHr1amutJSUlt2/fdqirADXEQMCEW9EcHBzcsWNHo9FosXXDhg2FhYWO9dUhOp0OwzZPw0DAhCs0BwYGJiYmWmt9/vnnxWJnjjKRLg/EQMA8ptCsu3NbGVKfEJKzt6931x3ImydgIWDE7QvNpsGhKV2EEKTLczASMBO3LTRXihPS5TkYGXm5baEZ1V4Px0LA+Pyf5/ToMHTRXl2zITPfWbNx8xdfffXllo8/XDprWMv7PycN6xg7/5DWRTOGg1Vd4XP2r1q6K9N8Brlkxxi1iDMjDp7yY9mDzXXnPnl5SOeIAP/Qtn0mrjicY3nq2WEMDBE9vtAMAii/sumNBSndOv9rSOOHBw3j7Yyssvrx818b0ujBjzjvFi0lhBDCZ2+dMiBxb+PERWtme5//eNG8hOHcbwdmPS58HBgIWF3dOhucaPHixStWrLDY5O3tfe3aNS8vr9q9s/5/v36z58ChbR9t/KU0tJt5iyEr/TrXavzM56aFVJooM1xOWb6juH/y9g8mPSYio+Ia57cbuHLVwelr+wn+nEcGAlaHt84GZ7lz505BfJ6ot4WmoheL7t+/X+uAlZzfsW7z8TJeE+h9828NfEFmxl1Vk3D/KtPQxjsH95+XPPFhQn3TkU3Z/am44A379p3T9+ssdCAYCBhWNHsGsZxILZ2Q6jmHCjHKuGX74wjR/z4/qvtW8wbD9fQso5d+86iYxJ+vFKqbdugz/o2kF3sEiYkhPTXdGDw00u/hB0ubtYggH6ddKyadVY70xQIWvraeUmj2cBKOyC39K94v02/atMnb2/LoLDo6Ojo6ujafV56VfqPsZk7m0HdWbalf9OeuVUteiTtTcOjomzGiAm0Bp/HTVPRGpPbXiIwF2kKeqAQuu7IQMOKKhWZcWFhTEhGxWNfUlxlOnDjh6+tr8U/5+fnVMmBc1NSUrVM7xPcM9yaEDEyIb66PGvaf93+YtSXe1G6+MU8IbzAa+Uo/dhwjATMRKQIj2gU+XLthvPX794fPde7fNpDFiDGSLhfKuYQjMovjEI4sXbq0YcOGAn+eV3jP4eFmn+LXb3hf9ZY/zqbrE9QaFdHmaY2EmBJv1OZrjSKVWin8OInhkVf58Xeffjb5TLmz+8E0V0kXeThErPqipDw39fTp9HyzMw6RRCLmZHIZJwmPjOCy064VPGzUZ6RlkNDIpgrhu8HCEcx4Y8frr39z3VD5x9dPlGllyyaO+1REZJ1nrn2hk9Qp3XMyXV6e0s/P2b0QgLVzMEqMZ1YOGrR36PfnPuhrGnwWHN65P79+QrdwMSfp1TdKv3z3T3fHjQrgCCk9tWfv7YDe/dpS+IKxEDBOLtWe+nbLn8XqJu1bBFXsJH+vkDdIbl27WsQReZgLXy7lmGqmK2I3d20w039HUhHxqsNai7zntBntt7w1cZhq4cxej5Wm/nfN4pSiAckv95ATQppPmjN8zehZ49+Wzu3tdXbd7NW3uyT9X2/Bi2CEkYAFJaz59US3Vye8tE3cKWnTkqebKwgh5P62kf4z/VcdXttP5tz+ucQx5ExsgbO7YIfY2jkYJbL28/b8qH79zeTXxqwqVjVp03XCp2vfeLqJiBBCuKBhyd+tffWlJVPjksoD2gxa+O2qlyhcxkHYCBghhPg8PuaDI93iFk6c1rXzd0kfr5oaw8432pQux6cTKAVV+/tRdUx39k/GrB3BhJnCksQkXSxN+vvPRIHdXlj70wtrLW3PKdtOSv55UrIgH24DS5Mc8saDl/z0xzdj8pb16TAk6cAttqY3HP8GUzoMqmO603hbwUk54i2y8HJvrO2fJCR23s5T+2arNg/r9OK+Mmd3xwG6u3cf/RqLVup8FpERrAwRzYn8O87YciL261Uf/1bWOcwFrkHU3b1LZLLKqyrr1Xv0a+bHb3VAKiLeLvCPKTAWA0YIIZxvqxGz34wr91Ix/W+iu3tXWa+eeZbAmjqepmcEI3tcnLZ7xb8mDR88ZMystcdzDfm/LH+ymUah1qiUIdFjVh67y+r8M6JVfTgHcxZj1qbR3f8579NfcspK03e8OnDohMQJb51rmvjuug2rFwz2OjBvyNiPMigtOBWQLi/P2V1gmmmIWPUlEAsrmm0tW/akFc0XNv37R59JO35bNyhQRHT7X2g/YJ1s9tFvl3aWE0ImT+zjF9MnefPFya+3tvePcfr06SVLllhrNRqNRUVWHqMpBPZrZc4l5YgXvf/PLaxotrFs2bNWNKenZqh7L+0XKCKEEOUT/booN/Nd2j5c36yI6dNN+VFqup7YDViTJk1GjBhhrXX79u21XtXnFC50IW91yDiioBAwqyuabSxb9qwVzZxKrSxOv3GXJ/U5Qois3fjF7xiiHl0xpbtzp9inkU816pEajcZGwEaPHu3cO/vWlDulixAioXMEs7ai2cay5Y7ZdbeimYFzMFnHIQM1B94Yt2DzwdOZ+QZRWP/nXxgYbkpCee7Jj2Yu/kkR2zfaRa70RcnLGpmIKMQWXg5Sxi3bf+TIkZ8/Gvv3io5p2XKLSsuWb6RdK7bVJDgGjmBEOeDdr5PuPbtoQp8VsR9k7Jv+mGm/+dxPhjadvEunaD1l09InNSwuCrPAzQ47ArJ2DsbzZPr06QqF5bUigwYNmjBhQi0+jre+bNlGk3uuaOb8us7efnlGdtrle6qAih3kFG2fSUqZ1iO+b1QgS4evgqwMVVgTZ/fC9chExMdSwDiOJCQk1LNS8GjVqlXtPs5U2bG4bNlGkxuvaOa8gyPbB5v/xKfdiBntnNWdh7S/HxVFtDKfITRPl5vNQ1Al46wOCAcNGiT4imaR9WXLNpqE7QNh4hyMSRWnUqLmba3NvyNdNVLHhWYby5brckUzAlZZQVaGLi+vIjmG879UNFUqJTsrXS46j2IaIlZ9UcIF9+obpT+2+6cHlwGZLVu20SQ4BOxvdDqdKqyJ6ZBVcPMGIUTTrX/ejymm1kqHsmpeuiH4FR4uetiU1fGlUuLmk+YM9945a/zb2w8f/W71lEmrb3eZbVq2bKNJaAjY35h/d1WhDQkhOp3Ob8Dkih8WXLn4aOPqXbqBKzxM5BzxFVt4UWNatvxk8WdT4/qOXn653cJvtz5ctmyjSWDsTHIwqtLhQtW8pbN64uokhJNbnqMT4jJASyuabS1brqsVzQiYLTqdjpSV4ZJ5YeilpNTiWQ7FC0SdDgGzRalUFmRlEARMEOUyrtTitaDuHDCcg9lhqnqZJjwYZ36TAhYZJKRcbuHl1nAEqxbThIdJxc2hWKuDsT6UNUhJGY2JOqbhCFZjFbOCFtNlt0jlolUsx3FGCaeXV305u190IWACs3tMY+qgV6cMMlKusPByDAsPYrYBQ0T7WBsKuiqDlCu3OER05PpaJh7EbAMCZl/101WQcU3VJML+dp6JlxCj4ANCJh7EbAOGiNWiu3O7OpvZSJcuJ1u47rgkzijjDIqqL4fe1O6DmJ/627Ll3IP7zukd+sCaYi5gxrIi7d2c7Nw83f3KzzNyImVIfUffISjY/kbuzXQEq/pyhOlBzJmbR8WE+SvrNWnfL/H9IzkGQmyuaK5LjASML0zdvXz64E4RAb4KpSYgOCTIX63w8Q/vOHj68t2pjD66yGPnA2uJl3JG76ovnufbtGnjb8Xrr79u6z1ND2I+nRk2ddWWz/8zI0a745W4+Hd+L7W5opn+rj7CwjkYn//znF4JK68Gdx8yZOao5mHBGoWU05fk59xIO334u6Rhn381e9f+pJ5q1m4aYG2a3pEZEXeeUOElhLdwJYfS1/vs2bMqlcriH/Lx8bH1nmw8iNkGBgJmuPrRvNW58RvPfjY+vOp4Ydmd72fEjpi7fuLRVyJd4ZZQDsbDbdNFCEdkHLEwv8ARTqPRqNXq2rwpGw9itoGBIaL+0rnLvv0njrKQLkKIOKR/4rCwtPNX6vbcFCiQEqKw9Kr98YSRBzHbwMARTBwa1qBo95EzRQM7WRoNlKcf/eVWUNf61Th8nTx5cv78+dZajUZjYWGhAx21r+DSBdXjral+hAvjJIQTeJqekQcx28BAwCTtEmf1WT+tf+fLUxKH94puHhasUcg4Q4k253rq6SO7Nq3fltX9w5QO1ehpy5Yt58yZY631wIEDdgb0NVdw9YqqafOK3yJdNnBExnECHz4YeRCzDQwEjIgaT/rikG/SgiUb5419r9TscM9x3sHt46d9uWX+0PDqjGV9fHz69u1rrdV0IY0A/TV/T78AQkj+wa2aXlbvKAwPcFIisrRcxZF/EzYexGwDCwEjhPg+PjLpm5HvFOdmpKZdz9EWlfEyH01wo2aR4YHerE0emjNdwF4pXbWbCXTn+UMTkZQTC36pFBMPYraBkYCZiBSBEVHqEJ2uqNQoVahUSjmj84a2w1DRZHo8XzXf083TRQgRSYnYlR6+IQgGZhEJcblCs+0wVBSgTelifR1kXeFEUk7iXfXl7H7RxcIRzFULzdbYeFizRxNLidTiJIer/MPWBgMBc69CM1gllnJSC0NEd44XE0NEFJo9hFhGZAoLL7fGQMDEoWENik4dOWPl3kKmQnNodQrNNBRkZVT9YTVXr4A5TiLhZF5VX+59CGNgiChcoZkGi08qsrZ6xfGpdt2d244vjWGUREa8hJ+mZxwDAROu0Cw42/PsVePEa/OJgxf7umu6COGkUs7LzQeEVbEQMMJsodn2BGDVg5X53d2qKf/IHk2PhJr+KVeUmpl18Nffqv5cb2BoZa3gGAmYicsUmi2qUVm5goekq1OnTp9++unqZAsXVfTu3dva82PdACMB4wtT9yS/v37r3l8uZN0rMfCEEE4k14S1eWLAyKkvT0+I9GVznG5+sa+1dLn/NVDVMG7cuHHjxjm7F07AQsBcuNBsfim9OfO5CqTLkzEQMHcsNLvxXAXUCAN1MLcrNFe6GU7VJ1zibjmeg4GAsV1orgWlUqn947jp1zqdruoTLjFo9BwMDBHZLjRXR9VpDHWHbqZf1FmWMJXCJha+tuwWmquJhW82C32AqlgIGGG20OwScOxiGSMBM3HtQrOzIF0sY2Tk5WIrmq0xnx6sOnkIHoiFI5jrFZorniJbifnBxOIG4GkYCJgLFpodCc+971b6D5pV9efuvFDFgzEQMFOh+Q2bhea481f0xG7Ajh8//uKLL1prNRqNxcV1++waSyymi9i7+EOXk40HILkiBgIm3K2zo6Oj161bZ621R48erVq1cqCjzoR0uSgGAiZcoVkul0dHR1trFYvFgt/Zt0ZqtJ5Fl5dHystKzg8P6nPEzpYYWzKMgYC5fqG5mmq0Wsx0mlcs19ktcyFdLGMhYASFZmuCu59xdhfAIYwEzMQFCs1OuWzCWlUA2MfIyMtlCs000mX33trm6TLVsrHgxVWwcARzvUKzsGp2bqZUElwe5ToYCJgLFpoBqomBIaLbrWgGqMBAwFxnRbPF22gD2MDAENF1VjRbvI12NVWafsQiLg/BwNfWMwrNlR8ahnR5BhYCRlBoBnfFSMBMRIrAiHaBEabflGtvZmT/VaBpqJYK9gEpKSmHDh06d+6ct7f9J5fm5+drNBpP2KykpCQqKooQUl5ebndjqBFGAnY/8/t/L9t04NJfPlFjFrw9KeLSe+NGL/wus4SIvBv2ein5k3fiGzg8yTFs2LCTJ0+eOnXqypUrvr6+IpGdUadWq1WpVHavD9ZqtWq12u6nCxuJ6nwoz/MFBQXV2Uyn05mi1bp1665du9r9dKgB3vkMWZueDBJ7N+wY/8+BHR7zDuo3LqGRssWIRZ/s+uHblAWDw71V/3j/sl64z2vQoMHNmzftbhYQEJCbm2t3M19fX51OZ3czqVRaVlZmexuDwSASiey+VVFRkUKhsLvZvXv3/Pz87G52+/btkJAQu5tB7TBwBNOf37jyv6ppe06u6avhjNlfP9Nu9DeNFp/9fG4LCSEkLi6KdOyxYfO5F95uz0BnAWqEgck5Q0Zapk/3+B4ajhAiCuoXF+P1WNcnIh6mSR7Vo7P6ZsZ1d36IFLgtBgImCgwOKL70Z5YpQfcvX0gry716Lf/hdL0xOz2jyD+wHgM9BagpBkZd0o7PPNM8eVHCP29N6O53c2/K54bHQ4+8Oem9x5aPj1bnHE1+aeHhkDFvRgs3lwhQZxgIGJFFv7ZrO3lx/sZlb9zzaTv2gz0rOh57dsD0uMdf5QnhpMG9Fu5Y2N3+tDoAe1gIGCGyRvGLvo1f9OgHzbed/8eh/x7L4uu37Nw1OkyJ8SG4JjYCZmIovH0zXx78mL+XiHDKprEjmhJCCOFLtTkFRB2ktni1PQDL2Dg0lKVv/1evxmpNg8YNAwKaDpi7M8vsioL8r8Y2Cpuy+75gnyaRSCQS+/+zVHMzqVQqFtuvgsvlcrs1a47jvLy87L6VWCyWyWR2N5NIJFKp/TPXau4m1A4LASv7I+mpsR9ci5y26outn7w7pWXmmpG9p+/OpXafgFOnTgUH27/N4IULF6pzUUVaWlp1LrzKzMy0+z3mOO769et230oul1+9etXuZkql8uLFi3Y3CwgIOHMGt9ahxtmVbp4vOzYrQh614PeSB7833Pn22cbSBuN25Bp5nuf5e5sS5F4jtpY6r4cAtcXAEcyYm/2Xf9fYNg/HRqLgIcvfH819NWfx4UKndgzAYQwETFw/NCTvxNGLj06yuIAhS1cMK1r73Px9eezcUAqg5hgImKT96LGtLy99csjs5O0HztwqJYQQUf0Rq9eOK18/csCM9QfTdUgZuCpnj1F5nuf5sqxdc/s19hFx0o5LLlVcN19+Y/ersaHeHCEE52DgmjieZ+XwwN+/dyMzz6txRJB5was898Khgyeu+nafEo/btoHLYShgAO6HgXMwAPeFgAFQhIABUISAAVCEgAFQ5BIB02f+sOrdHVce3ZWD15375OUhnSMC/EPb9pm44nCOkbUmofaU8Hkn103v0yJIqQxs1mPyB7/drZj0de099RjOLsTZd//PFT1VItXYnQ9LzcY7Xz0dIvHr8tzqL77eMH9gI6myx4qL5Sw1CbWn/P3z7/VQy8IGzl239ZuUuX3qS4OGfnrD4Pp76jmYD1jJH2939hVx3KOvnf7i4hiZKj7lfwae53m+YN/z4dIG0/YWs9Mk1J4a720bHShvt+Ck6U2NuZ8/5SeLSbqod/E99SSMB6zw+Lx2AZ0Tx0fLKr52hpsf9JYrBqZkGx9sU7r/+VBZ5Ku/lrPSJNSe8rodz/jLu7ybWnHxWGlO6rkL1wuMLr2nnoXlczBee3DB5I/U8zfMbmu2zNeQnppuDG4R6fdwebC0WYsIciPtWjErTULtqT79zPnCgPbRYVzhrUunz6bllkgDm7Vp1VDJue6eehx2A8bf/eGVKZ+HvrVhZkup+VJ7vkBbwGn8NBU9F6n9NSJjgbaQZ6RJqD013rmVzfvc2/Nsm8caturQLjLYr2Gvud//z8DOX0JN99QDsRow/s43L03f+fiS9dOaVlpnb/pX5Sr9iDcYjTwjTdXdxwd/yvqe3i8t1adt+1o7ftvlXF1exsGlHdNXjJm4PsPIyl9CzfbUI7EZMOOtL2fOPNhxZfLExlWuoBepNSqizdNWTBQbtflao0ilVooYaRJqTzmZXC5SDkr6+NX+zer5ahr3fCl5fuz9Q1/sum50wT31UGz+HRnST5zKubV9bEMxx3GcOGLWsbKCzU96iVRjd96XhEdGcNlp1woe/v+pz0jLIKGRTRWEkSah9lTcoFEDiX+TJhUnP1y98AgNyb+Xb3TBPfVQbAZM0ub5zXv3PbT3s+daSX36Lvph3+553WRccK++Ufpju396UHItPbVn7+2A3v3aSgkjTULtqTgytmeD2wd+PFv6YOPSsweP3fVp1aaJxAX31FM5exqzGgzXVj4hMy80Z297poG0/sC3th06suc/Y1t4qf+x8mFJlI0mofbUkJGSEOgVFj8/ZecPOzfMGxgm9+206FSpG+ypx3DFgPG8seBMynM9m/p7y5UNY0YtPZhtYK1JsD3NO5k8tWezegqFf5P2A6auOf5XxWe49J56DKxoBqCIzXMwADeBgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQhIABUISAAVCEgAFQ9P9qzA9KJ6A36wAAAABJRU5ErkJggg==" /><!-- --></p>
+<p>If you wish to work with the data in a vector format, you can also use the <code>as_raster</code> option in the <code>z11::z11_get_100m_attribute()</code> function:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>immigrants_100m_sf &lt;-</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="st">  </span>z11<span class="op">::</span><span class="kw">z11_get_100m_attribute</span>(STAATSANGE_KURZ_<span class="dv">2</span>, <span class="dt">as_raster =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p>See:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>immigrants_1km_sf</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="co">#&gt; Simple feature collection with 361478 features and 1 field</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="co">#&gt; geometry type:  POINT</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="co">#&gt; dimension:      XY</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="co">#&gt; bbox:           xmin: 4031500 ymin: 2684500 xmax: 4672500 ymax: 3551500</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="co">#&gt; projected CRS:  ETRS89-extended / LAEA Europe</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 361,478 x 2</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="co">#&gt;    Auslaender_A          geometry</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a><span class="co">#&gt;           &lt;dbl&gt;       &lt;POINT [m]&gt;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a><span class="co">#&gt;  1           -1 (4334500 2684500)</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true"></a><span class="co">#&gt;  2           -1 (4335500 2684500)</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true"></a><span class="co">#&gt;  3           -1 (4336500 2684500)</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true"></a><span class="co">#&gt;  4           -1 (4337500 2684500)</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true"></a><span class="co">#&gt;  5           -1 (4338500 2684500)</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true"></a><span class="co">#&gt;  6           -1 (4339500 2684500)</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true"></a><span class="co">#&gt;  7           -1 (4334500 2685500)</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true"></a><span class="co">#&gt;  8           -1 (4335500 2685500)</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true"></a><span class="co">#&gt;  9           -1 (4336500 2685500)</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true"></a><span class="co">#&gt; 10           -1 (4337500 2685500)</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true"></a><span class="co">#&gt; # … with 361,468 more rows</span></span></code></pre></div>
+<p>That’s it. There’s not yet much more to tell at the moment.</p>
+</div>
+<div id="future" class="section level1">
+<h1>Future</h1>
+<p>The package itself should not provide many more functionalities, rather than listing and importing the German Census 2011 data. However, few things are still a bit rough around the edges and hopefully should be improved in the future:</p>
+<div id="storing-of-the-data" class="section level2">
+<h2>Storing of the data</h2>
+<p>Admittedly, the package is massive, which is unfortunate, especially when updating it to a newer version in the future. I am still thinking about a smart option before installing whether users want to use something like an online or offline version of the package. In my opinion, an offline version is mandatory as some users maybe want to use the package in an offline environment. For example, in social science survey research, we often work in a secure environment to access sensitive data, comprising small-scale geographic information. These specialized workplaces do not have internet access, so it is beneficial to wrangle with the census data offline.</p>
+</div>
+<div id="speed" class="section level2">
+<h2>Speed</h2>
+<p>In some cases (especially in the 1-hectare data), the functions of the package could be a bit quicker in computing. I did my best to reduce the input data amount, but a simple database format would still have some benefits.</p>
+</div>
+<div id="metadata" class="section level2">
+<h2>Metadata</h2>
+<p>What is missing in the package is the documentation of the census. It would indeed be nice to have a more comprehensive overview of all attributes and their descriptions. Also, the variable names are sometimes not helpful. At the moment, I am still undecided if I really want the change the latter since they resemble the names from the original input data. The goal of the package is not necessarily data harmonization of the German Census 2011.</p>
+</div>
+</div>
+<div id="sources" class="section level1">
+<h1>Sources</h1>
+<ul>
+<li>German Census 2011 Website: <a href="https://www.zensus.de" class="uri">https://www.zensus.de</a></li>
+<li>Access to the original input data and their documentation (only in German): <a href="https://www.zensus2011.de/DE/Home/Aktuelles/DemografischeGrunddaten.html" class="uri">https://www.zensus2011.de/DE/Home/Aktuelles/DemografischeGrunddaten.html</a></li>
+</ul>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

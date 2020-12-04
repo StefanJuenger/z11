@@ -29,7 +29,7 @@ Generally, the German Census 2011 data are available under a [Data licence Germa
 remotes::install_github("StefanJuenger/z11")
 ```
 
-Be aware that the package is quite large (~640 Megabytes). It includes all census data in its `./inst/extdata/` folder for offline-access. I was thinking of pointing the package's functions to an online archive, but this would mean that users always have an existing online connection. See the "Future" section for more thoughts on that. 
+The functions in the package rely on data prepared in [another repository](https://github.com/StefanJuenger/z11data). If you want to work locally, please download them first and follow the instructions of the manual.
 
 After installing, the package can be loaded using `R`'s standard method:
 
@@ -117,9 +117,6 @@ That's it. There's not yet much more to tell at the moment.
 
 # Future
 The package itself should not provide many more functionalities, rather than listing and importing the German Census 2011 data. However, few things are still a bit rough around the edges and hopefully should be improved in the future:
-
-## Storing of the data
-Admittedly, the package is massive, which is unfortunate, especially when updating it to a newer version in the future. I am still thinking about a smart option before installing whether users want to use something like an online or offline version of the package. In my opinion, an offline version is mandatory as some users maybe want to use the package in an offline environment. For example, in social science survey research, we often work in a secure environment to access sensitive data, comprising small-scale geographic information. These specialized workplaces do not have internet access, so it is beneficial to wrangle with the census data offline.
 
 ## Speed
 In some cases (especially in the 1-hectare data), the functions of the package could be a bit quicker in computing. I did my best to reduce the input data amount, but a simple database format would still have some benefits.

@@ -89,7 +89,7 @@
 <a href="#installing-and-loading-the-package" class="anchor"></a>Installing and Loading the Package</h1>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"StefanJuenger/z11"</span><span class="op">)</span></code></pre></div>
-<p>Be aware that the package is quite large (~640 Megabytes). It includes all census data in its <code>./inst/extdata/</code> folder for offline-access. I was thinking of pointing the package’s functions to an online archive, but this would mean that users always have an existing online connection. See the “Future” section for more thoughts on that.</p>
+<p>The functions in the package rely on data prepared in <a href="https://github.com/StefanJuenger/z11data">another repository</a>. If you want to work locally, please download them first and follow the instructions of the manual.</p>
 <p>After installing, the package can be loaded using <code>R</code>’s standard method:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">z11</span><span class="op">)</span></code></pre></div>
@@ -300,11 +300,6 @@
 <h1 class="hasAnchor">
 <a href="#future" class="anchor"></a>Future</h1>
 <p>The package itself should not provide many more functionalities, rather than listing and importing the German Census 2011 data. However, few things are still a bit rough around the edges and hopefully should be improved in the future:</p>
-<div id="storing-of-the-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#storing-of-the-data" class="anchor"></a>Storing of the data</h2>
-<p>Admittedly, the package is massive, which is unfortunate, especially when updating it to a newer version in the future. I am still thinking about a smart option before installing whether users want to use something like an online or offline version of the package. In my opinion, an offline version is mandatory as some users maybe want to use the package in an offline environment. For example, in social science survey research, we often work in a secure environment to access sensitive data, comprising small-scale geographic information. These specialized workplaces do not have internet access, so it is beneficial to wrangle with the census data offline.</p>
-</div>
 <div id="speed" class="section level2">
 <h2 class="hasAnchor">
 <a href="#speed" class="anchor"></a>Speed</h2>

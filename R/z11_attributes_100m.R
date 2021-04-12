@@ -1,17 +1,17 @@
 # "z11_attributes_100m"
 
-# library(dplyr)
-#
-# census_100m_files_directory <- "../z11_data-raw/"
-#
-# census_100m_files <-
-#   c(
-#     "Zensus_Bevoelkerung_100m-Gitter.csv", "Bevoelkerung100M.csv",
-#     "Familie100m.csv", "Geb100m.csv", "Haushalte100m.csv",
-#     "Wohnungen100m.csv"
-#     )
-#
-#
+library(dplyr)
+
+census_100m_files_directory <- "../z11data-raw/"
+
+census_100m_files <-
+  c(
+    "Zensus_Bevoelkerung_100m-Gitter.csv", "Bevoelkerung100M.csv",
+    "Familie100m.csv", "Geb100m.csv", "Haushalte100m.csv",
+    "Wohnungen100m.csv"
+    )
+
+
 # # large inhabitants table as attribute
 # Zensus_Bevoelkerung_100m_Gitter <-
 #   data.table::fread(
@@ -23,32 +23,48 @@
 #   tibble::as_tibble() %>%
 #   tidyr::drop_na() %>%
 #   saveRDS(paste0("../z11data/100m/Einwohner.rds"))
-#
-# # store all other attributes as small as possible
-# purrr::map(2:length(census_100m_files), function (i) {
-#
-#   # load file as data.table
-#   whole_file <-
-#     data.table::fread(
-#       paste0(census_100m_files_directory, census_100m_files[i])
-#     ) %>%
-#     dtplyr::lazy_dt() %>%
-#     z11_wide_100m()
-#
-#   # get names apart from gitter id
-#   names_whole_file <- names(whole_file) %>% .[-1]
-#
-#   # store individual files for each attribute
-#   purrr::map(names_whole_file, function (j) {
-#     whole_file %>%
-#       dtplyr::lazy_dt() %>%
-#       dplyr::select(Gitter_ID_100m, !!j) %>%
-#       tibble::as_tibble() %>%
-#       tidyr::drop_na() %>%
-#       saveRDS(., paste0("../z11data/100m/", j, ".rds"))
-#       # saveRDS(., paste0("./inst/extdata/100m/", j, ".rds"))
-#   })
-# })
+
+# store all other attributes as small as possible
+purrr::map(2:length(census_100m_files), function (i) {
+
+  # load file as data.table
+  whole_file <-
+    data.table::fread(
+      paste0(census_100m_files_directory, census_100m_files[i])
+    ) %>%
+    dtplyr::lazy_dt() %>%
+    z11_wide_100m()
+
+  names(whole_file) <- stringr::str_trim(names(whole_file))
+
+  if ("INSGESAMT_0" %in% colnames(whole_file)) {
+    insgesamt_name <-
+      paste0(
+        "INSGESAMT_",
+        census_100m_files[i] %>%
+          gsub("100m.csv", "", .) %>%
+          gsub("100M.csv", "", .)
+      )
+
+    whole_file <-
+      whole_file %>%
+      dplyr::rename(!!insgesamt_name := "INSGESAMT_0")
+  }
+
+  # get names apart from gitter id
+  names_whole_file <- whole_file$vars %>% .[-1]
+
+  # store individual files for each attribute
+  purrr::map(names_whole_file, function (j) {
+    whole_file %>%
+      dtplyr::lazy_dt() %>%
+      dplyr::select(Gitter_ID_100m, !!j) %>%
+      tibble::as_tibble() %>%
+      tidyr::drop_na() %>%
+      saveRDS(., paste0("../z11data/100m/", j, ".rds"))
+      # saveRDS(., paste0("./inst/extdata/100m/", j, ".rds"))
+  })
+})
 #
 # # create and save index
 # index_100m <-

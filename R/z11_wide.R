@@ -16,7 +16,7 @@
 z11_wide_100m <- function (x) {
   x %>%
     dplyr::arrange(Gitter_ID_100m) %>%
-    dplyr::filter(Merkmal != " INSGESAMT") %>% #, Anzahl_q != 1) %>%
+    # dplyr::filter(Merkmal != " INSGESAMT") %>% #, Anzahl_q != 1) %>%
     dplyr::mutate(merk_code = paste0(Merkmal, "_", Auspraegung_Code)) %>%
     dplyr::select(Gitter_ID_100m, merk_code, Anzahl) %>%
     data.table::as.data.table() %>%

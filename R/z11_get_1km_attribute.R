@@ -34,7 +34,8 @@ z11_get_1km_attribute <-
         url("rb") %>%
         readRDS()
     } else {
-      paste0(data_location, "/1km/", attribute, ".rds") %>%
+      requested_attribute <-
+        paste0(data_location, "/1km/", attribute, ".rds") %>%
         readRDS()
     }
 

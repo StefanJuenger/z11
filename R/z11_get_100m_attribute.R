@@ -34,7 +34,8 @@ z11_get_100m_attribute <-
     url("rb") %>%
     readRDS()
   } else {
-    paste0(data_location, "/100m/", attribute, ".rds") %>%
+    requested_attribute <-
+      paste0(data_location, "/100m/", attribute, ".rds") %>%
       readRDS()
   }
 

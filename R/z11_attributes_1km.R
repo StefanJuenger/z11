@@ -12,13 +12,13 @@
 
 # z11_attributes_1km_continuous <-
 #   data.table::fread(
-#     "../z11_data-raw/Zensus_spitze_Werte_1km-Gitter.csv",
+#     "../z11data-raw/Zensus_spitze_Werte_1km-Gitter.csv",
 #     dec = ","
 #     ) %>%
 #   dtplyr::lazy_dt()
 #
 # z11_attributes_1km_categorical <-
-#   data.table::fread("../z11_data-raw/Zensus_klassierte_Werte_1km-Gitter.csv") %>%
+#   data.table::fread("../z11data-raw/Zensus_klassierte_Werte_1km-Gitter.csv") %>%
 #   dtplyr::lazy_dt() %>%
 #   dplyr::rename_at(
 #     dplyr::vars(-Gitter_ID_1km, -x_mp_1km, -y_mp_1km),
@@ -43,8 +43,7 @@
 #
 # # save files
 # lapply(names_1km, function (i) {
-#   z11_attributes_1km[i] %>%
+#   z11_attributes_1km %>%
+#     dplyr::select(Gitter_ID_1km, dplyr::all_of(i)) %>%
 #     saveRDS(paste0("../z11data/1km/", i, ".rds"))
 # })
-
-# saveRDS(z11_attributes_1km, "./inst/extdata/z11_attributes_1km.rds")

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • z11</title>
+<title>Simple join of data with census 1 km attributes — z11_simple_join_1km_attribute • z11</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Simple join of data with census 1 km attributes — z11_simple_join_1km_attribute" />
+<meta property="og:description" content="Merge input data with census 1 km data by simple matching of INSPIRE IDs" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -114,18 +115,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Simple join of data with census 1 km attributes</h1>
+    
+    <div class="hidden name"><code>z11_simple_join_1km_attribute.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <dl>
-        <dt><a href="using-z11.html">Quick Start in Using the z11 package</a></dt>
-        <dd></dt>
-      </dl>
+    <div class="ref-description">
+    <p>Merge input data with census 1 km data by simple matching of INSPIRE IDs</p>
     </div>
+
+    <pre class="usage"><span class='fu'>z11_simple_join_1km_attribute</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>inspire_column</span>,
+  <span class='va'>attribute</span>,
+  all <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>input data</p></td>
+    </tr>
+    <tr>
+      <th>attribute</th>
+      <td><p>Name of the census variable which is aimed to be merged with
+input data (used for calling <code><a href='z11_get_1km_attribute.html'>z11::z11_get_1km_attribute()</a></code>)</p></td>
+    </tr>
+    <tr>
+      <th>all</th>
+      <td><p>logical; should all census attributes be merged? default: `FALSE`</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>arguments passed to <code><a href='z11_get_1km_attribute.html'>z11::z11_get_1km_attribute()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>inspire_colum</th>
+      <td><p>Character string for column name in input data
+containing the inspire ID</p></td>
+    </tr>
+    </table>
+
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 

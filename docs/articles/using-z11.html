@@ -38,6 +38,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
+  <a href="../index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -63,13 +69,13 @@
 
       
 
-      </header><script src="using-z11_files/header-attrs-2.5/header-attrs.js"></script><script src="using-z11_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="using-z11_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Quick Start in Using the z11 package</h1>
                         <h4 class="author">Stefan Jünger</h4>
             
-            <h4 class="date">2020-12-04</h4>
+            <h4 class="date">2021-04-13</h4>
       
       
       <div class="hidden name"><code>using-z11.Rmd</code></div>
@@ -112,11 +118,12 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">immigrants_1km</span> <span class="op">&lt;-</span>
   <span class="fu">z11</span><span class="fu">::</span><span class="fu"><a href="../reference/z11_get_1km_attribute.html">z11_get_1km_attribute</a></span><span class="op">(</span><span class="va">Auslaender_A</span><span class="op">)</span>
-<span class="co">#&gt; Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj =</span>
-<span class="co">#&gt; prefer_proj): Discarded datum Unknown based on GRS80 ellipsoid in CRS definition</span>
-<span class="co">#&gt; Warning in showSRID(SRS_string, format = "PROJ", multiline = "NO", prefer_proj =</span>
-<span class="co">#&gt; prefer_proj): Discarded datum European Terrestrial Reference System 1989 in CRS</span>
-<span class="co">#&gt; definition</span></code></pre></div>
+<span class="co">#&gt; Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj</span>
+<span class="co">#&gt; = prefer_proj): Discarded datum Unknown based on GRS80 ellipsoid in Proj4</span>
+<span class="co">#&gt; definition</span>
+<span class="co">#&gt; Warning in showSRID(SRS_string, format = "PROJ", multiline = "NO", prefer_proj</span>
+<span class="co">#&gt; = prefer_proj): Discarded datum European Terrestrial Reference System 1989 in</span>
+<span class="co">#&gt; Proj4 definition</span></code></pre></div>
 <p>Voilà, we got this information as a standard raster layer (<code><a href="https://rdrr.io/r/base/class.html">class("Raster")</a></code>) as specified in the <code>raster</code> package:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">immigrants_1km</span>
@@ -139,25 +146,25 @@
 <p>Here we go:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">immigrants_1km_sf</span>
-<span class="co">#&gt; Simple feature collection with 361478 features and 1 field</span>
-<span class="co">#&gt; geometry type:  POINT</span>
-<span class="co">#&gt; dimension:      XY</span>
-<span class="co">#&gt; bbox:           xmin: 4031500 ymin: 2684500 xmax: 4672500 ymax: 3551500</span>
-<span class="co">#&gt; projected CRS:  ETRS89-extended / LAEA Europe</span>
-<span class="co">#&gt; # A tibble: 361,478 x 2</span>
-<span class="co">#&gt;    Auslaender_A          geometry</span>
-<span class="co">#&gt;           &lt;dbl&gt;       &lt;POINT [m]&gt;</span>
-<span class="co">#&gt;  1           -1 (4334500 2684500)</span>
-<span class="co">#&gt;  2           -1 (4335500 2684500)</span>
-<span class="co">#&gt;  3           -1 (4336500 2684500)</span>
-<span class="co">#&gt;  4           -1 (4337500 2684500)</span>
-<span class="co">#&gt;  5           -1 (4338500 2684500)</span>
-<span class="co">#&gt;  6           -1 (4339500 2684500)</span>
-<span class="co">#&gt;  7           -1 (4334500 2685500)</span>
-<span class="co">#&gt;  8           -1 (4335500 2685500)</span>
-<span class="co">#&gt;  9           -1 (4336500 2685500)</span>
-<span class="co">#&gt; 10           -1 (4337500 2685500)</span>
-<span class="co">#&gt; # … with 361,468 more rows</span></code></pre></div>
+<span class="co">#&gt; Simple feature collection with 361478 features and 2 fields</span>
+<span class="co">#&gt; Geometry type: POINT</span>
+<span class="co">#&gt; Dimension:     XY</span>
+<span class="co">#&gt; Bounding box:  xmin: 4031500 ymin: 2684500 xmax: 4672500 ymax: 3551500</span>
+<span class="co">#&gt; Projected CRS: ETRS89-extended / LAEA Europe</span>
+<span class="co">#&gt; # A tibble: 361,478 x 3</span>
+<span class="co">#&gt;    Gitter_ID_1km Auslaender_A          geometry</span>
+<span class="co">#&gt;    &lt;chr&gt;                &lt;dbl&gt;       &lt;POINT [m]&gt;</span>
+<span class="co">#&gt;  1 1kmN2684E4334           -1 (4334500 2684500)</span>
+<span class="co">#&gt;  2 1kmN2684E4335           -1 (4335500 2684500)</span>
+<span class="co">#&gt;  3 1kmN2684E4336           -1 (4336500 2684500)</span>
+<span class="co">#&gt;  4 1kmN2684E4337           -1 (4337500 2684500)</span>
+<span class="co">#&gt;  5 1kmN2684E4338           -1 (4338500 2684500)</span>
+<span class="co">#&gt;  6 1kmN2684E4339           -1 (4339500 2684500)</span>
+<span class="co">#&gt;  7 1kmN2685E4334           -1 (4334500 2685500)</span>
+<span class="co">#&gt;  8 1kmN2685E4335           -1 (4335500 2685500)</span>
+<span class="co">#&gt;  9 1kmN2685E4336           -1 (4336500 2685500)</span>
+<span class="co">#&gt; 10 1kmN2685E4337           -1 (4337500 2685500)</span>
+<span class="co">#&gt; # ... with 361,468 more rows</span></code></pre></div>
 </div>
 <div id="working-with-1-hectare-german-census-2011-data" class="section level1">
 <h1 class="hasAnchor">
@@ -220,50 +227,54 @@
 <span class="co">#&gt; [105] "HHTYP_LEB_5"             "HHTYP_LEB_6"            </span>
 <span class="co">#&gt; [107] "HHTYP_LEB_7"             "HHTYP_SENIOR_HH_1"      </span>
 <span class="co">#&gt; [109] "HHTYP_SENIOR_HH_2"       "HHTYP_SENIOR_HH_3"      </span>
-<span class="co">#&gt; [111] "NUTZUNG_DETAIL_HHGEN_11" "NUTZUNG_DETAIL_HHGEN_12"</span>
-<span class="co">#&gt; [113] "NUTZUNG_DETAIL_HHGEN_21" "NUTZUNG_DETAIL_HHGEN_22"</span>
-<span class="co">#&gt; [115] "NUTZUNG_DETAIL_HHGEN_3"  "NUTZUNG_DETAIL_HHGEN_4" </span>
-<span class="co">#&gt; [117] "RAUMANZAHL_1"            "RAUMANZAHL_2"           </span>
-<span class="co">#&gt; [119] "RAUMANZAHL_3"            "RAUMANZAHL_4"           </span>
-<span class="co">#&gt; [121] "RAUMANZAHL_5"            "RAUMANZAHL_6"           </span>
-<span class="co">#&gt; [123] "RAUMANZAHL_7"            "RELIGION_KURZ_1"        </span>
-<span class="co">#&gt; [125] "RELIGION_KURZ_2"         "RELIGION_KURZ_3"        </span>
-<span class="co">#&gt; [127] "STAATSANGE_GRP_1"        "STAATSANGE_GRP_21"      </span>
-<span class="co">#&gt; [129] "STAATSANGE_GRP_22"       "STAATSANGE_GRP_23"      </span>
-<span class="co">#&gt; [131] "STAATSANGE_GRP_24"       "STAATSANGE_HLND_1"      </span>
-<span class="co">#&gt; [133] "STAATSANGE_HLND_10"      "STAATSANGE_HLND_11"     </span>
-<span class="co">#&gt; [135] "STAATSANGE_HLND_12"      "STAATSANGE_HLND_13"     </span>
-<span class="co">#&gt; [137] "STAATSANGE_HLND_14"      "STAATSANGE_HLND_2"      </span>
-<span class="co">#&gt; [139] "STAATSANGE_HLND_3"       "STAATSANGE_HLND_4"      </span>
-<span class="co">#&gt; [141] "STAATSANGE_HLND_5"       "STAATSANGE_HLND_6"      </span>
-<span class="co">#&gt; [143] "STAATSANGE_HLND_7"       "STAATSANGE_HLND_8"      </span>
-<span class="co">#&gt; [145] "STAATSANGE_HLND_9"       "STAATSANGE_KURZ_1"      </span>
-<span class="co">#&gt; [147] "STAATSANGE_KURZ_2"       "STAATZHL_1"             </span>
-<span class="co">#&gt; [149] "STAATZHL_2"              "STAATZHL_3"             </span>
-<span class="co">#&gt; [151] "STAATZHL_4"              "WOHNEIGENTUM_1"         </span>
-<span class="co">#&gt; [153] "WOHNEIGENTUM_2"          "WOHNEIGENTUM_3"         </span>
-<span class="co">#&gt; [155] "WOHNEIGENTUM_4"          "WOHNEIGENTUM_99"        </span>
-<span class="co">#&gt; [157] "WOHNFLAECHE_10S_1"       "WOHNFLAECHE_10S_10"     </span>
-<span class="co">#&gt; [159] "WOHNFLAECHE_10S_11"      "WOHNFLAECHE_10S_12"     </span>
-<span class="co">#&gt; [161] "WOHNFLAECHE_10S_13"      "WOHNFLAECHE_10S_14"     </span>
-<span class="co">#&gt; [163] "WOHNFLAECHE_10S_15"      "WOHNFLAECHE_10S_16"     </span>
-<span class="co">#&gt; [165] "WOHNFLAECHE_10S_17"      "WOHNFLAECHE_10S_2"      </span>
-<span class="co">#&gt; [167] "WOHNFLAECHE_10S_3"       "WOHNFLAECHE_10S_4"      </span>
-<span class="co">#&gt; [169] "WOHNFLAECHE_10S_5"       "WOHNFLAECHE_10S_6"      </span>
-<span class="co">#&gt; [171] "WOHNFLAECHE_10S_7"       "WOHNFLAECHE_10S_8"      </span>
-<span class="co">#&gt; [173] "WOHNFLAECHE_10S_9"       "ZAHLWOHNGN_HHG_1"       </span>
-<span class="co">#&gt; [175] "ZAHLWOHNGN_HHG_2"        "ZAHLWOHNGN_HHG_3"       </span>
-<span class="co">#&gt; [177] "ZAHLWOHNGN_HHG_4"        "ZAHLWOHNGN_HHG_5"</span></code></pre></div>
-<p>As we can see, the number of attributes is quite high, in sum 178. The naming convention is different as the names depict a concatenated string between each attribute name and its category. In contrast to the 1 km² data, the attribute values are the number of persons within each 1-hectare grid cell sharing the attribute’s characteristic. Again, please refer to the official German Census 2011 documentation since it details how to handle the data and interpret its values. The data here are just vanilla Census data. However, they were converted from a long data format to a wide one for rasterizing.</p>
+<span class="co">#&gt; [111] "INSGESAMT_Bevoelkerung"  "INSGESAMT_Familie"      </span>
+<span class="co">#&gt; [113] "INSGESAMT_Geb"           "INSGESAMT_Haushalte"    </span>
+<span class="co">#&gt; [115] "INSGESAMT_Wohnungen"     "NUTZUNG_DETAIL_HHGEN_11"</span>
+<span class="co">#&gt; [117] "NUTZUNG_DETAIL_HHGEN_12" "NUTZUNG_DETAIL_HHGEN_21"</span>
+<span class="co">#&gt; [119] "NUTZUNG_DETAIL_HHGEN_22" "NUTZUNG_DETAIL_HHGEN_3" </span>
+<span class="co">#&gt; [121] "NUTZUNG_DETAIL_HHGEN_4"  "RAUMANZAHL_1"           </span>
+<span class="co">#&gt; [123] "RAUMANZAHL_2"            "RAUMANZAHL_3"           </span>
+<span class="co">#&gt; [125] "RAUMANZAHL_4"            "RAUMANZAHL_5"           </span>
+<span class="co">#&gt; [127] "RAUMANZAHL_6"            "RAUMANZAHL_7"           </span>
+<span class="co">#&gt; [129] "RELIGION_KURZ_1"         "RELIGION_KURZ_2"        </span>
+<span class="co">#&gt; [131] "RELIGION_KURZ_3"         "STAATSANGE_GRP_1"       </span>
+<span class="co">#&gt; [133] "STAATSANGE_GRP_21"       "STAATSANGE_GRP_22"      </span>
+<span class="co">#&gt; [135] "STAATSANGE_GRP_23"       "STAATSANGE_GRP_24"      </span>
+<span class="co">#&gt; [137] "STAATSANGE_HLND_1"       "STAATSANGE_HLND_10"     </span>
+<span class="co">#&gt; [139] "STAATSANGE_HLND_11"      "STAATSANGE_HLND_12"     </span>
+<span class="co">#&gt; [141] "STAATSANGE_HLND_13"      "STAATSANGE_HLND_14"     </span>
+<span class="co">#&gt; [143] "STAATSANGE_HLND_2"       "STAATSANGE_HLND_3"      </span>
+<span class="co">#&gt; [145] "STAATSANGE_HLND_4"       "STAATSANGE_HLND_5"      </span>
+<span class="co">#&gt; [147] "STAATSANGE_HLND_6"       "STAATSANGE_HLND_7"      </span>
+<span class="co">#&gt; [149] "STAATSANGE_HLND_8"       "STAATSANGE_HLND_9"      </span>
+<span class="co">#&gt; [151] "STAATSANGE_KURZ_1"       "STAATSANGE_KURZ_2"      </span>
+<span class="co">#&gt; [153] "STAATZHL_1"              "STAATZHL_2"             </span>
+<span class="co">#&gt; [155] "STAATZHL_3"              "STAATZHL_4"             </span>
+<span class="co">#&gt; [157] "WOHNEIGENTUM_1"          "WOHNEIGENTUM_2"         </span>
+<span class="co">#&gt; [159] "WOHNEIGENTUM_3"          "WOHNEIGENTUM_4"         </span>
+<span class="co">#&gt; [161] "WOHNEIGENTUM_99"         "WOHNFLAECHE_10S_1"      </span>
+<span class="co">#&gt; [163] "WOHNFLAECHE_10S_10"      "WOHNFLAECHE_10S_11"     </span>
+<span class="co">#&gt; [165] "WOHNFLAECHE_10S_12"      "WOHNFLAECHE_10S_13"     </span>
+<span class="co">#&gt; [167] "WOHNFLAECHE_10S_14"      "WOHNFLAECHE_10S_15"     </span>
+<span class="co">#&gt; [169] "WOHNFLAECHE_10S_16"      "WOHNFLAECHE_10S_17"     </span>
+<span class="co">#&gt; [171] "WOHNFLAECHE_10S_2"       "WOHNFLAECHE_10S_3"      </span>
+<span class="co">#&gt; [173] "WOHNFLAECHE_10S_4"       "WOHNFLAECHE_10S_5"      </span>
+<span class="co">#&gt; [175] "WOHNFLAECHE_10S_6"       "WOHNFLAECHE_10S_7"      </span>
+<span class="co">#&gt; [177] "WOHNFLAECHE_10S_8"       "WOHNFLAECHE_10S_9"      </span>
+<span class="co">#&gt; [179] "ZAHLWOHNGN_HHG_1"        "ZAHLWOHNGN_HHG_2"       </span>
+<span class="co">#&gt; [181] "ZAHLWOHNGN_HHG_3"        "ZAHLWOHNGN_HHG_4"       </span>
+<span class="co">#&gt; [183] "ZAHLWOHNGN_HHG_5"</span></code></pre></div>
+<p>As we can see, the number of attributes is quite high, in sum 183. The naming convention is different as the names depict a concatenated string between each attribute name and its category. In contrast to the 1 km² data, the attribute values are the number of persons within each 1-hectare grid cell sharing the attribute’s characteristic. Again, please refer to the official German Census 2011 documentation since it details how to handle the data and interpret its values. The data here are just vanilla Census data. However, they were converted from a long data format to a wide one for rasterizing.</p>
 <p>Speaking of rasterizing: the 1-hectare data can again be imported by using a specialized function. For example, to import the number of immigrants attribute, we can use this command:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">immigrants_100m</span> <span class="op">&lt;-</span>
   <span class="fu">z11</span><span class="fu">::</span><span class="fu"><a href="../reference/z11_get_100m_attribute.html">z11_get_100m_attribute</a></span><span class="op">(</span><span class="va">STAATSANGE_KURZ_2</span><span class="op">)</span>
-<span class="co">#&gt; Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj =</span>
-<span class="co">#&gt; prefer_proj): Discarded datum Unknown based on GRS80 ellipsoid in CRS definition</span>
-<span class="co">#&gt; Warning in showSRID(SRS_string, format = "PROJ", multiline = "NO", prefer_proj =</span>
-<span class="co">#&gt; prefer_proj): Discarded datum European Terrestrial Reference System 1989 in CRS</span>
-<span class="co">#&gt; definition</span></code></pre></div>
+<span class="co">#&gt; Warning in showSRID(uprojargs, format = "PROJ", multiline = "NO", prefer_proj</span>
+<span class="co">#&gt; = prefer_proj): Discarded datum Unknown based on GRS80 ellipsoid in Proj4</span>
+<span class="co">#&gt; definition</span>
+<span class="co">#&gt; Warning in showSRID(SRS_string, format = "PROJ", multiline = "NO", prefer_proj</span>
+<span class="co">#&gt; = prefer_proj): Discarded datum European Terrestrial Reference System 1989 in</span>
+<span class="co">#&gt; Proj4 definition</span></code></pre></div>
 <p>The operation may take a bit longer, as the 1-hectare data are bigger and therefore computationally also a bit more expensive. Fortunately, through their flat data structure, raster data files are usually a bit more comfortable to process. Plotting 1-hectare data is, therefore, also straightforward:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">raster</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">immigrants_100m</span><span class="op">)</span></code></pre></div>
@@ -275,25 +286,25 @@
 <p>See:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">immigrants_1km_sf</span>
-<span class="co">#&gt; Simple feature collection with 361478 features and 1 field</span>
-<span class="co">#&gt; geometry type:  POINT</span>
-<span class="co">#&gt; dimension:      XY</span>
-<span class="co">#&gt; bbox:           xmin: 4031500 ymin: 2684500 xmax: 4672500 ymax: 3551500</span>
-<span class="co">#&gt; projected CRS:  ETRS89-extended / LAEA Europe</span>
-<span class="co">#&gt; # A tibble: 361,478 x 2</span>
-<span class="co">#&gt;    Auslaender_A          geometry</span>
-<span class="co">#&gt;           &lt;dbl&gt;       &lt;POINT [m]&gt;</span>
-<span class="co">#&gt;  1           -1 (4334500 2684500)</span>
-<span class="co">#&gt;  2           -1 (4335500 2684500)</span>
-<span class="co">#&gt;  3           -1 (4336500 2684500)</span>
-<span class="co">#&gt;  4           -1 (4337500 2684500)</span>
-<span class="co">#&gt;  5           -1 (4338500 2684500)</span>
-<span class="co">#&gt;  6           -1 (4339500 2684500)</span>
-<span class="co">#&gt;  7           -1 (4334500 2685500)</span>
-<span class="co">#&gt;  8           -1 (4335500 2685500)</span>
-<span class="co">#&gt;  9           -1 (4336500 2685500)</span>
-<span class="co">#&gt; 10           -1 (4337500 2685500)</span>
-<span class="co">#&gt; # … with 361,468 more rows</span></code></pre></div>
+<span class="co">#&gt; Simple feature collection with 361478 features and 2 fields</span>
+<span class="co">#&gt; Geometry type: POINT</span>
+<span class="co">#&gt; Dimension:     XY</span>
+<span class="co">#&gt; Bounding box:  xmin: 4031500 ymin: 2684500 xmax: 4672500 ymax: 3551500</span>
+<span class="co">#&gt; Projected CRS: ETRS89-extended / LAEA Europe</span>
+<span class="co">#&gt; # A tibble: 361,478 x 3</span>
+<span class="co">#&gt;    Gitter_ID_1km Auslaender_A          geometry</span>
+<span class="co">#&gt;    &lt;chr&gt;                &lt;dbl&gt;       &lt;POINT [m]&gt;</span>
+<span class="co">#&gt;  1 1kmN2684E4334           -1 (4334500 2684500)</span>
+<span class="co">#&gt;  2 1kmN2684E4335           -1 (4335500 2684500)</span>
+<span class="co">#&gt;  3 1kmN2684E4336           -1 (4336500 2684500)</span>
+<span class="co">#&gt;  4 1kmN2684E4337           -1 (4337500 2684500)</span>
+<span class="co">#&gt;  5 1kmN2684E4338           -1 (4338500 2684500)</span>
+<span class="co">#&gt;  6 1kmN2684E4339           -1 (4339500 2684500)</span>
+<span class="co">#&gt;  7 1kmN2685E4334           -1 (4334500 2685500)</span>
+<span class="co">#&gt;  8 1kmN2685E4335           -1 (4335500 2685500)</span>
+<span class="co">#&gt;  9 1kmN2685E4336           -1 (4336500 2685500)</span>
+<span class="co">#&gt; 10 1kmN2685E4337           -1 (4337500 2685500)</span>
+<span class="co">#&gt; # ... with 361,468 more rows</span></code></pre></div>
 <p>That’s it. There’s not yet much more to tell at the moment.</p>
 </div>
 <div id="future" class="section level1">
@@ -338,7 +349,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

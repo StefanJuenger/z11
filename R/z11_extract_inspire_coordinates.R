@@ -1,11 +1,12 @@
 #' Extract Geocoordinates (EPSG:3035) from INSPIRE IDs
 #'
-#' Retreive centroid geocoordinates for 1km^2 and 1 hectare INSPIRE Grid IDs
+#' Retrieve centroid geocoordinates for 1km^2 and 1 hectare INSPIRE Grid IDs.
+#' This function is particularly helpful when working with German Census data.
 #'
 #' @param inspire_ids Character vector containing INSPIRE IDs
 #' @return tibble
 #'
-#' @noRd
+#' @export
 #'
 #' @importFrom magrittr %>%
 z11_extract_inspire_coordinates <- function (inspire_ids) {

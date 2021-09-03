@@ -26,20 +26,15 @@ z11_simple_join_1km_attribute <-
 
     if (isFALSE(all)) {
       attribute <- rlang::enquo(attribute)
+  
+      #Get attribute data
+      #add "z11::" later
+      attribute <- z11_get_1km_attribute(!!attribute,  as_raster = FALSE, ...)
+      data.table::setDT(attribute)
+      data.table::setnames(attribute, old = "Gitter_ID_1km", inspire_column)
 
-      attribute <-
-        z11::z11_get_1km_attribute(!!attribute, as_raster = FALSE, ...) %>%
-        sf::st_drop_geometry()
-
-      linked_data <-
-        dplyr::left_join(
-          data %>%
-            dplyr::mutate(
-              Gitter_ID_1km = data[[inspire_column]]
-            ),
-          attribute,
-          by = "Gitter_ID_1km"
-        )
+      linked_data <- data.table::data.table(data) %>%
+        merge(attribute, on = inspire_column, all.x = TRUE, sort = FALSE)
     }
 
     if (isTRUE(all)) {
@@ -51,23 +46,15 @@ z11_simple_join_1km_attribute <-
 
         attribute <- rlang::sym(i)
 
-        attribute <-
-          z11::z11_get_1km_attribute(!!attribute, as_raster = FALSE, ...) %>%
-          sf::st_drop_geometry()
+        attribute <- z11::z11_get_1km_attribute(!!attribute, as_raster = FALSE, ...)
+        data.table::setDT(attribute)
+        data.table::setnames(attribute, old = "Gitter_ID_1km", new = inspire_column)
 
-        linked_data <-
-          dplyr::left_join(
-            linked_data %>%
-              dplyr::mutate(
-                Gitter_ID_1km = data[[inspire_column]]
-              ),
-            attribute,
-            by = "Gitter_ID_1km"
-          )
+        linked_data <- merge(linked_data, attribute, on = inspire_column, all.x = TRUE, sort = FALSE)
       }
     }
 
-    linked_data
-  }
+    return(linked_data)
+}
 
 

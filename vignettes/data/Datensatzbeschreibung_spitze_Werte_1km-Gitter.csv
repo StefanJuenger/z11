@@ -1,0 +1,20 @@
+Variable;Bedeutung;Wert
+Einwohner;Bevölkerung; -1: Unbewohnt oder geheim zu halten
+Frauen_A;Anteil der weiblichen Bevölkerung an der Gesamtbevölkerung; -9: Wert geheim zu halten
+Frauen_A;Anteil der weiblichen Bevölkerung an der Gesamtbevölkerung; -1: Unbewohnt
+Alter_D;Durchschnittsalter der Bevölkerung; -9: Wert geheim zu halten
+Alter_D;Durchschnittsalter der Bevölkerung; -1: Unbewohnt
+unter18_A;Anteil der Bevölkerung unter 18 Jahre an der Gesamtbevölkerung; -9: Wert geheim zu halten
+unter18_A;Anteil der Bevölkerung unter 18 Jahre an der Gesamtbevölkerung; -1: Unbewohnt
+ab65_A;Anteil der Bevölkerung ab 65 Jahre an der Gesamtbevölkerung; -9: Wert geheim zu halten
+ab65_A;Anteil der Bevölkerung ab 65 Jahre an der Gesamtbevölkerung; -1: Unbewohnt
+Auslaender_A;Anteil der Ausländer an der Gesamtbevölkerung; -9: Wert geheim zu halten
+Auslaender_A;Anteil der Ausländer an der Gesamtbevölkerung; -1: Unbewohnt
+HHGroesse_D;Durchschnittliche Haushaltsgröße; -9: Wert geheim zu halten
+HHGroesse_D;Durchschnittliche Haushaltsgröße; -1: Unbewohnt
+Leerstandsquote;Anteil der leerstehenden Wohnungen an den Wohnungen; -9: Wert geheim zu halten
+Leerstandsquote;Anteil der leerstehenden Wohnungen an den Wohnungen; -1: Ohne Wohnraum
+Wohnfl_Bew_D;Durchschnittliche Wohnfläche je Bewohner; -9: Wert geheim zu halten
+Wohnfl_Bew_D;Durchschnittliche Wohnfläche je Bewohner; -1: Ohne Wohnraum
+Wohnfl_Whg_D;Durchschnittliche Wohnfläche je Wohnung; -9: Wert geheim zu halten
+Wohnfl_Whg_D;Durchschnittliche Wohnfläche je Wohnung; -1: Ohne Wohnraum

@@ -1,0 +1,24 @@
+Merkmal;Code;Text;Erläuterungen
+INSGESAMT;0;Einheiten insgesamt;"Gesamtzahl der Einheiten in der Gitterzelle\nKann aufgrund der Geheimhaltung  von der Summe über alle Ausprägungen der anderen Merkmale abweichen"
+FAMTYP_KIND;;;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;1;Ehepaare ohne Kind;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;2;Ehepaare, mind. 1 Kind < 18;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;3;Ehepaare alle Kinder ≥ 18;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;4;Eingetr. Lebenspartnerschaften ohne Kind;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;5;Eingetr. Lebenspartnerschaften mind. 1 Kind < 18;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;6;Eingetr. Lebenspartnerschaften alle Kinder ≥ 18;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;7;Nichteheliche Lebensgem. ohne Kind;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;8;Nichteheliche Lebensgem. mind. 1 Kind < 18;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;9;Nichteheliche Lebensgem. alle Kinder ≥ 18;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;10;Alleinerziehende Väter mind. 1 Kind < 18;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;11;Alleinerziehende Väter alle Kinder ≥ 18;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;12;Alleinerziehende Mütter mind. 1 Kind < 18;Typ der Kernfamilie (nach Kindern)
+FAMTYP_KIND;13; Alleinerziehende Mütter alle Kinder ≥ 18;Typ der Kernfamilie (nach Kindern)
+FAMGROESS_KLASS;1;2 Personen;Größe der Kernfamilie
+FAMGROESS_KLASS;2;3 Personen;Größe der Kernfamilie
+FAMGROESS_KLASS;3;4 Personen;Größe der Kernfamilie
+FAMGROESS_KLASS;4;5 Personen;Größe der Kernfamilie
+FAMGROESS_KLASS;5;6 und mehr Personen;Größe der Kernfamilie
+HHTYP_SENIOR_HH;1;Haushalte mit ausschließlich Senioren/-innen;Seniorenstatus eines privaten Haushalts
+HHTYP_SENIOR_HH;2;Haushalte mit Senioren/-innen und Jüngeren;Seniorenstatus eines privaten Haushalts
+HHTYP_SENIOR_HH;3;Haushalte ohne Senioren/-innen;Seniorenstatus eines privaten Haushalts

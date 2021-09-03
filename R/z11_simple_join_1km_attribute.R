@@ -11,6 +11,7 @@
 #' @param ... arguments passed to \code{z11::z11_get_1km_attribute()}
 #'
 #' @importFrom magrittr %>%
+#' @import data.table
 #'
 #' @export
 z11_simple_join_1km_attribute <-
@@ -28,8 +29,7 @@ z11_simple_join_1km_attribute <-
       attribute <- rlang::enquo(attribute)
   
       #Get attribute data
-      #add "z11::" later
-      attribute <- z11_get_1km_attribute(!!attribute,  as_raster = FALSE, ...)
+      attribute <- z11::z11_get_1km_attribute(!!attribute,  as_raster = FALSE, ...)
       data.table::setDT(attribute)
       data.table::setnames(attribute, old = "Gitter_ID_1km", inspire_column)
 

@@ -6,7 +6,7 @@
 #' @usage 
 #' z11_get_data(name, directory, all = FALSE)
 #' 
-#' @param name Which Dataset should be downloaded? Possible values are "klassiert1km", "spitz1km", "bevoelkerung100m", "demographie100m", "familien100m", "haushalte100m", "gebaude100m", "wohnungen100m".
+#' @param name Which dataset should be downloaded? Possible values are "klassiert1km", "spitz1km", "bevoelkerung100m", "demographie100m", "familien100m", "haushalte100m", "gebaude100m", "wohnungen100m".
 #' @param directory Path to the directory where the data should be saved.
 #' @param all Should all datasets be downloaded? Defaults to FALSE. Use with caution.
 #' 
@@ -15,39 +15,13 @@
 #' This was tested on Ubuntu 18, and I can't guarantee that it works on anything else.
 #' 
 #' @examples 
-#' \dontrun{
 #' z11_get_data("spitz1km", "/home/yourname/z11data")
-#' }
 #' 
 #' @importFrom purrr walk
 #' @importFrom data.table fread
 #' @importFrom magrittr %>%
 #' 
 #' @export
-
-z11_download <- function(url) {
-  tmp <-tempfile()
-  tmp_dir <- tempdir()
-  message("Download data...")
-  download.file(url, destfile = tmp)
-  outf <- unzip(tmp, list=TRUE)$Name
-  csvfile <- outf[grepl("\\.csv|\\.CSV", outf)][[1]]
-  
-  message("Unzip...")
-  system2("unzip", args = c("-o", file.path(tmp), "-d", file.path(tmp_dir)))
-  message("Read data...")
-  df <- data.table::fread(file.path(tmp_dir, csvfile), encoding = "Latin-1")
-  
-  message("Clean up downloaded files...")
-  purrr::walk(outf, ~file.remove(file.path(tmp_dir, .x)))
-  file.remove(file.path(tmp))
-  unlink(tmp)
-  unlink(tmp_dir)
-  invisible(gc())
-  
-  return(df)
-}
-
 z11_get_data <- function(name, directory, all = FALSE) {
   if (isTRUE(all)) {
     purrr::walk(names(z11_download_links), ~z11_get_data(name = .x, directory = directory))
@@ -80,11 +54,9 @@ z11_get_data <- function(name, directory, all = FALSE) {
     
     colns <- colnames(df)
     id_col <- colns[grepl("Gitter_ID_", colns)][[1]]
-    raster <- paste0(c("x_mp", "y_mp"), stri_extract_last_regex(id_col, "\\_1.+$"))
     colns <- base::subset(colns, !(colns %in% c("Gitter_ID_1km", "x_mp_1km", "y_mp_1km", "Gitter_ID_100m", "x_mp_100m", "y_mp_100m")))
     suffix <- ifelse(name == "klassiert1km", "_cat", "")
     
-    df <- sf::st_as_sf(coords = raster, crs = 3035)
     data.table::setDT(df)
     
     message("Save data...")
@@ -98,4 +70,27 @@ z11_get_data <- function(name, directory, all = FALSE) {
   
   message("Collecting garbage...")
   invisible(gc())
+}
+
+z11_download <- function(url) {
+  tmp <-tempfile()
+  tmp_dir <- tempdir()
+  message("Download data...")
+  download.file(url, destfile = tmp)
+  outf <- unzip(tmp, list=TRUE)$Name
+  csvfile <- outf[grepl("\\.csv|\\.CSV", outf)][[1]]
+  
+  message("Unzip...")
+  system2("unzip", args = c("-o", file.path(tmp), "-d", file.path(tmp_dir)))
+  message("Read data...")
+  df <- data.table::fread(file.path(tmp_dir, csvfile), encoding = "Latin-1")
+  
+  message("Clean up downloaded files...")
+  purrr::walk(outf, ~file.remove(file.path(tmp_dir, .x)))
+  file.remove(file.path(tmp))
+  unlink(tmp)
+  unlink(tmp_dir)
+  invisible(gc())
+  
+  return(df)
 }

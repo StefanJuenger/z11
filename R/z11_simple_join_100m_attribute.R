@@ -10,6 +10,7 @@
 #' @param all logical; should all census attributes be merged? default: `FALSE`
 #' @param ... arguments passed to \code{z11::z11_get_100m_attribute()}
 #'
+#' @import data.table
 #' @importFrom magrittr %>%
 #'
 #' @export
@@ -28,8 +29,7 @@ z11_simple_join_100m_attribute <-
       attribute <- rlang::enquo(attribute)
       
       #Get attribute data
-      #add "z11::"later
-      attribute <- z11_get_100m_attribute(!!attribute, geometry = FALSE, as_raster = FALSE, ...)
+      attribute <- z11::z11_get_100m_attribute(!!attribute, geometry = FALSE, as_raster = FALSE, ...)
       data.table::setDT(attribute)
       data.table::setnames(attribute, old = "Gitter_ID_100m", inspire_column)
       

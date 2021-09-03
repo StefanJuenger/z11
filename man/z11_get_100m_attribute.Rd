@@ -4,7 +4,12 @@
 \alias{z11_get_100m_attribute}
 \title{Retrieve 1 hectare attribute of the German Census 2011}
 \usage{
-z11_get_100m_attribute(attribute, as_raster = TRUE, data_location = NULL)
+z11_get_100m_attribute(
+  attribute,
+  geometry = TRUE,
+  as_raster = TRUE,
+  data_location = NULL
+)
 }
 \arguments{
 \item{attribute}{attribute name as definded in

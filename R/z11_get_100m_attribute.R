@@ -16,6 +16,9 @@
 #' @return Raster or sf
 #'
 #' @importFrom magrittr %>%
+#' @importFrom sf st_as_sf
+#' @importFrom stars st_rasterize
+#' @importFrom dplyr bind_cols
 #'
 #' @export
 z11_get_100m_attribute <-
@@ -23,7 +26,7 @@ z11_get_100m_attribute <-
 
   attribute <- rlang::enquo(attribute) %>% rlang::as_label()
 
-  # load data in session
+  # Load data in session
   if (is.null(data_location)) {
   requested_attribute <-
     paste0(
@@ -39,29 +42,23 @@ z11_get_100m_attribute <-
       readRDS()
   }
 
-  # extract coordinates from inspire id
+  # Extract coordinates from inspire ID
   if (isTRUE(geometry)) {
-    requested_attribute <-
-      requested_attribute %>%
+    requested_attribute <- requested_attribute %>%
       dplyr::bind_cols(
         z11_extract_inspire_coordinates(.$Gitter_ID_100m)
       ) %>%
       sf::st_as_sf(coords = c("X", "Y"), crs = 3035)
     
+    #Transform to raster
     if (isTRUE(as_raster)) {
-      requested_attribute <-
-        requested_attribute %>%
+      requested_attribute <- requested_attribute %>%
         stars::st_rasterize(dx = 100, dy = 100) %>%
         as("Raster")
-      
-      requested_attribute
-    } else {
-      return(requested_attribute)
     }
-  } else {
-    return(requested_attribute)
   }
-
+  
+  return(requested_attribute)
 }
 
 

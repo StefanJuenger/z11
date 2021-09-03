@@ -23,5 +23,8 @@ z11_list_100m_attributes <- function() {
   #   setdiff(c("Gitter_ID_100m_x_y", "INSGESAMT_0"))
 }
 
-
-
+#Comment out later
+# z11_list_100m_attributes <- function() {
+#   list_100m <- list.files("/home/sarah/Daten/R/Zensus11/data/100m")
+#   gsub("\\.rds$", "", list_100m)
+# }

@@ -27,23 +27,18 @@ z11_simple_join_100m_attribute <-
     if (isFALSE(all)) {
       attribute <- rlang::enquo(attribute)
 
-      attribute <-
-        z11::z11_get_100m_attribute(!!attribute, as_raster = FALSE, ...) %>%
-        sf::st_drop_geometry()
-
-      linked_data <-
-        dplyr::left_join(
-          data %>%
-            dplyr::mutate(
-              Gitter_ID_100m = data[[inspire_column]]
-            ),
-          attribute,
-          by = "Gitter_ID_100m"
-        )
+      #Get attribute data
+      #add "z11::"later
+      attribute <- z11_get_100m_attribute(!!attribute, geometry = FALSE, as_raster = FALSE, ...)
+      data.table::setDT(attribute)
+      data.table::setnames(attribute, old = "Gitter_ID_100m", new = inspire_column)
+      
+      #Merge
+      linked_data <- attribute[data.table::data.table(data), on = inspire_column]
     }
 
     if (isTRUE(all)) {
-      linked_data <- data
+      linked_data <- data.table(data)
 
       for (i in z11::z11_list_100m_attributes()) {
 
@@ -51,19 +46,13 @@ z11_simple_join_100m_attribute <-
 
         attribute <- rlang::sym(i)
 
-        attribute <-
-          z11::z11_get_100m_attribute(!!attribute, as_raster = FALSE, ...) %>%
-          sf::st_drop_geometry()
+        #Get attribute data
+        attribute <- z11::z11_get_100m_attribute(!!attribute, geometry = FALSE, as_raster = FALSE, ...)
+        data.table::setDT(attribute)
+        data.table::setnames(attribute, old = "Gitter_ID_100m", new = inspire_column)
 
-        linked_data <-
-          dplyr::left_join(
-            linked_data %>%
-              dplyr::mutate(
-                Gitter_ID_100m = data[[inspire_column]]
-              ),
-            attribute,
-            by = "Gitter_ID_100m"
-          )
+        #Merge
+        linked_data <- attribute[linked_data, on = inspire_column]
       }
     }
 

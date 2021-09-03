@@ -19,7 +19,7 @@
 #'
 #' @export
 z11_get_100m_attribute <-
-  function(attribute, as_raster = TRUE, data_location = NULL) {
+  function(attribute, geometry = TRUE, as_raster = TRUE, data_location = NULL) {
 
   attribute <- rlang::enquo(attribute) %>% rlang::as_label()
 
@@ -40,23 +40,28 @@ z11_get_100m_attribute <-
   }
 
   # extract coordinates from inspire id
-  requested_attribute <-
-    requested_attribute %>%
-    dplyr::bind_cols(
-      z11_extract_inspire_coordinates(.$Gitter_ID_100m)
-    ) %>%
-    sf::st_as_sf(coords = c("X", "Y"), crs = 3035)
-
-  if (isTRUE(as_raster)) {
+  if (isTRUE(geometry)) {
     requested_attribute <-
       requested_attribute %>%
-      stars::st_rasterize(dx = 100, dy = 100) %>%
-      as("Raster")
-
-    requested_attribute
+      dplyr::bind_cols(
+        z11_extract_inspire_coordinates(.$Gitter_ID_100m)
+      ) %>%
+      sf::st_as_sf(coords = c("X", "Y"), crs = 3035)
+    
+    if (isTRUE(as_raster)) {
+      requested_attribute <-
+        requested_attribute %>%
+        stars::st_rasterize(dx = 100, dy = 100) %>%
+        as("Raster")
+      
+      requested_attribute
+    } else {
+      return(requested_attribute)
+    }
   } else {
-    requested_attribute
+    return(requested_attribute)
   }
+
 }
 
 

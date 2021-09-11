@@ -44,8 +44,8 @@ z11_get_1km_attribute <-
 
     # Extract coordinates from inspire ID
     if (isTRUE(geometry)) {
-      requested_attribute <- dplyr::bind_cols(requested_attribute,
-            z11_extract_inspire_coordinates(.$Gitter_ID_1km)) %>%
+      requested_attribute <- requested_attribute %>%
+        dplyr::bind_cols(., z11_extract_inspire_coordinates(.$Gitter_ID_1km)) %>%
         sf::st_as_sf(coords = c("X", "Y"), crs = 3035)
       
       #Transform to raster

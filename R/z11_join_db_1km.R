@@ -23,7 +23,8 @@
 #' @export
 z11_join_db_1km <- function(df, inspire_column, con, var = NULL) {
   message("Prepare for joining...")
-  input <- data.frame(Gitter_ID_1km = gsub("^1km|[^0-9]", "", df[[inspire_column]]))
+  #input <- data.frame(Gitter_ID_1km = gsub("^1km|[^0-9]", "", df[[inspire_column]]))
+  input <- data.frame(Gitter_ID_1km = df[[inspire_column]])
   
   DBI::dbWriteTable(con, "temp", input, temporary = TRUE, overwrite = TRUE)
   

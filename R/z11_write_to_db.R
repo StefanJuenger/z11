@@ -35,8 +35,8 @@ z11_write_to_db <- function(file = NULL, con) {
     identifier <- df$Merkmal[3]
     name <- switch(identifier, ALTER_KURZ = "demographie100m", FAMGROESS_KLASS = "familien100m", 
                    ZAHLWOHNGN_HHG = "gebaeude100m", WOHNEIGENTUM = "wohnungen100m", HHTYP_LEB = "haushalte100m")
-    message("    Transform INSPIRE ID to numeric")
-    df[, Gitter_ID_100m := as.numeric(gsub("^100m|[^0-9]", "", Gitter_ID_100m))]
+    #message("    Transform INSPIRE ID to numeric")
+    #df[, Gitter_ID_100m := as.numeric(gsub("^100m|[^0-9]", "", Gitter_ID_100m))]
     
     message("    Transform to wide format")
     df <- data.table::dcast(df, Gitter_ID_100m ~ Merkmal + Auspraegung_Code, value.var = "Anzahl")
@@ -53,8 +53,8 @@ z11_write_to_db <- function(file = NULL, con) {
   } else if ("x_mp_100m" %in% colnames(df)) {
     # 100m Bevoelkerung
     name <- "bevoelkerung100m"
-    message("    Transform INSPIRE ID to numeric")
-    df[, Gitter_ID_100m := as.numeric(gsub("^100m|[^0-9]", "", Gitter_ID_100m))]
+    #message("    Transform INSPIRE ID to numeric")
+    #df[, Gitter_ID_100m := as.numeric(gsub("^100m|[^0-9]", "", Gitter_ID_100m))]
     
     message("    Select and rename columns")
     df <- df[, .(Gitter_ID_100m, Einwohner)]
@@ -65,8 +65,8 @@ z11_write_to_db <- function(file = NULL, con) {
     
   } else if ("x_mp_1km" %in% colnames(df)) {
     # 1km Data
-    message("    Transform INSPIRE ID to numeric")
-    df[, Gitter_ID_1km := as.numeric(gsub("^1km|[^0-9]", "", Gitter_ID_1km))]
+    #message("    Transform INSPIRE ID to numeric")
+    #df[, Gitter_ID_1km := as.numeric(gsub("^1km|[^0-9]", "", Gitter_ID_1km))]
     
     message("    Select and rename columns")
     df <- df[,.SD, .SDcols = !c('x_mp_1km', 'y_mp_1km')]

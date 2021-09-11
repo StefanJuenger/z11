@@ -56,7 +56,7 @@ z11_write_to_db <- function(file, con) {
     #df[, Gitter_ID_100m := as.numeric(gsub("^100m|[^0-9]", "", Gitter_ID_100m))]
 
     message("    Select and rename columns")
-    df <- df[, .(Gitter_ID_100m, Einwohner)]
+    df <- df[Einwohner != -1, .(Gitter_ID_100m, Einwohner)]
     data.table::setnames(df, old = "Einwohner", new = "Einwohner_100m")
 
     message("    Order by INSPIRE ID")

@@ -14,7 +14,7 @@
 #' @examples 
 #' z11_download_data("/home/yourname/z11data")
 #' 
-#' @importFrom purrr walk iwalk
+#' @importFrom purrr walk
 #' @importFrom magrittr %>%
 #' 
 #' @export
@@ -31,13 +31,13 @@ z11_download_data <- function(directory) {
   )
   
   if (dir.exists(directory)) {
-    purrr::iwalk(download_links, ~z11_download_file(.y, .x, directory))
+    purrr::walk(download_links, ~z11_download_file(.x, directory))
   } else {
     stop("Not a valid directory!")
   }
 }
 
-z11_download_file <- function(name, url, directory) {
+z11_download_file <- function(url, directory) {
   #Create temporary files, download data
   tmp <- tempfile()
   message("Download data...")
@@ -54,15 +54,15 @@ z11_download_file <- function(name, url, directory) {
   
   if (length(doc_files) > 0) {
     message("Move documentation to subdirectory...")
-    subdir <- paste(name, "docs", sep = "_")
+    subdir <- file.path(directory, "docs")
     #Create subdirectory for documentation if it doesn't exist
-    if (!dir.exists(file.path(directory, subdir))) {
-      dir.create(file.path(directory, subdir))
+    if (!dir.exists(subdir)) {
+      dir.create(subdir)
     }
     
     #Move documentation to subdirectory
     purrr::walk(doc_files, ~file.copy(from = file.path(directory, .x), 
-                                      to = file.path(directory, subdir, .x),
+                                      to = file.path(subdir, .x),
                                       overwrite = TRUE))
     purrr::walk(doc_files, ~file.remove(file.path(directory, .x)))
   }

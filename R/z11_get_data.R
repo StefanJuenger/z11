@@ -25,12 +25,12 @@
 z11_get_data <- function(name, directory, all = FALSE) {
   #If all = TRUE, run this function on all datasets
   if (isTRUE(all)) {
-    purrr::walk(names(z11_download_links), ~z11_get_data(name = .x, directory = directory))
+    purrr::walk(names(z11::z11_download_links), ~z11_get_data(name = .x, directory = directory))
   }
   #100m Gitterzellen
   else if (name %in% c("demographie100m", "familien100m", "haushalte100m", "gebaeude100m", "wohnungen100m")) {
     #Download data from Zensus Website
-    df <- z11_download(z11_download_links[name])
+    df <- z11_download(z11::z11_download_links[name])
     
     #Revome trailing whitespaces, paste Mermal and Auspraegung_Code columns together
     message("Clean up strings...")
@@ -52,7 +52,7 @@ z11_get_data <- function(name, directory, all = FALSE) {
   #1km Gitterzellen und Bevölkerungstabelle
   else if (name %in% c("klassiert1km", "spitz1km", "bevoelkerung100m")) {
     #Download data from Zensus website
-    df <- z11_download(z11_download_links[name])
+    df <- z11_download(z11::z11_download_links[name])
     
     #Create subdirectory if it doesn't exist
     subdir <- ifelse(name == "bevoelkerung100m", "100m", "1km")
@@ -64,7 +64,7 @@ z11_get_data <- function(name, directory, all = FALSE) {
     colns <- colnames(df)
     id_col <- colns[grepl("Gitter_ID_", colns)][[1]]
     colns <- base::subset(colns, !(colns %in% c("Gitter_ID_1km", "x_mp_1km", "y_mp_1km", "Gitter_ID_100m", "x_mp_100m", "y_mp_100m")))
-    suffix <- ifelse(name == "klassiert1km", "_cat", "")
+    suffix <- switch(name, bevoelkerung100m = "_100m", klassiert1km = "_cat", spitz1km = "")
     
     data.table::setDT(df)
     

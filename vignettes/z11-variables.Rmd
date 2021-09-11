@@ -31,9 +31,9 @@ datensatzbeschr <- c("spitze", "klassierte") %>%
   bind_rows() %>%
   select(Label, Variable)
 
-kbl(datensatzbeschr, col.names = c("Beschreibung", "Variablenname")) %>%
-  kable_styling(full_width = TRUE) %>%
-  pack_rows(index = c("Spitze Werte" = 10, "Klassierte Werte" = 10),
+kableExtra::kbl(datensatzbeschr, col.names = c("Beschreibung", "Variablenname")) %>%
+  kableExtra::kable_styling(full_width = TRUE) %>%
+  kableExtra::pack_rows(index = c("Spitze Werte" = 10, "Klassierte Werte" = 10),
             label_row_css = "background-color: #888; color: #fff;")
 ```
 
@@ -57,7 +57,7 @@ datensatzbeschr <- dplyr::mutate(datensatzbeschr, Variable = paste(trimws(prefix
   dplyr::select(Datensatz, Kategorie, Auspraegung, Variable)
 
 
-filenames <- list.files(path = "/home/sarah/Daten/R/Zensus11/data/100m")
+filenames <- list.files(path = "/home/sarah/Daten/R/z11data/100m")
 filenames <- gsub("\\.rds$", "", filenames)
 df <- dplyr::right_join(datensatzbeschr, tibble::tibble(Variable = filenames))
 
@@ -68,6 +68,6 @@ df <- dplyr::arrange(df, Datensatz)
 kat <- unique(df$Datensatz) %>% sapply(function(x) sum(df$Datensatz == x))
 
 kableExtra::kbl(df[2:4], format = "html", col.names = c("Beschreibung", "Ausprägung", "Variablenname")) %>%
-  pack_rows(index = kat, label_row_css = "background-color: #888; color: #fff;") %>%
-  collapse_rows(columns = 1, valign = "top")
+  kableExtra::pack_rows(index = kat, label_row_css = "background-color: #888; color: #fff;") %>%
+  kableExtra::collapse_rows(columns = 1, valign = "top")
 ```

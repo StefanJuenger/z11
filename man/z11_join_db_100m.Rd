@@ -11,7 +11,7 @@ z11_join_db_100m(df, inspire_column, con, var = NULL)
 
 \item{con}{Connection to a database. Open with DBI::dbConnect, and remember to close it later.}
 
-\item{var}{The name of a Census variable. Optional. If no variable name is given, all 100m attributes will be joined to the dataframe.}
+\item{var}{Optional. The name of a census variable as a string, or several variable names as a string vector. If no variable name is given, all 100m attributes will be joined to the dataframe.}
 
 \item{A}{string containing the name of the 100m INSPIRE ID in the dataframe}
 }
@@ -20,7 +20,7 @@ Takes a dataframe as input, and joins 100m Census attributes on the INSPIRE ID
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), "/path/to/db.sqlite3")
-z11_join_db_100m(df, "inspire_id", con, "GEB_HEIZTYP_1")
+z11_join_db_100m(df, "inspire_id", con, c("GEB_HEIZTYP_1", "WOH_HEIZTYP_1"))
 dbDisconnect(con)
 
 }

@@ -24,7 +24,7 @@
 #' 
 #' @export
 
-z11_write_to_db <- function(file = NULL, con) {
+z11_write_to_db <- function(file, con) {
   #Read data
   message("Reading file...")
   df <- data.table::fread(file, encoding = "Latin-1")
@@ -82,7 +82,7 @@ z11_write_to_db <- function(file = NULL, con) {
     data.table::setorder(df, Gitter_ID_1km)
     
   } else {
-    stop("Something went wrong. Is this a correct 2011 Census .csv file?")
+    stop("Something went wrong :( Is this a correct 2011 Census .csv file?")
   }
   
   message(sprintf("Writing %s to database...", name))

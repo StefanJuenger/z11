@@ -17,7 +17,7 @@
 #' @export
 z11_list_1km_attributes_db <- function(con) {
   lapply(c("spitz1km", "klassiert1km"), 
-                  function(x) DBI::dbListFields(con, x)) %>% 
+         function(x) DBI::dbListFields(con, x)) %>% 
     unlist() %>%
     subset(., . != "Gitter_ID_1km")
 }

@@ -20,7 +20,6 @@
 #' @importFrom magrittr %>%
 #' @importFrom data.table fread setnames dcast setorder
 #' @importFrom DBI dbConnect dbWriteTable dbDisconnect
-#' @importFrom RSQLite SQLite
 #' 
 #' @export
 

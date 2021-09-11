@@ -9,7 +9,7 @@
 #' @param directory Path to the directory where the data should be saved.
 #' 
 #' @details 
-#' This was written on Ubuntu 18, and I can't guarantee that it works on anything else. If you're on Windows or Mac, download and unzip the data manually instead.
+#' This function uses a bash command to unzip the files, since they are too large for R's unzip function. If you're on Windows or Mac, download and unzip the data manually instead.
 #' 
 #' @examples 
 #' z11_download_data("/home/yourname/z11data")

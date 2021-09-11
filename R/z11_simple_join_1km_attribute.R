@@ -11,7 +11,7 @@
 #' @param ... arguments passed to \code{z11::z11_get_1km_attribute()}
 #'
 #' @importFrom magrittr %>%
-#' @import data.table
+#' @importFrom data.table data.table setDT setnames
 #'
 #' @export
 z11_simple_join_1km_attribute <-
@@ -27,7 +27,7 @@ z11_simple_join_1km_attribute <-
 
     if (isFALSE(all)) {
       attribute <- rlang::enquo(attribute)
-  
+
       #Get attribute data
       attribute <- z11::z11_get_1km_attribute(!!attribute,  as_raster = FALSE, ...)
       data.table::setDT(attribute)

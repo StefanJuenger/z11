@@ -11,31 +11,27 @@
 #' @importFrom magrittr %>%
 z11_extract_inspire_coordinates <- function (inspire_ids) {
 
-  if (stringr::str_detect(inspire_ids[1], "1km")) {
+  if (grepl("1km", inspire_ids[1])) {
     inspire_coordinates <-
       tibble::tibble(
         X =
           substr(inspire_ids, 10, 13) %>%
-          paste0(., "500") %>%
-          as.numeric(),
+          as.numeric() * 1000 + 500,
         Y =
           substr(inspire_ids, 5, 8) %>%
-          paste0(., "500") %>%
-          as.numeric()
+          as.numeric() * 1000 + 500,
       )
   }
 
-  if (stringr::str_detect(inspire_ids[1], "100m")) {
+  if (grepl("100m", inspire_ids[1])) {
     inspire_coordinates <-
       tibble::tibble(
         X =
           substr(inspire_ids, 12, 16) %>%
-          paste0(., "50") %>%
-          as.numeric(),
+          as.numeric() * 100 + 50,
         Y =
           substr(inspire_ids, 6, 10) %>%
-          paste0(., "50") %>%
-          as.numeric()
+          as.numeric() * 100 + 50,
       )
   }
 

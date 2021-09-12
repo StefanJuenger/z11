@@ -24,84 +24,86 @@ z11_prepare_data <- function(file, directory) {
   if (dir.exists(file)) {
     #If file path is directory, read in all .csv files from directory
     files <- list.files(file, full.names = TRUE, pattern = "\\.csv$|\\.CSV$")
-    purrr::walk(files, ~z11_prepare_data(file = .x, directory = directory))
+    purrr::walk(files, ~z11_prepare_datafile(file = .x, directory = directory))
 
   } else if (file.exists(file)) {
-
-    #Read data
-    message("Reading file...")
-    df <- data.table::fread(file, encoding = "Latin-1")
-
-    #100m grid data
-    if (ncol(df) == 7) {
-      identifier <- df$Merkmal[3]
-      name <- switch(identifier, ALTER_KURZ = "demographie100m", FAMGROESS_KLASS = "familien100m",
-                     ZAHLWOHNGN_HHG = "gebaeude100m", WOHNEIGENTUM = "wohnungen100m", HHTYP_LEB = "haushalte100m")
-
-      #Revome trailing whitespaces, paste Mermal and Auspraegung_Code columns together
-      message("Clean up strings...")
-      df <- df[, merkm := paste(trimws(Merkmal), Auspraegung_Code, sep = "_")]
-
-      message("Transform and save data...")
-      #Create subdirectory if it doesn't exist
-      if (!dir.exists(file.path(directory, "100m"))) {
-        dir.create(file.path(directory, "100m"))
-      }
-      #Prefix for variable names ("GEB", "FAM", etc.)
-      prefix <- substring(name, 1, 3) %>% toupper() %>% paste0("_")
-      #Subset data, rename Variables, save
-      purrr::walk(unique(df$merkm),
-                  ~df[merkm == .x, .(Gitter_ID_100m, Anzahl)][, data.table::setnames(.SD, new = c("Gitter_ID_100m", paste0(prefix, .x)))] %>%
-                    saveRDS(file = file.path(directory, "100m", paste0(prefix, .x, ".rds")))
-      )
-    } else if ("x_mp_100m" %in% colnames(df)) {
-      #100m population data
-
-      #Create subdirectory if it doesn't exist
-      if (!dir.exists(file.path(directory, "100m"))) {
-        dir.create(file.path(directory, "100m"))
-      }
-
-      message("Select and rename columns...")
-      df <- df[Einwohner != -1, .SD, .SDcols = !c('x_mp_100m', 'y_mp_100m')]
-      data.table::setnames(df, old = "Einwohner", new = "Einwohner_100m")
-
-      message("Save data...")
-      saveRDS(df, file = file.path(directory, "100m", "Einwohner_100m.rds"))
-
-    } else if ("x_mp_1km" %in% colnames(df)) {
-      #1km grid data
-
-      #Create subdirectory if it doesn't exist
-      if (!dir.exists(file.path(directory, "1km"))) {
-        dir.create(file.path(directory, "1km"))
-      }
-
-      message("Select and rename columns")
-      df <- df[,.SD, .SDcols = !c('x_mp_1km', 'y_mp_1km')]
-      if (df[Wohnfl_Whg_D >= 0, .N] > 100000) {
-        colns <- colnames(df)
-        colns <- c(colns[1], paste(colns[2:length(colns)], "cat", sep = "_"))
-        setnames(df, colns)
-      }
-
-      #Create vector of column names to loop over, get suffix for variable names
-      colns <- colnames(df)[-1]
-
-      #Select columns, rename and save
-      message("Save data...")
-      purrr::walk(colns,
-                  ~df[, .(Gitter_ID_1km, get(.x))][, data.table::setnames(.SD, c("Gitter_ID_1km", .x))] %>%
-                    saveRDS(file = file.path(directory, "1km", paste0(.x, ".rds"))))
-    } else {
-      stop("Something went wrong :( Is this a correct 2011 Census .csv file?")
-    }
-
-    message("Cleaning up...")
-    rm(df)
-    invisible(gc())
+    z11_prepare_datafile(file = file, directory = directory)
   } else {
     stop("Not a valid file or directory!")
   }
 }
 
+z11_prepare_datafile <- function(file, directory) {
+  #Read data
+  message("Reading file...")
+  df <- data.table::fread(file, encoding = "Latin-1")
+
+  #100m grid data
+  if (ncol(df) == 7) {
+    identifier <- df$Merkmal[3]
+    name <- switch(identifier, ALTER_KURZ = "demographie100m", FAMGROESS_KLASS = "familien100m",
+                   ZAHLWOHNGN_HHG = "gebaeude100m", WOHNEIGENTUM = "wohnungen100m", HHTYP_LEB = "haushalte100m")
+
+    #Revome trailing whitespaces, paste Mermal and Auspraegung_Code columns together
+    message("Clean up strings...")
+    df <- df[, merkm := paste(trimws(Merkmal), Auspraegung_Code, sep = "_")]
+
+    message("Transform and save data...")
+    #Create subdirectory if it doesn't exist
+    if (!dir.exists(file.path(directory, "100m"))) {
+      dir.create(file.path(directory, "100m"))
+    }
+    #Prefix for variable names ("GEB", "FAM", etc.)
+    prefix <- substring(name, 1, 3) %>% toupper() %>% paste0("_")
+    #Subset data, rename Variables, save
+    purrr::walk(unique(df$merkm),
+                ~df[merkm == .x, .(Gitter_ID_100m, Anzahl)][, data.table::setnames(.SD, new = c("Gitter_ID_100m", paste0(prefix, .x)))] %>%
+                  saveRDS(file = file.path(directory, "100m", paste0(prefix, .x, ".rds")))
+    )
+  } else if ("x_mp_100m" %in% colnames(df)) {
+    #100m population data
+
+    #Create subdirectory if it doesn't exist
+    if (!dir.exists(file.path(directory, "100m"))) {
+      dir.create(file.path(directory, "100m"))
+    }
+
+    message("Select and rename columns...")
+    df <- df[Einwohner != -1, .SD, .SDcols = !c('x_mp_100m', 'y_mp_100m')]
+    data.table::setnames(df, old = "Einwohner", new = "Einwohner_100m")
+
+    message("Save data...")
+    saveRDS(df, file = file.path(directory, "100m", "Einwohner_100m.rds"))
+
+  } else if ("x_mp_1km" %in% colnames(df)) {
+    #1km grid data
+
+    #Create subdirectory if it doesn't exist
+    if (!dir.exists(file.path(directory, "1km"))) {
+      dir.create(file.path(directory, "1km"))
+    }
+
+    message("Select and rename columns")
+    df <- df[,.SD, .SDcols = !c('x_mp_1km', 'y_mp_1km')]
+    if (df[Wohnfl_Whg_D >= 0, .N] > 100000) {
+      colns <- colnames(df)
+      colns <- c(colns[1], paste(colns[2:length(colns)], "cat", sep = "_"))
+      setnames(df, colns)
+    }
+
+    #Create vector of column names to loop over, get suffix for variable names
+    colns <- colnames(df)[-1]
+
+    #Select columns, rename and save
+    message("Save data...")
+    purrr::walk(colns,
+                ~df[, .(Gitter_ID_1km, get(.x))][, data.table::setnames(.SD, c("Gitter_ID_1km", .x))] %>%
+                  saveRDS(file = file.path(directory, "1km", paste0(.x, ".rds"))))
+  } else {
+    message("Error! This doesn't seem to be a census .csv file :(")
+  }
+
+  message("Cleaning up...")
+  rm(df)
+  invisible(gc())
+}

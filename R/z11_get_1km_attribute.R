@@ -22,7 +22,7 @@
 #'
 #' @export
 z11_get_1km_attribute <-
-  function(attribute, as_raster = TRUE, data_location = NULL) {
+  function(attribute, geometry = TRUE, as_raster = TRUE, data_location = NULL) {
 
     attribute <- rlang::enquo(attribute)  %>% rlang::as_label()
 
@@ -47,13 +47,13 @@ z11_get_1km_attribute <-
       requested_attribute <- requested_attribute %>%
         dplyr::bind_cols(., z11_extract_inspire_coordinates(.$Gitter_ID_1km)) %>%
         sf::st_as_sf(coords = c("X", "Y"), crs = 3035)
-      
+
       #Transform to raster
       if (isTRUE(as_raster)) {
         requested_attribute <- stars::st_rasterize(requested_attribute, dx = 1000, dy = 1000) %>%
           as("Raster")
       }
     }
-    
+
     return(requested_attribute)
 }

@@ -46,7 +46,7 @@ z11_simple_join_1km_attribute <-
 
         attribute <- rlang::sym(i)
 
-        attribute <- z11::z11_get_1km_attribute(!!attribute, as_raster = FALSE, ...)
+        attribute <- z11::z11_get_1km_attribute(!!attribute, geometry = FALSE, as_raster = FALSE, ...)
         data.table::setDT(attribute)
         data.table::setnames(attribute, old = "Gitter_ID_1km", new = inspire_column)
 

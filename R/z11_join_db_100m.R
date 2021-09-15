@@ -40,7 +40,7 @@ z11_join_db_100m <- function(df, inspire_column, con, var = NULL) {
     LEFT JOIN wohnungen100m USING ("Gitter_ID_100m");'
   } else {
     # Only join select 100m variables
-    tables <- sapply(substring(var, 1, 3),
+    tables <- vapply(substring(var, 1, 3), FUN.VALUE =  character(1),
                      function(x) switch(x, Ein = "bevoelkerung100m", DEM = "demographie100m", HAU = "haushalte100m",
                                         FAM = "familien100m", GEB = "gebaeude100m", WOH = "wohnungen100m"))
     tables_query <- paste("LEFT JOIN", unique(tables), 'USING ("Gitter_ID_100m")', sep = " ", collapse = "\n")
@@ -58,26 +58,3 @@ z11_join_db_100m <- function(df, inspire_column, con, var = NULL) {
     dplyr::bind_cols(df, output)
   )
 }
-
-# z11_join_db_100m_2 <- function(df, inspire_column, con, var = NULL) {
-#   message("Prepare for joining...")
-#   #input <- data.frame(Gitter_ID_100m = gsub("^100m|[^0-9]", "", df[[inspire_column]]))
-#   input <- data.frame(Gitter_ID_100m = df[[inspire_column]])
-#
-#   DBI::dbWriteTable(con, "temp", input, temporary = TRUE, overwrite = TRUE)
-#
-#   message("Join data...")
-#   vars_query <- ifelse(is.null(var), "*", paste(c("Gitter_ID_100m", var), collapse = ", "))
-#   query <- sprintf("SELECT %s FROM temp
-#                    LEFT JOIN data_100m USING (Gitter_ID_100m);", vars_query)
-#
-#   res <- DBI::dbSendQuery(con, query)
-#   output <- DBI::dbFetch(res) %>%
-#     dplyr::select(-Gitter_ID_100m)
-#   DBI::dbClearResult(res)
-#
-#   message("Done!")
-#   return(
-#     dplyr::bind_cols(df, output)
-#   )
-# }

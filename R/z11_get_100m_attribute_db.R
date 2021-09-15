@@ -31,7 +31,7 @@ z11_get_100m_attribute_db <- function(attribute, con, as_raster = TRUE) {
   table <- switch(substring(attribute, 1, 3),
                   Ein = "bevoelkerung100m", DEM = "demographie100m", HAU = "haushalte100m",
                   FAM = "familien100m", GEB = "gebaeude100m", WOH = "wohnungen100m")
-  query <- sprintf("SELECT Gitter_ID_100m, %s FROM %s WHERE %s IS NOT NULL;", attribute, table, attribute)
+  query <- sprintf('SELECT "Gitter_ID_100m", "%s" FROM %s WHERE "%s" IS NOT NULL;', attribute, table, attribute)
   res <- DBI::dbSendQuery(con, query)
   requested_attribute <- DBI::dbFetch(res)
   DBI::dbClearResult(res)

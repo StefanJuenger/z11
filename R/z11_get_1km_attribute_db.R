@@ -24,7 +24,7 @@ z11_get_1km_attribute_db <- function(attribute, con, as_raster = TRUE) {
   # Get attribute from database
   message("Fetch attribute from database...")
   tab <- ifelse(grepl("\\_cat$", attribute), "klassiert1km", "spitz1km")
-  query <- sprintf("SELECT Gitter_ID_1km, %s FROM %s;", attribute, tab)
+  query <- sprintf('SELECT "Gitter_ID_1km", "%s" FROM %s;', attribute, tab)
   res <- DBI::dbSendQuery(con, query)
   requested_attribute <- DBI::dbFetch(res)
   DBI::dbClearResult(res)
@@ -34,13 +34,13 @@ z11_get_1km_attribute_db <- function(attribute, con, as_raster = TRUE) {
   requested_attribute <- requested_attribute %>%
     dplyr::bind_cols(., z11_extract_inspire_coordinates(.$Gitter_ID_1km)) %>%
     sf::st_as_sf(coords = c("X", "Y"), crs = 3035)
-  
+
   #Transform to raster
   if (isTRUE(as_raster)) {
     message("Transform to raster...")
     requested_attribute <- stars::st_rasterize(requested_attribute, dx = 1000, dy = 1000) %>%
       as("Raster")
   }
-    
+
   return(requested_attribute)
 }

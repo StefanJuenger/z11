@@ -38,7 +38,7 @@ z11_get_100m_attribute <-
     readRDS()
   } else {
     requested_attribute <-
-      paste0(data_location, "/100m/", attribute, ".rds") %>%
+      file.path(data_location, "/100m/", paste0(attribute, ".rds")) %>%
       readRDS()
   }
 
@@ -49,7 +49,7 @@ z11_get_100m_attribute <-
         z11_extract_inspire_coordinates(.$Gitter_ID_100m)
       ) %>%
       sf::st_as_sf(coords = c("X", "Y"), crs = 3035)
-    
+
     #Transform to raster
     if (isTRUE(as_raster)) {
       requested_attribute <- requested_attribute %>%
@@ -57,7 +57,7 @@ z11_get_100m_attribute <-
         as("Raster")
     }
   }
-  
+
   return(requested_attribute)
 }
 

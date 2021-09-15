@@ -19,12 +19,13 @@ Depends:
 Imports: 
     dplyr,
     tidyr,
-    dtplyr,
     sf,
     raster,
     stars,
     data.table,
-    magrittr
+    magrittr,
+	DBI,
+	purrr
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1

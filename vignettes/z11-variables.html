@@ -1,0 +1,2677 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Sarah Thiesen" />
+
+<meta name="date" content="2021-09-11" />
+
+<title>Zensus 2011 Variablen</title>
+
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
+<style type="text/css">
+.lightable-minimal {
+border-collapse: separate;
+border-spacing: 16px 1px;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-minimal td {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal th {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal thead tr:last-child th {
+border-bottom: 2px solid #00000050;
+empty-cells: hide;
+}
+.lightable-minimal tbody tr:first-child td {
+padding-top: 0.5em;
+}
+.lightable-minimal.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic {
+border-top: 0.16em solid #111111;
+border-bottom: 0.16em solid #111111;
+width: 100%;
+margin-bottom: 10px;
+margin: 10px 5px;
+}
+.lightable-classic tfoot tr td {
+border: 0;
+}
+.lightable-classic tfoot tr:first-child td {
+border-top: 0.14em solid #111111;
+}
+.lightable-classic caption {
+color: #222222;
+}
+.lightable-classic td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic thead tr:last-child th {
+border-bottom: 0.10em solid #111111;
+}
+.lightable-classic.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic-2 {
+border-top: 3px double #111111;
+border-bottom: 3px double #111111;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-classic-2 tfoot tr td {
+border: 0;
+}
+.lightable-classic-2 tfoot tr:first-child td {
+border-top: 3px double #111111;
+}
+.lightable-classic-2 caption {
+color: #222222;
+}
+.lightable-classic-2 td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic-2 th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic-2 tbody tr:last-child td {
+border-bottom: 3px double #111111;
+}
+.lightable-classic-2 thead tr:last-child th {
+border-bottom: 1px solid #111111;
+}
+.lightable-classic-2.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #EEE;
+border-collapse: collapse;
+margin-bottom: 10px;
+}
+.lightable-material tfoot tr td {
+border: 0;
+}
+.lightable-material tfoot tr:first-child td {
+border-top: 1px solid #EEE;
+}
+.lightable-material th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.lightable-material td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+border-top: 1px solid #eeeeee;
+}
+.lightable-material.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #ddd;
+}
+.lightable-material-dark {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #FFFFFF12;
+border-collapse: collapse;
+margin-bottom: 10px;
+background-color: #363640;
+}
+.lightable-material-dark tfoot tr td {
+border: 0;
+}
+.lightable-material-dark tfoot tr:first-child td {
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF60;
+}
+.lightable-material-dark td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF;
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark.lightable-hover tbody tr:hover {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material-dark.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #FFFFFF12;
+}
+.lightable-paper {
+width: 100%;
+margin-bottom: 10px;
+color: #444;
+}
+.lightable-paper tfoot tr td {
+border: 0;
+}
+.lightable-paper tfoot tr:first-child td {
+border-top: 1px solid #00000020;
+}
+.lightable-paper thead tr:last-child th {
+color: #666;
+vertical-align: bottom;
+border-bottom: 1px solid #00000020;
+line-height: 1.15em;
+padding: 10px 5px;
+}
+.lightable-paper td {
+vertical-align: middle;
+border-bottom: 1px solid #00000010;
+line-height: 1.15em;
+padding: 7px 5px;
+}
+.lightable-paper.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-paper.lightable-striped tbody tr:nth-child(even) {
+background-color: #00000008;
+}
+.lightable-paper.lightable-striped tbody td {
+border: 0;
+}
+</style>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Zensus 2011 Variablen</h1>
+<h4 class="author">Sarah Thiesen</h4>
+<h4 class="date">2021-09-11</h4>
+
+
+
+<div id="km-gitterzellen" class="section level2">
+<h2>1km Gitterzellen</h2>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Beschreibung
+</th>
+<th style="text-align:left;">
+Variablenname
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="10">
+<td colspan="2" style="background-color: #888; color: #fff;">
+<strong>Spitze Werte</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Anteil der Bevölkerung ab 65 Jahre an der Gesamtbevölkerung
+</td>
+<td style="text-align:left;">
+ab65_A
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Durchschnittsalter der Bevölkerung
+</td>
+<td style="text-align:left;">
+Alter_D
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Anteil der Ausländer an der Gesamtbevölkerung
+</td>
+<td style="text-align:left;">
+Auslaender_A
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Bevölkerung
+</td>
+<td style="text-align:left;">
+Einwohner
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Anteil der weiblichen Bevölkerung an der Gesamtbevölkerung
+</td>
+<td style="text-align:left;">
+Frauen_A
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Durchschnittliche Haushaltsgröße
+</td>
+<td style="text-align:left;">
+HHGroesse_D
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Anteil der leerstehenden Wohnungen an den Wohnungen
+</td>
+<td style="text-align:left;">
+Leerstandsquote
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Anteil der Bevölkerung unter 18 Jahre an der Gesamtbevölkerung
+</td>
+<td style="text-align:left;">
+unter18_A
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Durchschnittliche Wohnfläche je Bewohner
+</td>
+<td style="text-align:left;">
+Wohnfl_Bew_D
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Durchschnittliche Wohnfläche je Wohnung
+</td>
+<td style="text-align:left;">
+Wohnfl_Whg_D
+</td>
+</tr>
+<tr grouplength="10">
+<td colspan="2" style="background-color: #888; color: #fff;">
+<strong>Klassierte Werte</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Anteil der Bevölkerung ab 65 Jahre an der Gesamtbevölkerung
+</td>
+<td style="text-align:left;">
+ab65_A_cat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Durchschnittsalter der Bevölkerung
+</td>
+<td style="text-align:left;">
+Alter_D_cat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Anteil der Ausländer an der Gesamtbevölkerung
+</td>
+<td style="text-align:left;">
+Auslaender_A_cat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Bevölkerung
+</td>
+<td style="text-align:left;">
+Einwohner_cat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Anteil der weiblichen Bevölkerung an der Gesamtbevölkerung
+</td>
+<td style="text-align:left;">
+Frauen_A_cat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Durchschnittliche Haushaltsgröße
+</td>
+<td style="text-align:left;">
+HHGroesse_D_cat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Anteil der leerstehenden Wohnungen an den Wohnungen
+</td>
+<td style="text-align:left;">
+Leerstandsquote_cat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Anteil der Bevölkerung unter 18 Jahre an der Gesamtbevölkerung
+</td>
+<td style="text-align:left;">
+unter18_A_cat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Durchschnittliche Wohnfläche je Bewohner
+</td>
+<td style="text-align:left;">
+Wohnfl_Bew_D_cat
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Durchschnittliche Wohnfläche je Wohnung
+</td>
+<td style="text-align:left;">
+Wohnfl_Whg_D_cat
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="m-gitterzellen" class="section level2">
+<h2>100m Gitterzellen</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Beschreibung
+</th>
+<th style="text-align:left;">
+Ausprägung
+</th>
+<th style="text-align:left;">
+Variablenname
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="1">
+<td colspan="3" style="background-color: #888; color: #fff;">
+<strong>Bevölkerung</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Einwohnerzahl
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Einwohner_100m
+</td>
+</tr>
+<tr grouplength="58">
+<td colspan="3" style="background-color: #888; color: #fff;">
+<strong>Demographie</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Gesamtzahl der Einheiten
+</td>
+<td style="text-align:left;">
+Einheiten insgesamt
+</td>
+<td style="text-align:left;">
+DEM_INSGESAMT_0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="9">
+Alter (10er-Jahresgruppen)
+</td>
+<td style="text-align:left;">
+Unter 10
+</td>
+<td style="text-align:left;">
+DEM_ALTER_10JG_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10 - 19
+</td>
+<td style="text-align:left;">
+DEM_ALTER_10JG_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20 - 29
+</td>
+<td style="text-align:left;">
+DEM_ALTER_10JG_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30 - 39
+</td>
+<td style="text-align:left;">
+DEM_ALTER_10JG_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+40 - 49
+</td>
+<td style="text-align:left;">
+DEM_ALTER_10JG_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+50 - 59
+</td>
+<td style="text-align:left;">
+DEM_ALTER_10JG_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+60 - 69
+</td>
+<td style="text-align:left;">
+DEM_ALTER_10JG_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+70 - 79
+</td>
+<td style="text-align:left;">
+DEM_ALTER_10JG_8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+80 und älter
+</td>
+<td style="text-align:left;">
+DEM_ALTER_10JG_9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="5">
+Alter (5 Altersklassen)
+</td>
+<td style="text-align:left;">
+Unter 18
+</td>
+<td style="text-align:left;">
+DEM_ALTER_KURZ_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+18 - 29
+</td>
+<td style="text-align:left;">
+DEM_ALTER_KURZ_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30 - 49
+</td>
+<td style="text-align:left;">
+DEM_ALTER_KURZ_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+50 - 64
+</td>
+<td style="text-align:left;">
+DEM_ALTER_KURZ_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+65 und älter
+</td>
+<td style="text-align:left;">
+DEM_ALTER_KURZ_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="8">
+Familienstand (ausführlich)
+</td>
+<td style="text-align:left;">
+Ledig
+</td>
+<td style="text-align:left;">
+DEM_FAMSTND_AUSF_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Verheiratet
+</td>
+<td style="text-align:left;">
+DEM_FAMSTND_AUSF_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Verwitwet
+</td>
+<td style="text-align:left;">
+DEM_FAMSTND_AUSF_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Geschieden
+</td>
+<td style="text-align:left;">
+DEM_FAMSTND_AUSF_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Eingetr. Lebenspartnerschaft
+</td>
+<td style="text-align:left;">
+DEM_FAMSTND_AUSF_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Eingetr. Lebensparter/-in verstorben
+</td>
+<td style="text-align:left;">
+DEM_FAMSTND_AUSF_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Eingetr. Lebenspartnerschaft aufgehoben
+</td>
+<td style="text-align:left;">
+DEM_FAMSTND_AUSF_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ohne Angabe
+</td>
+<td style="text-align:left;">
+DEM_FAMSTND_AUSF_8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="5">
+Geburtsland (Gruppen)
+</td>
+<td style="text-align:left;">
+Deutschland
+</td>
+<td style="text-align:left;">
+DEM_GEBURTLAND_GRP_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EU27-Land
+</td>
+<td style="text-align:left;">
+DEM_GEBURTLAND_GRP_21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sonstiges Europa
+</td>
+<td style="text-align:left;">
+DEM_GEBURTLAND_GRP_22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sonstige Welt
+</td>
+<td style="text-align:left;">
+DEM_GEBURTLAND_GRP_23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sonstige
+</td>
+<td style="text-align:left;">
+DEM_GEBURTLAND_GRP_24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="2">
+Geschlecht
+</td>
+<td style="text-align:left;">
+Männlich
+</td>
+<td style="text-align:left;">
+DEM_GESCHLECHT_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Weiblich
+</td>
+<td style="text-align:left;">
+DEM_GESCHLECHT_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="3">
+Religion
+</td>
+<td style="text-align:left;">
+Römisch-katholische Kirche (öffentlich-rechtlich)
+</td>
+<td style="text-align:left;">
+DEM_RELIGION_KURZ_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Evangelische Kirche (öffentlich-rechtlich)
+</td>
+<td style="text-align:left;">
+DEM_RELIGION_KURZ_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sonstige, keine, ohne Angabe
+</td>
+<td style="text-align:left;">
+DEM_RELIGION_KURZ_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="5">
+Staatsangehörigkeitsgruppen
+</td>
+<td style="text-align:left;">
+Deutschland
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_GRP_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EU27-Land
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_GRP_21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sonstiges Europa
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_GRP_22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sonstige Welt
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_GRP_23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sonstiges
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_GRP_24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="14">
+Staatsangehörigkeit nach ausgewählten Ländern
+</td>
+<td style="text-align:left;">
+Deutschland
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bosnien und Herzegowina
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Griechenland
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Italien
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kasachstan
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kroatien
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Niederlande
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Österreich
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Polen
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rumänien
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Russ. Föderation
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Türkei
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ukraine
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sonstige
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_HLND_14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="2">
+Staatsangehörigkeit
+</td>
+<td style="text-align:left;">
+Deutschland
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_KURZ_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ausland
+</td>
+<td style="text-align:left;">
+DEM_STAATSANGE_KURZ_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="4">
+Zahl der Staatsangehörigkeiten
+</td>
+<td style="text-align:left;">
+Eine Staatsangehörigkeit
+</td>
+<td style="text-align:left;">
+DEM_STAATZHL_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mehrere, deutsch und ausländisch
+</td>
+<td style="text-align:left;">
+DEM_STAATZHL_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mehrere, nur ausländisch
+</td>
+<td style="text-align:left;">
+DEM_STAATZHL_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nicht bekannt
+</td>
+<td style="text-align:left;">
+DEM_STAATZHL_4
+</td>
+</tr>
+<tr grouplength="22">
+<td colspan="3" style="background-color: #888; color: #fff;">
+<strong>Familien</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Gesamtzahl der Einheiten
+</td>
+<td style="text-align:left;">
+Einheiten insgesamt
+</td>
+<td style="text-align:left;">
+FAM_INSGESAMT_0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="13">
+Typ der Kernfamilie (nach Kindern)
+</td>
+<td style="text-align:left;">
+Ehepaare ohne Kind
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ehepaare, mind. 1 Kind &lt; 18
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ehepaare alle Kinder ≥ 18
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Eingetr. Lebenspartnerschaften ohne Kind
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Eingetr. Lebenspartnerschaften mind. 1 Kind &lt; 18
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Eingetr. Lebenspartnerschaften alle Kinder ≥ 18
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nichteheliche Lebensgem. ohne Kind
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nichteheliche Lebensgem. mind. 1 Kind &lt; 18
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nichteheliche Lebensgem. alle Kinder ≥ 18
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alleinerziehende Väter mind. 1 Kind &lt; 18
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alleinerziehende Väter alle Kinder ≥ 18
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alleinerziehende Mütter mind. 1 Kind &lt; 18
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alleinerziehende Mütter alle Kinder ≥ 18
+</td>
+<td style="text-align:left;">
+FAM_FAMTYP_KIND_13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="5">
+Größe der Kernfamilie
+</td>
+<td style="text-align:left;">
+2 Personen
+</td>
+<td style="text-align:left;">
+FAM_FAMGROESS_KLASS_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3 Personen
+</td>
+<td style="text-align:left;">
+FAM_FAMGROESS_KLASS_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4 Personen
+</td>
+<td style="text-align:left;">
+FAM_FAMGROESS_KLASS_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5 Personen
+</td>
+<td style="text-align:left;">
+FAM_FAMGROESS_KLASS_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6 und mehr Personen
+</td>
+<td style="text-align:left;">
+FAM_FAMGROESS_KLASS_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="3">
+Seniorenstatus eines privaten Haushalts
+</td>
+<td style="text-align:left;">
+Haushalte mit ausschließlich Senioren/-innen
+</td>
+<td style="text-align:left;">
+FAM_HHTYP_SENIOR_HH_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Haushalte mit Senioren/-innen und Jüngeren
+</td>
+<td style="text-align:left;">
+FAM_HHTYP_SENIOR_HH_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Haushalte ohne Senioren/-innen
+</td>
+<td style="text-align:left;">
+FAM_HHTYP_SENIOR_HH_3
+</td>
+</tr>
+<tr grouplength="47">
+<td colspan="3" style="background-color: #888; color: #fff;">
+<strong>Gebäude</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Gesamtzahl der Einheiten
+</td>
+<td style="text-align:left;">
+Einheiten insgesamt
+</td>
+<td style="text-align:left;">
+GEB_INSGESAMT_0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="3">
+Art des Gebäudes
+</td>
+<td style="text-align:left;">
+Wohngebäude (ohne Wohnheime)
+</td>
+<td style="text-align:left;">
+GEB_GEBAEUDEART_SYS_111
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wohnheim
+</td>
+<td style="text-align:left;">
+GEB_GEBAEUDEART_SYS_112
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sonstiges Gebäude mit Wohnraum
+</td>
+<td style="text-align:left;">
+GEB_GEBAEUDEART_SYS_12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="10">
+Baujahr (Mikrozensus-Klassen)
+</td>
+<td style="text-align:left;">
+Vor 1919
+</td>
+<td style="text-align:left;">
+GEB_BAUJAHR_MZ_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1919 - 1948
+</td>
+<td style="text-align:left;">
+GEB_BAUJAHR_MZ_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1949 - 1978
+</td>
+<td style="text-align:left;">
+GEB_BAUJAHR_MZ_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1979 - 1986
+</td>
+<td style="text-align:left;">
+GEB_BAUJAHR_MZ_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1987 - 1990
+</td>
+<td style="text-align:left;">
+GEB_BAUJAHR_MZ_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1991 - 1995
+</td>
+<td style="text-align:left;">
+GEB_BAUJAHR_MZ_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1996 - 2000
+</td>
+<td style="text-align:left;">
+GEB_BAUJAHR_MZ_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2001 - 2004
+</td>
+<td style="text-align:left;">
+GEB_BAUJAHR_MZ_8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005 - 2008
+</td>
+<td style="text-align:left;">
+GEB_BAUJAHR_MZ_9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009 und später
+</td>
+<td style="text-align:left;">
+GEB_BAUJAHR_MZ_10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="8">
+Eigentumsform des Gebäudes
+</td>
+<td style="text-align:left;">
+Gemeinschaft von Wohnungseigentümern/-innen
+</td>
+<td style="text-align:left;">
+GEB_EIGENTUM_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Privatperson/en
+</td>
+<td style="text-align:left;">
+GEB_EIGENTUM_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wohnungsgenossenschaft
+</td>
+<td style="text-align:left;">
+GEB_EIGENTUM_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kommune oder Kommunales Wohnungsunternehmen
+</td>
+<td style="text-align:left;">
+GEB_EIGENTUM_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Privatwirtschaftliches Wohnungsunternehmen
+</td>
+<td style="text-align:left;">
+GEB_EIGENTUM_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Anderes privatwirtschaftliches Unternehmen
+</td>
+<td style="text-align:left;">
+GEB_EIGENTUM_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bund oder Land
+</td>
+<td style="text-align:left;">
+GEB_EIGENTUM_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Organisation ohne Erwerbszweck (z.B. Kirche)
+</td>
+<td style="text-align:left;">
+GEB_EIGENTUM_8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="4">
+Gebäudetyp-Bauweise
+</td>
+<td style="text-align:left;">
+Freistehendes Haus
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPBAUWEISE_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Doppelhaus hälfte
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPBAUWEISE_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gereihtes Haus
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPBAUWEISE_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Anderer Gebäudetyp
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPBAUWEISE_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="10">
+Gebäudetyp-Größe
+</td>
+<td style="text-align:left;">
+Freistehendes Einfamilienhaus
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPGROESSE_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einfamilienhaus: Doppelhaushälfte
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPGROESSE_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einfamilienhaus: Reihenhaus
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPGROESSE_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Freistehendes Zweifamilienhaus
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPGROESSE_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zweifamilienhaus: Doppelhaushälfte
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPGROESSE_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zweifamilienhaus: Reihenhaus
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPGROESSE_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mehrfamilienhaus: 3-6 Wohnungen
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPGROESSE_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mehrfamilienhaus: 7-12 Wohnungen
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPGROESSE_8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mehrfamilienhaus: 13 und mehr Wohnungen
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPGROESSE_9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Anderer Gebäudetyp
+</td>
+<td style="text-align:left;">
+GEB_GEBTYPGROESSE_10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="6">
+Heizungsart
+</td>
+<td style="text-align:left;">
+Fernheizung (Fernwärme)
+</td>
+<td style="text-align:left;">
+GEB_HEIZTYP_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Etagenheizung
+</td>
+<td style="text-align:left;">
+GEB_HEIZTYP_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blockheizung
+</td>
+<td style="text-align:left;">
+GEB_HEIZTYP_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zentralheizung
+</td>
+<td style="text-align:left;">
+GEB_HEIZTYP_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einzel-/Mehrraumöfen (auch Nachtspeicherheizung)
+</td>
+<td style="text-align:left;">
+GEB_HEIZTYP_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Keine Heizung im Gebäude oder in den Wohnungen
+</td>
+<td style="text-align:left;">
+GEB_HEIZTYP_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="5">
+Zahl der Wohnungen im Gebäude
+</td>
+<td style="text-align:left;">
+1 Wohnung
+</td>
+<td style="text-align:left;">
+GEB_ZAHLWOHNGN_HHG_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2 Wohnungen
+</td>
+<td style="text-align:left;">
+GEB_ZAHLWOHNGN_HHG_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3 - 6 Wohnungen
+</td>
+<td style="text-align:left;">
+GEB_ZAHLWOHNGN_HHG_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7 - 12 Wohnungen
+</td>
+<td style="text-align:left;">
+GEB_ZAHLWOHNGN_HHG_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13 und mehr Wohnungen
+</td>
+<td style="text-align:left;">
+GEB_ZAHLWOHNGN_HHG_5
+</td>
+</tr>
+<tr grouplength="19">
+<td colspan="3" style="background-color: #888; color: #fff;">
+<strong>Haushalte</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Gesamtzahl der Einheiten
+</td>
+<td style="text-align:left;">
+Einheiten insgesamt
+</td>
+<td style="text-align:left;">
+HAU_INSGESAMT_0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="5">
+Typ des privaten Haushalts (nach Familien)
+</td>
+<td style="text-align:left;">
+Einpersonenhaushalte (Singlehaushalte)
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_FAM_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paare ohne Kind(er)
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_FAM_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paare mit Kind(ern)
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_FAM_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alleinerziehende Elternteile
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_FAM_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mehrpersonenhaushalte ohne Kernfamilie
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_FAM_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="7">
+Typ des privaten Haushalts (nach Lebensform)
+</td>
+<td style="text-align:left;">
+Einpersonenhaushalte (Singlehaushalte)
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_LEB_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ehepaare
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_LEB_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Eingetr. Lebenspartnerschaften
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_LEB_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nichteheliche Lebensgemeinschaften
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_LEB_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alleinerziehende Mütter
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_LEB_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alleinerziehende Väter
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_LEB_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mehrpersonenhaushalte ohne Kernfamilie
+</td>
+<td style="text-align:left;">
+HAU_HHTYP_LEB_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="6">
+Größe des privaten Haushalts
+</td>
+<td style="text-align:left;">
+1 Person
+</td>
+<td style="text-align:left;">
+HAU_HHGROESS_KLASS_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2 Personen
+</td>
+<td style="text-align:left;">
+HAU_HHGROESS_KLASS_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3 Personen
+</td>
+<td style="text-align:left;">
+HAU_HHGROESS_KLASS_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4 Personen
+</td>
+<td style="text-align:left;">
+HAU_HHGROESS_KLASS_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5 Personen
+</td>
+<td style="text-align:left;">
+HAU_HHGROESS_KLASS_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6 und mehr Personen
+</td>
+<td style="text-align:left;">
+HAU_HHGROESS_KLASS_6
+</td>
+</tr>
+<tr grouplength="82">
+<td colspan="3" style="background-color: #888; color: #fff;">
+<strong>Wohnungen</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+Gesamtzahl der Einheiten
+</td>
+<td style="text-align:left;">
+Einheiten insgesamt
+</td>
+<td style="text-align:left;">
+WOH_INSGESAMT_0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="6">
+Nutzung nach Belegung durch Haushalt
+</td>
+<td style="text-align:left;">
+Eigentum: mit aktuell geführtem Haushalt
+</td>
+<td style="text-align:left;">
+WOH_NUTZUNG_DETAIL_HHGEN_11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Eigentum: ohne aktuell geführtem Haushalt
+</td>
+<td style="text-align:left;">
+WOH_NUTZUNG_DETAIL_HHGEN_12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vermietet: mit aktuell geführtem Haushalt
+</td>
+<td style="text-align:left;">
+WOH_NUTZUNG_DETAIL_HHGEN_21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vermietet: ohne aktuell geführtem Haushalt
+</td>
+<td style="text-align:left;">
+WOH_NUTZUNG_DETAIL_HHGEN_22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ferien- und Freizeitwohnung
+</td>
+<td style="text-align:left;">
+WOH_NUTZUNG_DETAIL_HHGEN_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leer stehend
+</td>
+<td style="text-align:left;">
+WOH_NUTZUNG_DETAIL_HHGEN_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="5">
+Eigentumsverhältnisse der Wohnung
+</td>
+<td style="text-align:left;">
+Privatperson/-en
+</td>
+<td style="text-align:left;">
+WOH_WOHNEIGENTUM_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Privatwirtschaftliche Unternehmen (jur. Personen)
+</td>
+<td style="text-align:left;">
+WOH_WOHNEIGENTUM_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Öffentliche Unternehmen, Kirchen o.ä.
+</td>
+<td style="text-align:left;">
+WOH_WOHNEIGENTUM_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wohnungsgenossenschaft
+</td>
+<td style="text-align:left;">
+WOH_WOHNEIGENTUM_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Trifft nicht zu (da keine Eigentumswohnung)
+</td>
+<td style="text-align:left;">
+WOH_WOHNEIGENTUM_99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="17">
+Fläche der Wohnung (10m2 Intervalle)
+</td>
+<td style="text-align:left;">
+Unter 30
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30 - 39
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+40 - 49
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+50 - 59
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+60 - 69
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+70 - 79
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+80 - 89
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+90 - 99
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+100 - 109
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+110 - 119
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+120 - 129
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+130 - 139
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+140 - 149
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+150 - 159
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+160 -169
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+170 - 179
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180 und mehr
+</td>
+<td style="text-align:left;">
+WOH_WOHNFLAECHE_10S_17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="7">
+Zahl der Räume
+</td>
+<td style="text-align:left;">
+1 Raum
+</td>
+<td style="text-align:left;">
+WOH_RAUMANZAHL_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2 Räume
+</td>
+<td style="text-align:left;">
+WOH_RAUMANZAHL_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3 Räume
+</td>
+<td style="text-align:left;">
+WOH_RAUMANZAHL_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4 Räume
+</td>
+<td style="text-align:left;">
+WOH_RAUMANZAHL_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5 Räume
+</td>
+<td style="text-align:left;">
+WOH_RAUMANZAHL_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6 Räume
+</td>
+<td style="text-align:left;">
+WOH_RAUMANZAHL_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7 und mehr Räume
+</td>
+<td style="text-align:left;">
+WOH_RAUMANZAHL_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="3">
+Art des Gebäudes
+</td>
+<td style="text-align:left;">
+Wohngebäude (ohne Wohnheime)
+</td>
+<td style="text-align:left;">
+WOH_GEBAEUDEART_SYS_111
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wohnheim
+</td>
+<td style="text-align:left;">
+WOH_GEBAEUDEART_SYS_112
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sonstiges Gebäude mit Wohnraum
+</td>
+<td style="text-align:left;">
+WOH_GEBAEUDEART_SYS_12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="10">
+Baujahr (Mikrozensus-Klassen)
+</td>
+<td style="text-align:left;">
+Vor 1919
+</td>
+<td style="text-align:left;">
+WOH_BAUJAHR_MZ_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1919 - 1948
+</td>
+<td style="text-align:left;">
+WOH_BAUJAHR_MZ_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1949 - 1978
+</td>
+<td style="text-align:left;">
+WOH_BAUJAHR_MZ_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1979 - 1986
+</td>
+<td style="text-align:left;">
+WOH_BAUJAHR_MZ_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1987 - 1990
+</td>
+<td style="text-align:left;">
+WOH_BAUJAHR_MZ_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1991 - 1995
+</td>
+<td style="text-align:left;">
+WOH_BAUJAHR_MZ_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1996 - 2000
+</td>
+<td style="text-align:left;">
+WOH_BAUJAHR_MZ_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2001 - 2004
+</td>
+<td style="text-align:left;">
+WOH_BAUJAHR_MZ_8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005 - 2008
+</td>
+<td style="text-align:left;">
+WOH_BAUJAHR_MZ_9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009 und später
+</td>
+<td style="text-align:left;">
+WOH_BAUJAHR_MZ_10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="8">
+Eigentumsform des Gebäudes
+</td>
+<td style="text-align:left;">
+Gemeinschaft von Wohnungseigentümern/-innen
+</td>
+<td style="text-align:left;">
+WOH_EIGENTUM_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Privatperson/en
+</td>
+<td style="text-align:left;">
+WOH_EIGENTUM_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wohnungsgenossenschaft
+</td>
+<td style="text-align:left;">
+WOH_EIGENTUM_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kommune oder Kommunales Wohnungsunternehmen
+</td>
+<td style="text-align:left;">
+WOH_EIGENTUM_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Privatwirtschaftliches Wohnungsunternehmen
+</td>
+<td style="text-align:left;">
+WOH_EIGENTUM_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Anderes privatwirtschaftliches Unternehmen
+</td>
+<td style="text-align:left;">
+WOH_EIGENTUM_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bund oder Land
+</td>
+<td style="text-align:left;">
+WOH_EIGENTUM_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Organisation ohne Erwerbszweck (z.B. Kirche)
+</td>
+<td style="text-align:left;">
+WOH_EIGENTUM_8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="4">
+Gebäudetyp-Bauweise
+</td>
+<td style="text-align:left;">
+Freistehendes Haus
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPBAUWEISE_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Doppelhaus hälfte
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPBAUWEISE_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gereihtes Haus
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPBAUWEISE_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Anderer Gebäudetyp
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPBAUWEISE_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="10">
+Gebäudetyp-Größe
+</td>
+<td style="text-align:left;">
+Freistehendes Einfamilienhaus
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPGROESSE_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einfamilienhaus: Doppelhaushälfte
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPGROESSE_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einfamilienhaus: Reihenhaus
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPGROESSE_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Freistehendes Zweifamilienhaus
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPGROESSE_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zweifamilienhaus: Doppelhaushälfte
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPGROESSE_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zweifamilienhaus: Reihenhaus
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPGROESSE_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mehrfamilienhaus: 3-6 Wohnungen
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPGROESSE_7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mehrfamilienhaus: 7-12 Wohnungen
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPGROESSE_8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mehrfamilienhaus: 13 und mehr Wohnungen
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPGROESSE_9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Anderer Gebäudetyp
+</td>
+<td style="text-align:left;">
+WOH_GEBTYPGROESSE_10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="6">
+Heizungsart
+</td>
+<td style="text-align:left;">
+Fernheizung (Fernwärme)
+</td>
+<td style="text-align:left;">
+WOH_HEIZTYP_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Etagenheizung
+</td>
+<td style="text-align:left;">
+WOH_HEIZTYP_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blockheizung
+</td>
+<td style="text-align:left;">
+WOH_HEIZTYP_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zentralheizung
+</td>
+<td style="text-align:left;">
+WOH_HEIZTYP_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Einzel-/Mehrraumöfen (auch Nachtspeicherheizung)
+</td>
+<td style="text-align:left;">
+WOH_HEIZTYP_5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Keine Heizung im Gebäude oder in den Wohnungen
+</td>
+<td style="text-align:left;">
+WOH_HEIZTYP_6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;vertical-align: top !important;" indentlevel="1" rowspan="5">
+Zahl der Wohnungen im Gebäude
+</td>
+<td style="text-align:left;">
+1 Wohnung
+</td>
+<td style="text-align:left;">
+WOH_ZAHLWOHNGN_HHG_1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2 Wohnungen
+</td>
+<td style="text-align:left;">
+WOH_ZAHLWOHNGN_HHG_2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3 - 6 Wohnungen
+</td>
+<td style="text-align:left;">
+WOH_ZAHLWOHNGN_HHG_3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7 - 12 Wohnungen
+</td>
+<td style="text-align:left;">
+WOH_ZAHLWOHNGN_HHG_4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13 und mehr Wohnungen
+</td>
+<td style="text-align:left;">
+WOH_ZAHLWOHNGN_HHG_5
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

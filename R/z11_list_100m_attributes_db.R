@@ -8,17 +8,20 @@
 #' Census folks plus a pattern denoting the code of the attribute in the
 #' original dumped CSV file.
 #'
-#' @return Character vector
+#' @return List
 #'
 #' @importFrom magrittr %>%
+#' @importFrom DBI dbListFields
 #'
 #' @export
-z11_list_100m_attributes <- function() {
-  system.file("extdata", "index_100m", package = "z11") %>%
-    readr::read_lines()
-  # system.file("extdata", package = "z11") %>%
-  #   paste0("/100m/") %>%
-  #   list.files() %>%
-  #   sub(".rds", "", .) %>%
-  #   setdiff(c("Gitter_ID_100m_x_y", "INSGESAMT_0"))
+z11_list_100m_attributes_db <- function(con) {
+  c("Population" = "bevoelkerung100m", 
+    "Demography" = "demographie100m", 
+    "Households" = "haushalte100m",
+    "Families" = "familien100m", 
+    "Buildings" = "gebaeude100m", 
+    "Flats" = "wohnungen100m") %>%
+    lapply(function(x) DBI::dbListFields(con, x) %>% 
+             base::subset(., . != "Gitter_ID_100m")
+           )
 }

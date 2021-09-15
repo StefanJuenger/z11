@@ -1,0 +1,91 @@
+Merkmal;Code;Text;Erläuterungen
+INSGESAMT;0;Einheiten insgesamt;"Gesamtzahl der Einheiten in der Gitterzelle\nKann aufgrund der Geheimhaltung  von der Summe über alle Ausprägungen der anderen Merkmale abweichen"
+NUTZUNG_DETAIL_HHGEN;1; Von Eigentümer/-in bewohnt;Nutzung nach Belegung durch Haushalt
+NUTZUNG_DETAIL_HHGEN;11; Eigentum: mit aktuell geführtem Haushalt;Nutzung nach Belegung durch Haushalt
+NUTZUNG_DETAIL_HHGEN;12; Eigentum: ohne aktuell geführtem Haushalt;Nutzung nach Belegung durch Haushalt
+NUTZUNG_DETAIL_HHGEN;2; Zu Wohnzwecken vermietet;Nutzung nach Belegung durch Haushalt
+NUTZUNG_DETAIL_HHGEN;21; Vermietet: mit aktuell geführtem Haushalt;Nutzung nach Belegung durch Haushalt
+NUTZUNG_DETAIL_HHGEN;22; Vermietet: ohne aktuell geführtem Haushalt;Nutzung nach Belegung durch Haushalt
+NUTZUNG_DETAIL_HHGEN;3; Ferien- und Freizeitwohnung;Nutzung nach Belegung durch Haushalt
+NUTZUNG_DETAIL_HHGEN;4; Leer stehend;Nutzung nach Belegung durch Haushalt
+NUTZUNG_DETAIL_HHGEN;5; Diplomaten-/Streitkräftewohnung;Nutzung nach Belegung durch Haushalt
+NUTZUNG_DETAIL_HHGEN;99; Gewerbl. Nutzung;Nutzung nach Belegung durch Haushalt
+WOHNEIGENTUM;1; Privatperson/-en;Eigentumsverhältnisse der Wohnung
+WOHNEIGENTUM;2; Privatwirtschaftliche Unternehmen (jur. Personen);Eigentumsverhältnisse der Wohnung
+WOHNEIGENTUM;3; Öffentliche Unternehmen, Kirchen o.ä.;Eigentumsverhältnisse der Wohnung
+WOHNEIGENTUM;4; Wohnungsgenossenschaft;Eigentumsverhältnisse der Wohnung
+WOHNEIGENTUM;99; Trifft nicht zu (da keine Eigentumswohnung);Eigentumsverhältnisse der Wohnung
+WOHNFLAECHE_10S;01;Unter 30;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;02;30 - 39;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;03;40 - 49;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;04;50 - 59;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;05;60 - 69;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;06;70 - 79;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;07;80 - 89;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;08;90 - 99;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;09;100 - 109;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;10;110 - 119;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;11;120 - 129;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;12;130 - 139;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;13;140 - 149;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;14;150 - 159;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;15;160 -169;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;16;170 - 179;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;17;180 und mehr;Fläche der Wohnung (10m2 Intervalle)
+WOHNFLAECHE_10S;99;t.n.z., gewerblich;Fläche der Wohnung (10m2 Intervalle)
+RAUMANZAHL;1; 1 Raum;Zahl der Räume
+RAUMANZAHL;2; 2 Räume;Zahl der Räume
+RAUMANZAHL;3; 3 Räume;Zahl der Räume
+RAUMANZAHL;4; 4 Räume;Zahl der Räume
+RAUMANZAHL;5; 5 Räume;Zahl der Räume
+RAUMANZAHL;6; 6 Räume;Zahl der Räume
+RAUMANZAHL;7; 7 und mehr Räume;Zahl der Räume
+RAUMANZAHL;99; t.n.z., gewerblich;Zahl der Räume
+GEBAEUDEART_SYS;1; Gebäude mit Wohnraum;Art des Gebäudes 
+GEBAEUDEART_SYS;11; Wohngebäude;Art des Gebäudes 
+GEBAEUDEART_SYS;111; Wohngebäude (ohne Wohnheime);Art des Gebäudes 
+GEBAEUDEART_SYS;112; Wohnheim;Art des Gebäudes 
+GEBAEUDEART_SYS;12; Sonstiges Gebäude mit Wohnraum;Art des Gebäudes 
+BAUJAHR_MZ;1; Vor 1919;Baujahr (Mikrozensus-Klassen) 
+BAUJAHR_MZ;2; 1919 - 1948;Baujahr (Mikrozensus-Klassen) 
+BAUJAHR_MZ;3; 1949 - 1978;Baujahr (Mikrozensus-Klassen) 
+BAUJAHR_MZ;4; 1979 - 1986;Baujahr (Mikrozensus-Klassen) 
+BAUJAHR_MZ;5; 1987 - 1990;Baujahr (Mikrozensus-Klassen) 
+BAUJAHR_MZ;6; 1991 - 1995;Baujahr (Mikrozensus-Klassen) 
+BAUJAHR_MZ;7; 1996 - 2000;Baujahr (Mikrozensus-Klassen) 
+BAUJAHR_MZ;8; 2001 - 2004;Baujahr (Mikrozensus-Klassen) 
+BAUJAHR_MZ;9; 2005 - 2008;Baujahr (Mikrozensus-Klassen) 
+BAUJAHR_MZ;10; 2009 und später;Baujahr (Mikrozensus-Klassen) 
+EIGENTUM;1; Gemeinschaft von Wohnungseigentümern/-innen;Eigentumsform des Gebäudes 
+EIGENTUM;2; Privatperson/en;Eigentumsform des Gebäudes 
+EIGENTUM;3; Wohnungsgenossenschaft;Eigentumsform des Gebäudes 
+EIGENTUM;4; Kommune oder Kommunales Wohnungsunternehmen;Eigentumsform des Gebäudes 
+EIGENTUM;5; Privatwirtschaftliches Wohnungsunternehmen;Eigentumsform des Gebäudes 
+EIGENTUM;6; Anderes privatwirtschaftliches Unternehmen;Eigentumsform des Gebäudes 
+EIGENTUM;7; Bund oder Land;Eigentumsform des Gebäudes 
+EIGENTUM;8; Organisation ohne Erwerbszweck (z.B. Kirche);Eigentumsform des Gebäudes 
+GEBTYPBAUWEISE;1; Freistehendes Haus;Gebäudetyp-Bauweise 
+GEBTYPBAUWEISE;2; Doppelhaus hälfte;Gebäudetyp-Bauweise 
+GEBTYPBAUWEISE;3; Gereihtes Haus ;Gebäudetyp-Bauweise 
+GEBTYPBAUWEISE;4; Anderer Gebäudetyp;Gebäudetyp-Bauweise 
+GEBTYPGROESSE;1; Freistehendes Einfamilienhaus;Gebäudetyp-Größe 
+GEBTYPGROESSE;2; Einfamilienhaus: Doppelhaushälfte;Gebäudetyp-Größe 
+GEBTYPGROESSE;3; Einfamilienhaus: Reihenhaus;Gebäudetyp-Größe 
+GEBTYPGROESSE;4; Freistehendes Zweifamilienhaus;Gebäudetyp-Größe 
+GEBTYPGROESSE;5; Zweifamilienhaus: Doppelhaushälfte;Gebäudetyp-Größe 
+GEBTYPGROESSE;6; Zweifamilienhaus: Reihenhaus;Gebäudetyp-Größe 
+GEBTYPGROESSE;7; Mehrfamilienhaus: 3-6 Wohnungen;Gebäudetyp-Größe 
+GEBTYPGROESSE;8; Mehrfamilienhaus: 7-12 Wohnungen;Gebäudetyp-Größe 
+GEBTYPGROESSE;9; Mehrfamilienhaus: 13 und mehr Wohnungen;Gebäudetyp-Größe 
+GEBTYPGROESSE;10; Anderer Gebäudetyp;Gebäudetyp-Größe 
+HEIZTYP;1; Fernheizung (Fernwärme);Heizungsart
+HEIZTYP;2; Etagenheizung;Heizungsart
+HEIZTYP;3; Blockheizung;Heizungsart
+HEIZTYP;4; Zentralheizung;Heizungsart
+HEIZTYP;5; Einzel-/Mehrraumöfen (auch Nachtspeicherheizung);Heizungsart
+HEIZTYP;6; Keine Heizung im Gebäude oder in den Wohnungen;Heizungsart
+ZAHLWOHNGN_HHG;1; 1 Wohnung;Zahl der Wohnungen im Gebäude 
+ZAHLWOHNGN_HHG;2; 2 Wohnungen;Zahl der Wohnungen im Gebäude 
+ZAHLWOHNGN_HHG;3; 3 - 6 Wohnungen;Zahl der Wohnungen im Gebäude 
+ZAHLWOHNGN_HHG;4; 7 - 12 Wohnungen;Zahl der Wohnungen im Gebäude 
+ZAHLWOHNGN_HHG;5; 13 und mehr Wohnungen;Zahl der Wohnungen im Gebäude 

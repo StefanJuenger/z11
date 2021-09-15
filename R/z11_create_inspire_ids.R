@@ -29,32 +29,26 @@ z11_create_inspire_ids <- function(
   id_name <-
     glue::glue("{column_name}{type}")
 
-  loop_to_evaluate <-
-    dplyr::case_when(
-      type == "1km" ~
-        glue::glue(
-          "1kmN{substr(coordinate_pairs$Y %>% as.character(), 1, 4)}",
-          "E{substr(coordinate_pairs$X %>% as.character(), 1, 4)}"
-        ) %>%
-        as.character,
-      type == "100m" ~
-        glue::glue(
-          "100mN{substr(coordinate_pairs$Y %>% as.character(), 1, 5)}",
-          "E{substr(coordinate_pairs$X %>% as.character(), 1, 5)}"
-        ) %>%
-        as.character()
-    )
-
-  expression_to_evaluate <-
-    rlang::expr(!!rlang::sym(id_name) <- loop_to_evaluate)
-
-  eval(expression_to_evaluate)
-
+  if (type == "1km") {
+    inspire <- glue::glue(
+      "1kmN{substr(coordinate_pairs$Y %>% as.character(), 1, 4)}",
+      "E{substr(coordinate_pairs$X %>% as.character(), 1, 4)}"
+    ) %>% as.character()
+  } else if (type == "100m") {
+    inspire <- glue::glue(
+      "100mN{substr(coordinate_pairs$Y %>% as.character(), 1, 5)}",
+      "E{substr(coordinate_pairs$X %>% as.character(), 1, 5)}"
+    ) %>% as.character()
+  } else {
+    stop("Not a valid type!")
+  }
+  
   if (isTRUE(combine)) {
     return(
-      dplyr::bind_cols(data, !!id_name := get(id_name))
+      dplyr::bind_cols(data, !!id_name := inspire)
     )
   } else {
-    return(get(id_name))
+    return(inspire)
   }
+
 }

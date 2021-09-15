@@ -1,0 +1,72 @@
+Variable;Bedeutung;Wert
+Einwohner;Bevölkerung; -1: Unbewohnt oder geheim zu halten
+Einwohner;Bevölkerung;1: 3 – 250
+Einwohner;Bevölkerung;2: 250 – 500
+Einwohner;Bevölkerung;3: 500 – 2 000
+Einwohner;Bevölkerung;4: 2 000 – 4 000
+Einwohner;Bevölkerung;5: 4 000 – 8 000
+Einwohner;Bevölkerung;6: 8 000 und mehr
+Frauen_A;Anteil der weiblichen Bevölkerung an der Gesamtbevölkerung; -9: Wert geheim zu halten
+Frauen_A;Anteil der weiblichen Bevölkerung an der Gesamtbevölkerung; -1: Unbewohnt
+Frauen_A;Anteil der weiblichen Bevölkerung an der Gesamtbevölkerung;1: 0 – 40
+Frauen_A;Anteil der weiblichen Bevölkerung an der Gesamtbevölkerung;2: 40 – 47
+Frauen_A;Anteil der weiblichen Bevölkerung an der Gesamtbevölkerung;3: 47 – 53
+Frauen_A;Anteil der weiblichen Bevölkerung an der Gesamtbevölkerung;4: 53 – 60
+Frauen_A;Anteil der weiblichen Bevölkerung an der Gesamtbevölkerung;5: 60 und mehr
+Alter_D;Durchschnittsalter der Bevölkerung; -9: Wert geheim zu halten
+Alter_D;Durchschnittsalter der Bevölkerung; -1: Unbewohnt
+Alter_D;Durchschnittsalter der Bevölkerung;1: 0 – 40
+Alter_D;Durchschnittsalter der Bevölkerung;2: 40 – 42
+Alter_D;Durchschnittsalter der Bevölkerung;3: 42 – 44
+Alter_D;Durchschnittsalter der Bevölkerung;4: 44 – 47
+Alter_D;Durchschnittsalter der Bevölkerung;5: 47 und mehr
+unter18_A;Anteil der Bevölkerung unter 18 Jahre an der Gesamtbevölkerung; -9: Wert geheim zu halten
+unter18_A;Anteil der Bevölkerung unter 18 Jahre an der Gesamtbevölkerung; -1: Unbewohnt
+unter18_A;Anteil der Bevölkerung unter 18 Jahre an der Gesamtbevölkerung;1: 0
+unter18_A;Anteil der Bevölkerung unter 18 Jahre an der Gesamtbevölkerung;2: 0 – 15
+unter18_A;Anteil der Bevölkerung unter 18 Jahre an der Gesamtbevölkerung;3: 15 – 20
+unter18_A;Anteil der Bevölkerung unter 18 Jahre an der Gesamtbevölkerung;4: 20 – 25
+unter18_A;Anteil der Bevölkerung unter 18 Jahre an der Gesamtbevölkerung;5: 25 und mehr
+ab65_A;Anteil der Bevölkerung ab 65 Jahre an der Gesamtbevölkerung; -9: Wert geheim zu halten
+ab65_A;Anteil der Bevölkerung ab 65 Jahre an der Gesamtbevölkerung; -1: Unbewohnt
+ab65_A;Anteil der Bevölkerung ab 65 Jahre an der Gesamtbevölkerung;1: 0
+ab65_A;Anteil der Bevölkerung ab 65 Jahre an der Gesamtbevölkerung;2: 0 – 15
+ab65_A;Anteil der Bevölkerung ab 65 Jahre an der Gesamtbevölkerung;3: 15 – 20
+ab65_A;Anteil der Bevölkerung ab 65 Jahre an der Gesamtbevölkerung;4: 20 – 25
+ab65_A;Anteil der Bevölkerung ab 65 Jahre an der Gesamtbevölkerung;5: 25 und mehr
+Auslaender_A;Anteil der Ausländer an der Gesamtbevölkerung; -9: Wert geheim zu halten
+Auslaender_A;Anteil der Ausländer an der Gesamtbevölkerung; -1: Unbewohnt
+Auslaender_A;Anteil der Ausländer an der Gesamtbevölkerung;1: 0
+Auslaender_A;Anteil der Ausländer an der Gesamtbevölkerung;2: 0 – 4
+Auslaender_A;Anteil der Ausländer an der Gesamtbevölkerung;3: 4 – 8
+Auslaender_A;Anteil der Ausländer an der Gesamtbevölkerung;4: 8 – 20
+Auslaender_A;Anteil der Ausländer an der Gesamtbevölkerung;5: 20 und mehr
+HHGroesse_D;Durchschnittliche Haushaltsgröße; -9: Wert geheim zu halten
+HHGroesse_D;Durchschnittliche Haushaltsgröße; -1: Unbewohnt
+HHGroesse_D;Durchschnittliche Haushaltsgröße;1: 1 – 2
+HHGroesse_D;Durchschnittliche Haushaltsgröße;2: 2 – 2,5
+HHGroesse_D;Durchschnittliche Haushaltsgröße;3: 2,5 – 3
+HHGroesse_D;Durchschnittliche Haushaltsgröße;4: 3 – 3,5
+HHGroesse_D;Durchschnittliche Haushaltsgröße;5: 3,5 und mehr
+Leerstandsquote;Anteil der leerstehenden Wohnungen an den Wohnungen; -9: Wert geheim zu halten
+Leerstandsquote;Anteil der leerstehenden Wohnungen an den Wohnungen; -1: Ohne Wohnraum
+Leerstandsquote;Anteil der leerstehenden Wohnungen an den Wohnungen;1: 0 – 1
+Leerstandsquote;Anteil der leerstehenden Wohnungen an den Wohnungen;2: 1 – 3
+Leerstandsquote;Anteil der leerstehenden Wohnungen an den Wohnungen;3: 3 – 5
+Leerstandsquote;Anteil der leerstehenden Wohnungen an den Wohnungen;4: 5 – 10
+Leerstandsquote;Anteil der leerstehenden Wohnungen an den Wohnungen;5: 10 und mehr
+Wohnfl_Bew_D;Durchschnittliche Wohnfläche je Bewohner; -9: Wert geheim zu halten
+Wohnfl_Bew_D;Durchschnittliche Wohnfläche je Bewohner; -1: Ohne Wohnraum
+Wohnfl_Bew_D;Durchschnittliche Wohnfläche je Bewohner;1: 0 – 30
+Wohnfl_Bew_D;Durchschnittliche Wohnfläche je Bewohner;2: 30 – 40
+Wohnfl_Bew_D;Durchschnittliche Wohnfläche je Bewohner;3: 40 – 50
+Wohnfl_Bew_D;Durchschnittliche Wohnfläche je Bewohner;4: 50 – 60
+Wohnfl_Bew_D;Durchschnittliche Wohnfläche je Bewohner;5: 60 und mehr
+Wohnfl_Whg_D;Durchschnittliche Wohnfläche je Wohnung; -9: Wert geheim zu halten
+Wohnfl_Whg_D;Durchschnittliche Wohnfläche je Wohnung; -1: Ohne Wohnraum
+Wohnfl_Whg_D;Durchschnittliche Wohnfläche je Wohnung;1: 0 – 60
+Wohnfl_Whg_D;Durchschnittliche Wohnfläche je Wohnung;2: 60 – 80
+Wohnfl_Whg_D;Durchschnittliche Wohnfläche je Wohnung;3: 80 – 100
+Wohnfl_Whg_D;Durchschnittliche Wohnfläche je Wohnung;4: 100 – 120
+Wohnfl_Whg_D;Durchschnittliche Wohnfläche je Wohnung;5: 120 – 140
+Wohnfl_Whg_D;Durchschnittliche Wohnfläche je Wohnung;6: 140 und mehr

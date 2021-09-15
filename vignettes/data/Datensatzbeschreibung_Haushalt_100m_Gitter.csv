@@ -1,0 +1,20 @@
+Merkmal;Code;Text;Erläuterungen
+INSGESAMT;0;Einheiten insgesamt;"Gesamtzahl der Einheiten in der Gitterzelle\nKann aufgrund der Geheimhaltung  von der Summe über alle Ausprägungen der anderen Merkmale abweichen"
+HHTYP_FAM;1;Einpersonenhaushalte (Singlehaushalte);Typ des privaten Haushalts (nach Familien) 
+HHTYP_FAM;2;Paare ohne Kind(er);Typ des privaten Haushalts (nach Familien) 
+HHTYP_FAM;3;Paare mit Kind(ern);Typ des privaten Haushalts (nach Familien) 
+HHTYP_FAM;4;Alleinerziehende Elternteile;Typ des privaten Haushalts (nach Familien) 
+HHTYP_FAM;5;Mehrpersonenhaushalte ohne Kernfamilie;Typ des privaten Haushalts (nach Familien) 
+HHTYP_LEB;1;Einpersonenhaushalte (Singlehaushalte);Typ des privaten Haushalts (nach Lebensform)
+HHTYP_LEB;2;Ehepaare;Typ des privaten Haushalts (nach Lebensform)
+HHTYP_LEB;3;Eingetr. Lebenspartnerschaften;Typ des privaten Haushalts (nach Lebensform)
+HHTYP_LEB;4; Nichteheliche Lebensgemeinschaften;Typ des privaten Haushalts (nach Lebensform)
+HHTYP_LEB;5;Alleinerziehende Mütter;Typ des privaten Haushalts (nach Lebensform)
+HHTYP_LEB;6;Alleinerziehende Väter;Typ des privaten Haushalts (nach Lebensform)
+HHTYP_LEB;7;Mehrpersonenhaushalte ohne Kernfamilie;Typ des privaten Haushalts (nach Lebensform)
+HHGROESS_KLASS;1;1 Person;Größe des privaten Haushalts
+HHGROESS_KLASS;2;2 Personen;Größe des privaten Haushalts
+HHGROESS_KLASS;3;3 Personen;Größe des privaten Haushalts
+HHGROESS_KLASS;4;4 Personen;Größe des privaten Haushalts
+HHGROESS_KLASS;5;5 Personen;Größe des privaten Haushalts
+HHGROESS_KLASS;6;6 und mehr Personen;Größe des privaten Haushalts

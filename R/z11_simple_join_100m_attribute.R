@@ -11,6 +11,7 @@
 #' @param ... arguments passed to \code{z11::z11_get_100m_attribute()}
 #'
 #' @importFrom magrittr %>%
+#' @importFrom data.table data.table setDT setnames
 #'
 #' @export
 z11_simple_join_100m_attribute <-
@@ -27,23 +28,18 @@ z11_simple_join_100m_attribute <-
     if (isFALSE(all)) {
       attribute <- rlang::enquo(attribute)
 
-      attribute <-
-        z11::z11_get_100m_attribute(!!attribute, as_raster = FALSE, ...) %>%
-        sf::st_drop_geometry()
+      #Get attribute data
+      attribute <- z11::z11_get_100m_attribute(!!attribute, geometry = FALSE, as_raster = FALSE, ...)
+      data.table::setDT(attribute)
+      data.table::setnames(attribute, old = "Gitter_ID_100m", inspire_column)
 
-      linked_data <-
-        dplyr::left_join(
-          data %>%
-            dplyr::mutate(
-              Gitter_ID_100m = data[[inspire_column]]
-            ),
-          attribute,
-          by = "Gitter_ID_100m"
-        )
+      #Merge
+      linked_data <- data.table::data.table(data) %>%
+        merge(attribute, on = inspire_column, all.x = TRUE, sort = FALSE)
     }
 
     if (isTRUE(all)) {
-      linked_data <- data
+      linked_data <- data.table(data)
 
       for (i in z11::z11_list_100m_attributes()) {
 
@@ -51,23 +47,19 @@ z11_simple_join_100m_attribute <-
 
         attribute <- rlang::sym(i)
 
-        attribute <-
-          z11::z11_get_100m_attribute(!!attribute, as_raster = FALSE, ...) %>%
-          sf::st_drop_geometry()
+        #Get attribute data
+        attribute <- z11::z11_get_100m_attribute(!!attribute, geometry = FALSE, as_raster = FALSE, ...)
+        data.table::setDT(attribute)
+        data.table::setnames(attribute, old = "Gitter_ID_100m", new = inspire_column)
 
-        linked_data <-
-          dplyr::left_join(
-            linked_data %>%
-              dplyr::mutate(
-                Gitter_ID_100m = data[[inspire_column]]
-              ),
-            attribute,
-            by = "Gitter_ID_100m"
-          )
+        #Merge
+        linked_data <- merge(linked_data, attribute, on = inspire_column, all.x = TRUE, sort = FALSE)
       }
     }
 
-    linked_data
-  }
+    return(linked_data)
+}
+
+
 
 

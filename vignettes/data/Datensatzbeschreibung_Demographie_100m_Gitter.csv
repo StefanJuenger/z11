@@ -1,0 +1,59 @@
+Merkmal;Code;Text;Erläuterungen
+INSGESAMT;0;Einheiten insgesamt;"Gesamtzahl der Einheiten in der Gitterzelle\nKann aufgrund der Geheimhaltung  von der Summe über alle Ausprägungen der anderen Merkmale abweichen"
+ALTER_10JG;1; Unter 10;Alter (10er-Jahresgruppen)
+ALTER_10JG;2; 10 - 19;Alter (10er-Jahresgruppen)
+ALTER_10JG;3; 20 - 29;Alter (10er-Jahresgruppen)
+ALTER_10JG;4; 30 - 39;Alter (10er-Jahresgruppen)
+ALTER_10JG;5; 40 - 49;Alter (10er-Jahresgruppen)
+ALTER_10JG;6; 50 - 59;Alter (10er-Jahresgruppen)
+ALTER_10JG;7; 60 - 69;Alter (10er-Jahresgruppen)
+ALTER_10JG;8; 70 - 79;Alter (10er-Jahresgruppen)
+ALTER_10JG;9; 80 und älter;Alter (10er-Jahresgruppen)
+ALTER_KURZ;1;Unter 18;Alter (5 Altersklassen)
+ALTER_KURZ;2;18 - 29;Alter (5 Altersklassen)
+ALTER_KURZ;3;30 - 49;Alter (5 Altersklassen)
+ALTER_KURZ;4;50 - 64;Alter (5 Altersklassen)
+ALTER_KURZ;5;65 und älter;Alter (5 Altersklassen)
+FAMSTND_AUSF;1;Ledig;Familienstand (ausführlich)
+FAMSTND_AUSF;2;Verheiratet;Familienstand (ausführlich)
+FAMSTND_AUSF;3;Verwitwet;Familienstand (ausführlich)
+FAMSTND_AUSF;4;Geschieden;Familienstand (ausführlich)
+FAMSTND_AUSF;5;Eingetr. Lebenspartnerschaft;Familienstand (ausführlich)
+FAMSTND_AUSF;6;Eingetr. Lebensparter/-in verstorben;Familienstand (ausführlich)
+FAMSTND_AUSF;7;Eingetr. Lebenspartnerschaft aufgehoben;Familienstand (ausführlich)
+FAMSTND_AUSF;8;Ohne Angabe;Familienstand (ausführlich)
+GEBURTLAND_GRP;1;Deutschland;Geburtsland (Gruppen)
+GEBURTLAND_GRP;21;EU27-Land;Geburtsland (Gruppen)
+GEBURTLAND_GRP;22;Sonstiges Europa;Geburtsland (Gruppen)
+GEBURTLAND_GRP;23;Sonstige Welt;Geburtsland (Gruppen)
+GEBURTLAND_GRP;24;Sonstige;Geburtsland (Gruppen)
+GESCHLECHT;1;Männlich;Geschlecht
+GESCHLECHT;2;Weiblich;Geschlecht
+RELIGION_KURZ;1;Römisch-katholische Kirche (öffentlich-rechtlich);Religion
+RELIGION_KURZ;2;Evangelische Kirche (öffentlich-rechtlich);Religion
+RELIGION_KURZ;3;Sonstige, keine, ohne Angabe;Religion
+STAATSANGE_GRP;1;Deutschland;Staatsangehörigkeitsgruppen
+STAATSANGE_GRP;21;EU27-Land;Staatsangehörigkeitsgruppen
+STAATSANGE_GRP;22;Sonstiges Europa;Staatsangehörigkeitsgruppen
+STAATSANGE_GRP;23;Sonstige Welt;Staatsangehörigkeitsgruppen
+STAATSANGE_GRP;24;Sonstiges;Staatsangehörigkeitsgruppen
+STAATSANGE_HLND;1;Deutschland;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;2;Bosnien und Herzegowina;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;3;Griechenland;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;4;Italien;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;5;Kasachstan;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;6;Kroatien;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;7;Niederlande;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;8;Österreich;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;9;Polen;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;10;Rumänien;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;11;Russ. Föderation;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;12;Türkei;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;13;Ukraine;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_HLND;14;Sonstige;Staatsangehörigkeit nach ausgewählten Ländern
+STAATSANGE_KURZ;1;Deutschland;Staatsangehörigkeit
+STAATSANGE_KURZ;2;Ausland;Staatsangehörigkeit
+STAATZHL;1;Eine Staatsangehörigkeit;Zahl der Staatsangehörigkeiten
+STAATZHL;2;Mehrere, deutsch und ausländisch;Zahl der Staatsangehörigkeiten
+STAATZHL;3;Mehrere, nur ausländisch;Zahl der Staatsangehörigkeiten
+STAATZHL;4;Nicht bekannt;Zahl der Staatsangehörigkeiten

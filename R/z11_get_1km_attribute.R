@@ -42,7 +42,7 @@ z11_get_1km_attribute <-
     if (isTRUE(as_raster)) {
       requested_attribute %>%
       stars::st_rasterize(dx = 1000, dy = 1000) %>%
-        as("Raster")
+        terra::rast()
     } else {
       requested_attribute
     }

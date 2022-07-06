@@ -23,6 +23,7 @@ Imports:
     sf,
     raster,
     stars,
+    terra,
     data.table,
     magrittr
 Suggests: knitr, rmarkdown

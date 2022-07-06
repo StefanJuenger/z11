@@ -54,7 +54,7 @@ z11_get_100m_attribute <-
     if (isTRUE(as_raster)) {
       requested_attribute <- requested_attribute %>%
         stars::st_rasterize(dx = 100, dy = 100) %>%
-        as("Raster")
+        terra::rast()
     }
   }
 
